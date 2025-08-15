@@ -22,7 +22,7 @@
     path: '/trangchu',
     name: 'trangchu',
     icon: 'home',
-    component: './DTTT/MainPage/MainPage',
+    component: './MainPage/MainPage',
   },
   {
     path: '/',

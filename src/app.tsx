@@ -5,7 +5,7 @@ import type { Settings as LayoutSettings } from '@ant-design/pro-layout';
 import type { RunTimeLayoutConfig } from 'umi';
 import { fetchUserInfo as queryCurrentUser, UserInfoResponse } from './services/auth';
 import NoFoundPage from './pages/403';
-import Footer from '@/components/Footer';
+//import Footer from '@/components/Footer';
 import styles from '@/components/RightContent/index.less';
 
 const loginPath = '/trangchu';
@@ -95,7 +95,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   return {
     rightContentRender: () => <RightContent />,
     disableContentMargin: false,
-    footerRender: () => <Footer />,
+    //footerRender: () => <Footer />,
     unAccessible: <NoFoundPage />,
     headerContentRender: () => (
       <div className={styles.headerLeft}>
