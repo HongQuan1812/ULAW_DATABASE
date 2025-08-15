@@ -1,0 +1,774 @@
+import React, { useState } from 'react';
+import { Button, Col, Form, Input, Row, Select, Steps, Card } from 'antd';
+import { history } from 'umi';
+import styles from './index.less';
+import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMessage/CustomMessage';
+
+const PhongTCNS: React.FC = () => {
+  const [current, setCurrent] = useState(0); // step lớn
+  const [sectionIndex, setSectionIndex] = useState(0); // section nhỏ trong step 2
+  const [form] = Form.useForm();
+
+  // Step 1 - Thông tin chung
+  const step1Content = (
+    <Row gutter={[16, 16]}>
+      <Col xs={27} md={8}>
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoTen">
+          <Input />
+        </Form.Item>
+      </Col>
+      <Col xs={27} md={8}>
+        <Form.Item label="Email người nhập báo cáo" name="email">
+          <Input type="email" />
+        </Form.Item>
+      </Col>
+      <Col xs={27} md={8}>
+        <Form.Item label="Vai trò người nhập báo cáo" name="vaiTro">
+          <Input />
+        </Form.Item>
+      </Col>
+      <Col xs={27} md={8}>
+        <Form.Item
+          label="Năm báo cáo"
+          name="namBaoCao"
+          rules={[{ required: true, message: 'Vui lòng chọn năm báo cáo' }]}
+        >
+          <Select placeholder="Chọn năm">
+            <Select.Option value="2020">2020</Select.Option>
+            <Select.Option value="2021">2021</Select.Option>
+            <Select.Option value="2022">2022</Select.Option>
+            <Select.Option value="2023">2023</Select.Option>
+            <Select.Option value="2024">2024</Select.Option>
+            <Select.Option value="2025">2025</Select.Option>
+            <Select.Option value="2026">2026</Select.Option>
+          </Select>
+        </Form.Item>
+      </Col>
+      <Col xs={27} md={8}>
+        <Form.Item
+          label="Giai đoạn báo cáo"
+          name="giaiDoan"
+          rules={[{ required: true, message: 'Vui lòng chọn giai đoạn báo cáo' }]}
+        >
+          <Select placeholder="Chọn giai đoạn">
+            <Select.Option value="firstHaft">
+              Giai đoạn 1 (từ 01/01 đến 30/06 hàng năm)
+            </Select.Option>
+            <Select.Option value="secondHaft">
+              Giai đoạn 2 (từ 01/07 đến 31/12 hàng năm)
+            </Select.Option>
+          </Select>
+        </Form.Item>
+      </Col>
+    </Row>
+  );
+
+  // Step 2 - Các section nhỏ
+  const sections = [
+    {
+      title: 'Tuyển dụng - Sử dụng viên chức, người lao động, cộng tác viên',
+      content: (
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng ký hợp đồng mới"
+              name="hopDongMoi"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng ký hợp đồng mới' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng thanh lý hợp đồng"
+              name="thanhLyHopDong"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng thanh lý hợp đồng' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng thỏa thuận cộng tác viên"
+              name="thoaThuanCTV"
+              rules={[
+                { required: true, message: 'Vui lòng nhập số lượng thỏa thuận cộng tác viên' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Tổng số viên chức"
+              name="tongVienChuc"
+              rules={[{ required: true, message: 'Vui lòng nhập tổng số viên chức' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Tổng số viên chức nam"
+              name="vienChucNam"
+              rules={[{ required: true, message: 'Vui lòng nhập tổng số viên chức nam' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Tổng số viên chức nữ"
+              name="vienChucNu"
+              rules={[{ required: true, message: 'Vui lòng nhập tổng số viên chức nữ' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Tổng số cộng tác viên"
+              name="tongCTV"
+              rules={[{ required: true, message: 'Vui lòng nhập tổng số cộng tác viên' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Tổng số học hàm giáo sư"
+              name="giaoSu"
+              rules={[{ required: true, message: 'Vui lòng nhập tổng số học hàm giáo sư' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Tổng số học hàm phó giáo sư"
+              name="phoGiaoSu"
+              rules={[{ required: true, message: 'Vui lòng nhập tổng số học hàm phó giáo sư' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Tổng số học vị tiến sĩ"
+              name="tienSi"
+              rules={[{ required: true, message: 'Vui lòng nhập tổng số học vị tiến sĩ' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Tổng số học vị thạc sĩ"
+              name="thacSi"
+              rules={[{ required: true, message: 'Vui lòng nhập tổng số học vị thạc sĩ' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Tổng số học vị đại học"
+              name="daiHoc"
+              rules={[{ required: true, message: 'Vui lòng nhập tổng số học vị đại học' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Tổng số học vị dưới đại học"
+              name="duoiDaiHoc"
+              rules={[{ required: true, message: 'Vui lòng nhập tổng số học vị dưới đại học' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Tổng số giảng viên cơ hữu"
+              name="giangVienCoHuu"
+              rules={[{ required: true, message: 'Vui lòng nhập tổng số giảng viên cơ hữu' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Tổng số giảng viên thỉnh giảng"
+              name="giangVienThinhGiang"
+              rules={[{ required: true, message: 'Vui lòng nhập tổng số giảng viên thỉnh giảng' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Tổng số tuổi bình quân"
+              name="tuoiBinhQuan"
+              rules={[{ required: true, message: 'Vui lòng nhập tổng số tuổi bình quân' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Tổng số thu nhập bình quân"
+              name="thuNhapBinhQuan"
+              rules={[{ required: true, message: 'Vui lòng nhập tổng số thu nhập bình quân' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+        </Row>
+      ),
+    },
+    {
+      title: 'Quản lý viên chức',
+      content: (
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng quy hoạch"
+              name="quyHoach"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng quy hoạch' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng quy hoạch bổ sung"
+              name="quyHoachBoSung"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng quy hoạch bổ sung' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu bổ nhiệm"
+              name="boNhiem"
+              rules={[{ required: true, message: 'Vui lòng nhập số liệu bổ nhiệm' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu bổ nhiệm lại"
+              name="boNhiemLai"
+              rules={[{ required: true, message: 'Vui lòng nhập số liệu bổ nhiệm lại' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu kéo dài thời gian giữ chức vụ"
+              name="keoDaiChucVu"
+              rules={[
+                { required: true, message: 'Vui lòng nhập số liệu kéo dài thời gian giữ chức vụ' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu thôi giữ chức vụ"
+              name="thoiChucVu"
+              rules={[{ required: true, message: 'Vui lòng nhập số liệu thôi giữ chức vụ' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu từ chức"
+              name="tuChuc"
+              rules={[{ required: true, message: 'Vui lòng nhập số liệu từ chức' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu miễn nhiệm"
+              name="mienNhiem"
+              rules={[{ required: true, message: 'Vui lòng nhập số liệu miễn nhiệm' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu chuyển đổi công tác"
+              name="chuyenCongTac"
+              rules={[{ required: true, message: 'Vui lòng nhập số liệu chuyển đổi công tác' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu bổ nhiệm chức danh nghề nghiệp"
+              name="boNhiemChucDanh"
+              rules={[
+                { required: true, message: 'Vui lòng nhập số liệu bổ nhiệm chức danh nghề nghiệp' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu chuyển hạng chức danh nghề nghiệp và thăng hạng"
+              name="chuyenHangThangHang"
+              rules={[
+                {
+                  required: true,
+                  message: 'Vui lòng nhập số liệu chuyển hạng chức danh nghề nghiệp và thăng hạng',
+                },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+        </Row>
+      ),
+    },
+    {
+      title: 'Đào tạo, bồi dưỡng',
+      content: (
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu đào tạo về chuyên môn nghiệp vụ"
+              name="daoTaoChuyenMon"
+              rules={[
+                {
+                  required: true,
+                  message: 'Vui lòng nhập số liệu đào tạo về chuyên môn nghiệp vụ',
+                },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu đào tạo nâng cao trình độ"
+              name="daoTaoNangCao"
+              rules={[
+                { required: true, message: 'Vui lòng nhập số liệu đào tạo nâng cao trình độ' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu đào tạo về lý luận chính trị"
+              name="daoTaoLyLuan"
+              rules={[
+                { required: true, message: 'Vui lòng nhập số liệu đào tạo về lý luận chính trị' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu đào tạo ngoài nước"
+              name="daoTaoNgoaiNuoc"
+              rules={[{ required: true, message: 'Vui lòng nhập số liệu đào tạo ngoài nước' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+        </Row>
+      ),
+    },
+    {
+      title: 'Tiền lương và phụ cấp',
+      content: (
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu nâng bậc lương thường xuyên"
+              name="nangBacThuongXuyen"
+              rules={[
+                { required: true, message: 'Vui lòng nhập số liệu nâng bậc lương thường xuyên' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu nâng bậc lương trước hạn"
+              name="nangBacTruocHan"
+              rules={[
+                { required: true, message: 'Vui lòng nhập số liệu nâng bậc lương trước hạn' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu nâng bậc lương vượt khung"
+              name="nangBacVuotKhung"
+              rules={[
+                { required: true, message: 'Vui lòng nhập số liệu nâng bậc lương vượt khung' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu kéo dài thời gian nâng bậc lương"
+              name="keoDaiNangBac"
+              rules={[
+                {
+                  required: true,
+                  message: 'Vui lòng nhập số liệu kéo dài thời gian nâng bậc lương',
+                },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+        </Row>
+      ),
+    },
+    {
+      title: 'Chế độ chính sách',
+      content: (
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu nghỉ chế độ bảo hiểm, hưu trí"
+              name="nghiCheDo"
+              rules={[
+                { required: true, message: 'Vui lòng nhập số liệu nghỉ chế độ bảo hiểm, hưu trí' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu thôi việc"
+              name="thoiViec"
+              rules={[{ required: true, message: 'Vui lòng nhập số liệu thôi việc' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu chuyển công tác"
+              name="chuyenCongTac2"
+              rules={[{ required: true, message: 'Vui lòng nhập số liệu chuyển công tác' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu kê khai tài sản đối với viên chức"
+              name="keKhaiTaiSan"
+              rules={[
+                {
+                  required: true,
+                  message: 'Vui lòng nhập số liệu kê khai tài sản đối với viên chức',
+                },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+        </Row>
+      ),
+    },
+    {
+      title: 'Đánh giá - xếp loại cá nhân',
+      content: (
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu chiến sĩ thi đua"
+              name="chienSiThiDua"
+              rules={[{ required: true, message: 'Vui lòng nhập số liệu chiến sĩ thi đua' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu lao động tiên tiến"
+              name="laoDongTienTien"
+              rules={[{ required: true, message: 'Vui lòng nhập số liệu lao động tiên tiến' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu hoàn thành xuất sắc"
+              name="hoanThanhXuatSac"
+              rules={[{ required: true, message: 'Vui lòng nhập số liệu hoàn thành xuất sắc' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu hoàn thành tốt"
+              name="hoanThanhTot"
+              rules={[{ required: true, message: 'Vui lòng nhập số liệu hoàn thành tốt' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu hoàn thành nhiệm vụ"
+              name="hoanThanhNhiemVu"
+              rules={[{ required: true, message: 'Vui lòng nhập số liệu hoàn thành nhiệm vụ' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu viên chức - người lao động bị kỷ luật"
+              name="kyLuat"
+              rules={[
+                {
+                  required: true,
+                  message: 'Vui lòng nhập số liệu viên chức - người lao động bị kỷ luật',
+                },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số liệu viên chức - người lao đọng khen thưởng khác (Nếu có)"
+              name="khenThuongKhac"
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+        </Row>
+      ),
+    },
+    {
+      title: 'Đánh giá - xếp loại tập thể',
+      content: (
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng tập thể lao động tiên tiến"
+              name="tapTheTienTien"
+              rules={[
+                { required: true, message: 'Vui lòng nhập số lượng tập thể lao động tiên tiến' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng tập thể hoàn thành xuất sắc"
+              name="tapTheXuatSac"
+              rules={[
+                { required: true, message: 'Vui lòng nhập số lượng tập thể hoàn thành xuất sắc' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng tập thể hoàn thành tốt"
+              name="tapTheTot"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng tập thể hoàn thành tốt' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng tập thể hoàn thành nhiệm vụ"
+              name="tapTheNhiemVu"
+              rules={[
+                { required: true, message: 'Vui lòng nhập số lượng tập thể hoàn thành nhiệm vụ' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng tập thể không hoàn thành nhiệm vụ"
+              name="tapTheKhongHoanThanh"
+              rules={[
+                {
+                  required: true,
+                  message: 'Vui lòng nhập số lượng tập thể không hoàn thành nhiệm vụ',
+                },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng tập thể khen thưởng khác (Nếu có)"
+              name="tapTheKhenThuongKhac"
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+        </Row>
+      ),
+    },
+  ];
+
+  const step3Content = (
+    <div
+      style={{
+        padding: '16px',
+        background: '#fffbe6',
+        border: '1px solid #ffe58f',
+        borderRadius: '6px',
+      }}
+    >
+      <p
+        style={{
+          fontWeight: 'bold',
+          fontSize: '16px',
+          color: '#ad6800',
+          marginBottom: '8px',
+        }}
+      >
+        Thầy/Cô vui lòng kiểm tra lại dữ liệu đã nhập trước khi gửi!
+      </p>
+      <p style={{ marginBottom: '4px', color: '#614700' }}>
+        Nhấn nút <b>Quay lại</b> để chỉnh sửa các tiến trình trước;
+      </p>
+      <p style={{ marginBottom: 0, color: '#614700' }}>
+        Nhấn nút <b>Hoàn thành</b> để lưu và gửi dữ liệu.
+      </p>
+    </div>
+  );
+
+  const onFinish = (values: any) => {
+    console.log('Form data:', values);
+    CustomMessageSuccess({content: 'Lưu dữ liệu thành công!'});
+    history.push('/trangchu');
+  };
+
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Form submit failed:', errorInfo);
+    CustomMessageError({content: 'Vui lòng kiểm tra lại thông tin'});
+  };
+
+  const next = () => {
+    if (current === 1) {
+      if (sectionIndex < sections.length - 1) {
+        setSectionIndex(sectionIndex + 1);
+      } else {
+        setCurrent(current + 1);
+      }
+    } else {
+      setCurrent(current + 1);
+    }
+  };
+
+  const prev = () => {
+    if (current === 1) {
+      if (sectionIndex > 0) {
+        setSectionIndex(sectionIndex - 1);
+      } else {
+        setCurrent(current - 1);
+      }
+    } else {
+      setCurrent(current - 1);
+    }
+  };
+
+  return (
+    <>
+      <Card
+        style={{
+          marginBottom: 16,
+          borderRadius: 8,
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
+        }}
+      >
+        <Steps
+          current={current}
+          items={[{ title: 'Thông tin chung' }, { title: 'Nội dung' }, { title: 'Hoàn thành' }]}
+        />
+      </Card>
+
+      <Form
+        form={form}
+        layout="vertical"
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        preserve
+        className={styles.container}
+      >
+        {/* Step 1 */}
+        <div style={{ display: current === 0 ? 'block' : 'none' }}>{step1Content}</div>
+
+        {/* Step 2 */}
+        <div style={{ display: current === 1 ? 'block' : 'none' }}>
+          {sections.map((sec, idx) => (
+            <div key={idx} style={{ display: idx === sectionIndex ? 'block' : 'none' }}>
+              <h3>{sec.title}</h3>
+              {sec.content}
+            </div>
+          ))}
+        </div>
+
+        {/* Step 3 */}
+        <div style={{ display: current === 2 ? 'block' : 'none' }}>{step3Content}</div>
+
+        {/* Buttons */}
+        <div style={{ display: 'flex', marginTop: 24 }}>
+          {!(current === 0 && sectionIndex === 0) && (
+            <Button className={styles.btnBack} onClick={prev}>
+              Quay lại
+            </Button>
+          )}
+          <div style={{ flex: 1 }} />
+          {current < 2 && (
+            <Button className={styles.btnNext} type="primary" onClick={next}>
+              Tiếp tục
+            </Button>
+          )}
+          {current === 2 && (
+            <Button className={styles.btnSubmit} type="primary" htmlType="submit">
+              Hoàn thành
+            </Button>
+          )}
+        </div>
+      </Form>
+    </>
+  );
+};
+
+export default PhongTCNS;
