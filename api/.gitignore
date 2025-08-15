@@ -1,0 +1,10 @@
+bin/
+obj/
+bin
+obj
+appsettings.json
+appsettings.Development.json
+packages
+Migrations/
+wwwroot/
+wwwroot
