@@ -1,0 +1,85 @@
+@import (reference) '~antd/es/style/themes/index';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: auto;
+  background: @layout-body-background;
+}
+
+.formContainer {
+  :global {
+    .ant-form-item-has-error .ant-input-affix-wrapper .ant-input-prefix {
+      color: #ff4d4f;
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+.content {
+  flex: 1;
+  padding: 32px 0;
+}
+
+@media (min-width: @screen-md-min) {
+  .container {
+    background-image: url('/login_background_theme.svg');
+    background-repeat: no-repeat;
+    background-position: center 110px;
+    background-size: 100%;
+  }
+
+  .content {
+    padding: 32px 0 24px;
+  }
+}
+
+.icon {
+  margin-left: 8px;
+  color: rgba(0, 0, 0, 0.2);
+  font-size: 24px;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: @primary-color;
+  }
+}
+
+.tabStyle {
+  margin-top: 1rem;
+  :global {
+    .ant-tabs-nav::before {
+      border-bottom: 1px solid #d3d3d3;
+    }
+  }
+}
+
+.textChangeTabs {
+  margin-bottom: 24px;
+  text-align: right;
+}
+
+.resetPasswordErrorHeader {
+  text-align: center;
+}
+
+.resetPasswordErrorTitle {
+  color: #ff4d4f !important;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.resetPasswordErrorContainer {
+  display: flex;
+  justify-content: right;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.tooltipHelpText {
+  color: #fff;
+  font-size: 12px;
+}

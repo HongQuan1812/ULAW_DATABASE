@@ -1,0 +1,190 @@
+.footerContainer {
+  display: flex;
+  min-height: 300px;
+  overflow: hidden;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  background-color: #0d2a71;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+  }
+}
+
+.footerLeft {
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 40px 30px;
+
+  @media (max-width: 992px) {
+    width: 100%;
+    padding: 20px 15px;
+  }
+}
+
+.footerSectionsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+}
+
+.footerSection {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 20px;
+
+  .footerSectionTitle {
+    margin-bottom: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #add8e6;
+      text-decoration: underline;
+    }
+  }
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+}
+
+.socialIconsLeft {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+
+  .icon {
+    color: #fff;
+    font-size: 24px;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #add8e6;
+    }
+  }
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+}
+
+.helpBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  padding: 20px;
+  text-align: center;
+  background-color: #3b5998;
+  border-radius: 5px;
+
+  .phoneIcon {
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 30px;
+  }
+
+  .phoneNumber {
+    margin-bottom: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.4em;
+  }
+
+  .extensionNumber {
+    color: white;
+    font-size: 0.85em;
+    opacity: 0.8;
+  }
+}
+
+.footerRight {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: 20px;
+  background-image: url('/footer_bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(to right, #0d2a71 0%, rgba(13, 42, 113, 0) 100%);
+    content: '';
+  }
+
+  @media (max-width: 992px) {
+    width: 100%;
+    min-height: 250px;
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.copyrightBar {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 0.8em;
+  text-align: center;
+  background-color: #031634;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #add8e6;
+      text-decoration: underline;
+    }
+  }
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #add8e6;
+  }
+}

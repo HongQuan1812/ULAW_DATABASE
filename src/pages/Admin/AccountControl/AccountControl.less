@@ -1,0 +1,75 @@
+.table {
+  padding: 24px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tableHeader {
+  :global {
+    .ant-table-thead > tr > th {
+      color: rgba(0, 0, 0, 1);
+      background-color: #c2dbff;
+    }
+    .ant-table-tbody > tr:not(.ant-table-placeholder):hover > td {
+      background: #e7f0f8;
+    }
+  }
+}
+
+.searchIconDefault {
+  color: rgba(0, 0, 0, 0.25);
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.searchIconFocus {
+  color: #40a9ff;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.filterGroupLeft {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.filterGroupRight {
+  display: flex;
+  gap: 12px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.clearFilterBtn {
+  color: #1d39c4;
+  font-weight: 500;
+  background-color: #f6f9ff;
+  border: 1px solid #91caff;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #1d39c4;
+    background-color: #e6f4ff;
+    border-color: #69b1ff;
+  }
+
+  &:active {
+    color: #10239e;
+    background-color: #d4eaff;
+    border-color: #4096ff;
+  }
+}

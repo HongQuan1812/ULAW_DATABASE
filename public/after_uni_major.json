@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Luật hiến pháp và luật hành chính",
+        "code": 9380102,
+        "codename": "luat_hien_phap_va_luat_hanh_chinh"
+    },
+    {
+        "name": "Luật dân sự và tố tụng dân sự",
+        "code": 9380103,
+        "codename": "luat_dan_su_va_to_tung_dan_su"
+    },
+    {
+        "name": "Luật hình sự và tố tụng hình sự",
+        "code": 9380104,
+        "codename": "luat_hinh_su_va_to_tung_hinh_su"
+    },
+    {
+        "name": "Luật kinh tế",
+        "code": 9380107,
+        "codename": "luat_kinh_te"
+    },
+    {
+        "name": "Luật quốc tế",
+        "code": 9380108,
+        "codename": "luat_quoc_te"
+    }
+]

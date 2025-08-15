@@ -1,0 +1,29 @@
+@import (reference) '~antd/es/style/themes/index';
+
+.headerSearch {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 18px;
+  .input {
+    width: 0;
+    min-width: 0;
+    overflow: hidden;
+    background: transparent;
+    border-radius: 0;
+    transition: width 0.3s, margin-left 0.3s;
+    :global(.ant-select-selection) {
+      background: transparent;
+    }
+    input {
+      width: 32px;
+      height: 32px;
+      box-shadow: none !important;
+    }
+
+    &.show {
+      width: 210px;
+      margin-left: 8px;
+    }
+  }
+}

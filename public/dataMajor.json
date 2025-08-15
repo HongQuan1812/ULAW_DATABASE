@@ -1,0 +1,281 @@
+[
+    {
+        "name": "Ngôn ngữ Anh",
+        "code": 7220201,
+        "codename": "ngon_ngu_anh",
+        "subjectGroup": [
+            {
+                "name": "D01 - Ngữ Văn, Toán, Tiếng Anh",
+                "code": "D01",
+                "codename": "van_toan_anh"
+            },
+            {
+                "name": "D14 - Ngữ Văn, Lịch Sử, Tiếng Anh",
+                "code": "D14",
+                "codename": "van_su_anh"
+            },
+            {
+                "name": "X78 - Ngữ Văn, Giáo dục kinh tế và pháp luật, Tiếng Anh",
+                "code": "X78",
+                "codename": "van_gdktpl_anh"
+            },
+            {
+                "name": "X25 - Toán, Giáo dục kinh tế và pháp luật, Tiếng Anh",
+                "code": "X25",
+                "codename": "toan_gdktpl_anh"
+            }
+        ]
+    },
+    {
+        "name": "Luật",
+        "code": 7380101,
+        "codename": "luat",
+        "subjectGroup": [
+            {
+                "name": "A00 - Toán, Vật Lý, Hóa Học",
+                "code": "A00",
+                "codename": "toan_ly_hoa"
+            },
+            {
+                "name": "A01 - Toán, Vật Lý, Tiếng Anh",
+                "code": "A01",
+                "codename": "toan_ly_anh"
+            },
+            {
+                "name": "D01 - Ngữ Văn, Toán, Tiếng Anh",
+                "code": "D01",
+                "codename": "van_toan_anh"
+            },
+            {
+                "name": "D03 - Ngữ Văn, Toán, Tiếng Pháp",
+                "code": "D03",
+                "codename": "van_toan_phap"
+            },
+            {
+                "name": "D06 - Ngữ Văn, Toán, Tiếng Nhật",
+                "code": "D06",
+                "codename": "van_toan_nhat"
+            },
+            {
+                "name": "X01 - Toán, Ngữ Văn, Giáo dục kinh tế và pháp luật",
+                "code": "X01",
+                "codename": "toan_van_gdktpl"
+            },
+            {
+                "name": "X25 - Toán, Giáo dục kinh tế và pháp luật, Tiếng Anh",
+                "code": "X25",
+                "codename": "toan_gdktpl_anh"
+            },
+            {
+                "name": "X33 - Toán, Giáo dục kinh tế và pháp luật, Tiếng Pháp",
+                "code": "X33",
+                "codename": "toan_gdktppl_phap"
+            },
+            {
+                "name": "X45 - Toán, Giáo dục kinh tế và pháp luật, Tiếng Nhật",
+                "code": "X45",
+                "codename": "toan_gdktpl_nhat"
+            },
+            {
+                "name": "X78 - Ngữ Văn, Giáo dục kinh tế và pháp luật, Tiếng Anh",
+                "code": "X78",
+                "codename": "van_gdktpl_anh"
+            },
+            {
+                "name": "X86 - Ngữ Văn, Giáo dục kinh tế và pháp luật, Tiếng Pháp",
+                "code": "X86",
+                "codename": "van_gdktpl_phap"
+            },
+            {
+                "name": "X98 - Ngữ Văn, Giáo dục kinh tế và pháp luật, Tiếng Nhật",
+                "code": "X98",
+                "codename": "van_gdktpl_nhat"
+            },
+            {
+                "name": "C00 - Ngữ Văn, Lịch Sử, Địa Lý",
+                "code": "C00",
+                "codename": "van_su_dia"
+            }
+        ]
+    },
+    {
+        "name": "Luật thương mại quốc tế",
+        "code": 7380109,
+        "codename": "luat_thuong_mai_quoc_te",
+        "subjectGroup": [
+            {
+                "name": "A01 - Toán, Vật Lý, Tiếng Anh",
+                "code": "A01",
+                "codename": "toan_ly_anh"
+            },
+            {
+                "name": "D01 - Ngữ Văn, Toán, Tiếng Anh",
+                "code": "D01",
+                "codename": "van_toan_anh"
+            },
+            {
+                "name": "X01 - Toán, Ngữ Văn, Giáo dục kinh tế và pháp luật",
+                "code": "X01",
+                "codename": "toan_van_gdktpl"
+            },
+            {
+                "name": "X25 - Toán, Giáo dục kinh tế và pháp luật, Tiếng Anh",
+                "code": "X25",
+                "codename": "toan_gdktpl_anh"
+            },
+            {
+                "name": "X78 - Ngữ Văn, Giáo dục kinh tế và pháp luật, Tiếng Anh",
+                "code": "X78",
+                "codename": "van_gdktpl_anh"
+            }
+        ]
+    },
+    {
+        "name": "Quản trị - Luật",
+        "code": 7340102,
+        "codename": "quan_tri_luat",
+        "subjectGroup": [
+            {
+                "name": "A00 - Toán, Vật Lý, Hóa Học",
+                "code": "A00",
+                "codename": "toan_ly_hoa"
+            },
+            {
+                "name": "A01 - Toán, Vật Lý, Tiếng Anh",
+                "code": "A01",
+                "codename": "toan_ly_anh"
+            },
+            {
+                "name": "D07 - Toán, Hóa Học, Tiếng Anh",
+                "code": "D07",
+                "codename": "toan_hoa_anh"
+            },
+            {
+                "name": "D01 - Ngữ Văn, Toán, Tiếng Anh",
+                "code": "D01",
+                "codename": "van_toan_anh"
+            },
+            {
+                "name": "X01 - Toán, Ngữ Văn, Giáo dục kinh tế và pháp luật",
+                "code": "X01",
+                "codename": "toan_van_gdktpl"
+            },
+            {
+                "name": "X25 - Toán, Giáo dục kinh tế và pháp luật, Tiếng Anh",
+                "code": "X25",
+                "codename": "toan_gdktpl_anh"
+            }
+        ]
+    },
+    {
+        "name": "Quản trị kinh doanh",
+        "code": 7340101,
+        "codename": "quan_tri_kinh_doanh",
+        "subjectGroup": [
+            {
+                "name": "A00 - Toán, Vật Lý, Hóa Học",
+                "code": "A00",
+                "codename": "toan_ly_hoa"
+            },
+            {
+                "name": "A01 - Toán, Vật Lý, Tiếng Anh",
+                "code": "A01",
+                "codename": "toan_ly_anh"
+            },
+            {
+                "name": "D07 - Toán, Hóa Học, Tiếng Anh",
+                "code": "D07",
+                "codename": "toan_hoa_anh"
+            },
+            {
+                "name": "D01 - Ngữ Văn, Toán, Tiếng Anh",
+                "code": "D01",
+                "codename": "van_toan_anh"
+            },
+            {
+                "name": "X01 - Toán, Ngữ Văn, Giáo dục kinh tế và pháp luật",
+                "code": "X01",
+                "codename": "toan_van_gdktpl"
+            },
+            {
+                "name": "X25 - Toán, Giáo dục kinh tế và pháp luật, Tiếng Anh",
+                "code": "X25",
+                "codename": "toan_gdktpl_anh"
+            }
+        ]
+    },
+    {
+        "name": "Kinh doanh quốc tế",
+        "code": 7340120,
+        "codename": "kinh_doanh_quoc_te",
+        "subjectGroup": [
+            {
+                "name": "A00 - Toán, Vật Lý, Hóa Học",
+                "code": "A00",
+                "codename": "toan_ly_hoa"
+            },
+            {
+                "name": "A01 - Toán, Vật Lý, Tiếng Anh",
+                "code": "A01",
+                "codename": "toan_ly_anh"
+            },
+            {
+                "name": "D07 - Toán, Hóa Học, Tiếng Anh",
+                "code": "D07",
+                "codename": "toan_hoa_anh"
+            },
+            {
+                "name": "D01 - Ngữ Văn, Toán, Tiếng Anh",
+                "code": "D01",
+                "codename": "van_toan_anh"
+            },
+            {
+                "name": "X01 - Toán, Ngữ Văn, Giáo dục kinh tế và pháp luật",
+                "code": "X01",
+                "codename": "toan_van_gdktpl"
+            },
+            {
+                "name": "X25 - Toán, Giáo dục kinh tế và pháp luật, Tiếng Anh",
+                "code": "X25",
+                "codename": "toan_gdktpl_anh"
+            }
+        ]
+    },
+    {
+        "name": "Tài chính - Ngân hàng",
+        "code": 7340201,
+        "codename": "tai_chinh_ngan_hang",
+        "subjectGroup": [
+            {
+                "name": "A00 - Toán, Vật Lý, Hóa Học",
+                "code": "A00",
+                "codename": "toan_ly_hoa"
+            },
+            {
+                "name": "A01 - Toán, Vật Lý, Tiếng Anh",
+                "code": "A01",
+                "codename": "toan_ly_anh"
+            },
+            {
+                "name": "D07 - Toán, Hóa Học, Tiếng Anh",
+                "code": "D07",
+                "codename": "toan_hoa_anh"
+            },
+            {
+                "name": "D01 - Ngữ Văn, Toán, Tiếng Anh",
+                "code": "D01",
+                "codename": "van_toan_anh"
+            },
+            {
+                "name": "X01 - Toán, Ngữ Văn, Giáo dục kinh tế và pháp luật",
+                "code": "X01",
+                "codename": "toan_van_gdktpl"
+            },
+            {
+                "name": "X25 - Toán, Giáo dục kinh tế và pháp luật, Tiếng Anh",
+                "code": "X25",
+                "codename": "toan_gdktpl_anh"
+            }
+        ]
+    }
+]
