@@ -8,7 +8,7 @@ import NoFoundPage from './pages/403';
 import Footer from '@/components/Footer';
 import styles from '@/components/RightContent/index.less';
 
-const loginPath = '/user/login';
+const loginPath = '/trangchu';
 
 export async function getInitialState(): Promise<{
   settings?: Partial<LayoutSettings>;
