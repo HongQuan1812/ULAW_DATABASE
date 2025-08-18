@@ -74,7 +74,7 @@ const PhongCSDLCNTT: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số lượng máy chủ vật lý tại trường' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -83,7 +83,7 @@ const PhongCSDLCNTT: React.FC = () => {
               name="slMayChuAo"
               rules={[{ required: true, message: 'Vui lòng nhập số lượng máy chủ ảo tại trường' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -92,7 +92,7 @@ const PhongCSDLCNTT: React.FC = () => {
               name="slMayChuThue"
               rules={[{ required: true, message: 'Vui lòng nhập số lượng máy chủ Cloud (Thuê)' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -103,7 +103,7 @@ const PhongCSDLCNTT: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số lượng đường truyền Leased-line' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -117,7 +117,7 @@ const PhongCSDLCNTT: React.FC = () => {
                 },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -131,7 +131,7 @@ const PhongCSDLCNTT: React.FC = () => {
                 },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -140,7 +140,7 @@ const PhongCSDLCNTT: React.FC = () => {
               name="slSwitch"
               rules={[{ required: true, message: 'Vui lòng nhập số lượng Switch tầng' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -149,7 +149,7 @@ const PhongCSDLCNTT: React.FC = () => {
               name="slCamera"
               rules={[{ required: true, message: 'Vui lòng nhập số lượng thiết bị Camera' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -163,7 +163,7 @@ const PhongCSDLCNTT: React.FC = () => {
                 },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -172,7 +172,7 @@ const PhongCSDLCNTT: React.FC = () => {
               name="slWifi"
               rules={[{ required: true, message: 'Vui lòng nhập số lượng thiết bị wifi' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
             </Form.Item>
           </Col>
         </Row>
@@ -188,7 +188,7 @@ const PhongCSDLCNTT: React.FC = () => {
               name="slTrangWeb"
               rules={[{ required: true, message: 'Vui lòng nhập số lượng trang web' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
             </Form.Item>
           </Col>
           <Col xs={24} md={8}>
@@ -197,7 +197,7 @@ const PhongCSDLCNTT: React.FC = () => {
               name="slPhanMem"
               rules={[{ required: true, message: 'Vui lòng nhập số lượng phần mềm' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
             </Form.Item>
           </Col>
           <Col xs={24} md={8}>
@@ -212,7 +212,7 @@ const PhongCSDLCNTT: React.FC = () => {
                 },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
             </Form.Item>
           </Col>
           <Col xs={24} md={8}>
@@ -227,7 +227,7 @@ const PhongCSDLCNTT: React.FC = () => {
                 },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
             </Form.Item>
           </Col>
           <Col xs={24} md={8}>
@@ -242,7 +242,7 @@ const PhongCSDLCNTT: React.FC = () => {
                 },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
             </Form.Item>
           </Col>
         </Row>

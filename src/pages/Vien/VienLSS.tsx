@@ -78,7 +78,7 @@ const VienLSS: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -93,7 +93,7 @@ const VienLSS: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -101,7 +101,7 @@ const VienLSS: React.FC = () => {
                 label="Số lượng hoạt động nghiên cứu khoa học và công nghệ trong các lĩnh vực khác (Nếu có)"
                 name="slHoatDongKhac"
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }}/>
               </Form.Item>
             </Col>
           </Row>
