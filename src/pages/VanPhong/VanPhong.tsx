@@ -26,12 +26,12 @@ const VanPhong: React.FC = () => {
       </Col>
       <Col xs={27} md={8}>
         <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
-          <Input />
+          <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
         <Form.Item label="Email người nhập báo cáo" name="email">
-          <Input type="email" />
+          <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
