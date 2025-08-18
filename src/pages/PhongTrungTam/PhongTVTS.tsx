@@ -1,20 +1,31 @@
 import React, { useState } from 'react';
-import { Button, Col, Form, Input, Row, Select, Steps } from 'antd';
-import { history } from 'umi';
+import { Button, Col, Form, Input, Row, Steps } from 'antd';
+import { history, useLocation } from 'umi';
 import styles from './index.less';
 import { ArrowLeftOutlined, ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
 import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMessage/CustomMessage';
+import { getLocationName } from '@/utils/getLocationName';
+import FormDateSelect from '@/components/FormDateSelect';
+import FormStageSelect from '@/components/FormStageSelect';
 
 const PhongTVTS: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
   const [sectionIndex, setSectionIndex] = useState(0); // section nhỏ trong step 2
   const [form] = Form.useForm();
 
+  const location = useLocation();
+  const locationName = getLocationName(location.pathname);
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="hoTen">
+        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+          <Input disabled />
+        </Form.Item>
+      </Col>
+      <Col xs={27} md={8}>
+        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
           <Input />
         </Form.Item>
       </Col>
@@ -24,7 +35,7 @@ const PhongTVTS: React.FC = () => {
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Vai trò người nhập báo cáo" name="vaiTro">
+        <Form.Item label="Chức vụ người nhập báo cáo" name="chucVu">
           <Input />
         </Form.Item>
       </Col>
@@ -34,15 +45,7 @@ const PhongTVTS: React.FC = () => {
           name="namBaoCao"
           rules={[{ required: true, message: 'Vui lòng chọn năm báo cáo' }]}
         >
-          <Select placeholder="Chọn năm">
-            <Select.Option value="2020">2020</Select.Option>
-            <Select.Option value="2021">2021</Select.Option>
-            <Select.Option value="2022">2022</Select.Option>
-            <Select.Option value="2023">2023</Select.Option>
-            <Select.Option value="2024">2024</Select.Option>
-            <Select.Option value="2025">2025</Select.Option>
-            <Select.Option value="2026">2026</Select.Option>
-          </Select>
+          <FormDateSelect />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
@@ -51,14 +54,7 @@ const PhongTVTS: React.FC = () => {
           name="giaiDoan"
           rules={[{ required: true, message: 'Vui lòng chọn giai đoạn báo cáo' }]}
         >
-          <Select placeholder="Chọn giai đoạn">
-            <Select.Option value="firstHaft">
-              Giai đoạn 1 (từ 01/01 đến 30/06 hàng năm)
-            </Select.Option>
-            <Select.Option value="secondHaft">
-              Giai đoạn 2 (từ 01/07 đến 31/12 hàng năm)
-            </Select.Option>
-          </Select>
+          <FormStageSelect />
         </Form.Item>
       </Col>
     </Row>
@@ -183,8 +179,7 @@ const PhongTVTS: React.FC = () => {
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
               <li>
-                <b>(1)</b> Dành cho các trình độ, các chương trình và loại hình đào tạo của
-                Trường
+                <b>(1)</b> Dành cho các trình độ, các chương trình và loại hình đào tạo của Trường
               </li>
               <li>
                 <b>(2)</b> Dành cho việc tư vấn, tuyển sinh, hướng nghiệp và quảng bá hình ảnh,
@@ -198,28 +193,14 @@ const PhongTVTS: React.FC = () => {
   ];
 
   const step3Content = (
-    <div
-      style={{
-        padding: '16px',
-        background: '#fffbe6',
-        border: '1px solid #ffe58f',
-        borderRadius: '6px',
-      }}
-    >
-      <p
-        style={{
-          fontWeight: 'bold',
-          fontSize: '16px',
-          color: '#ad6800',
-          marginBottom: '8px',
-        }}
-      >
+    <div className={styles.step3Container}>
+      <p className={styles.step3Content}>
         Thầy/Cô vui lòng kiểm tra lại dữ liệu đã nhập trước khi gửi!
       </p>
-      <p style={{ marginBottom: '4px', color: '#614700' }}>
+      <p className={styles.step3BackContent}>
         Nhấn nút <b>Quay lại</b> để chỉnh sửa các tiến trình trước;
       </p>
-      <p style={{ marginBottom: 0, color: '#614700' }}>
+      <p className={styles.step3SubmitContent}>
         Nhấn nút <b>Hoàn thành</b> để lưu và gửi dữ liệu.
       </p>
     </div>
@@ -262,13 +243,16 @@ const PhongTVTS: React.FC = () => {
 
   return (
     <>
+      <div className={styles.stepHeader}>
+        <ArrowLeftOutlined style={{ marginRight: 4 }} onClick={() => history.push('/trangchu')} />{' '}
+        {locationName}
+      </div>
       <div className={styles.stepCard}>
         <Steps
           current={current}
           items={[{ title: 'Thông tin chung' }, { title: 'Nội dung' }, { title: 'Hoàn thành' }]}
         />
       </div>
-
       <Form
         form={form}
         layout="vertical"
@@ -301,7 +285,7 @@ const PhongTVTS: React.FC = () => {
           )}
           <div style={{ flex: 1 }} />
           {current < 2 && (
-            <Button className={styles.btnNext} type="primary" onClick={next}>
+            <Button type="primary" onClick={next} className={styles.btnNext}>
               Tiếp tục
               <ArrowRightOutlined />
             </Button>

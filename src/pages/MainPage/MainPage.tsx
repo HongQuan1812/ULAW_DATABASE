@@ -5,6 +5,12 @@ import VienCard from '@/components/CardOption/VienCard';
 import VanphongCard from '@/components/CardOption/VanphongCard';
 import KhoaCard from '@/components/CardOption/KhoaCard';
 import styles from './MainPage.less';
+import {
+  AppstoreOutlined,
+  BankOutlined,
+  ClusterOutlined,
+  ReconciliationOutlined,
+} from '@ant-design/icons';
 
 const MainPage = () => {
   const [value, setValue] = useState<any>('phong-trung-tam');
@@ -18,6 +24,7 @@ const MainPage = () => {
             fontWeight: value === 'phong-trung-tam' ? 'bold' : 'normal',
           }}
         >
+          <ClusterOutlined style={{ marginRight: 5 }} />
           Phòng - Trung tâm
         </div>
       ),
@@ -31,6 +38,7 @@ const MainPage = () => {
             fontWeight: value === 'vien' ? 'bold' : 'normal',
           }}
         >
+          <ReconciliationOutlined style={{ marginRight: 5 }} />
           Viện
         </div>
       ),
@@ -44,6 +52,7 @@ const MainPage = () => {
             fontWeight: value === 'van-phong' ? 'bold' : 'normal',
           }}
         >
+          <BankOutlined style={{ marginRight: 5 }} />
           Văn phòng
         </div>
       ),
@@ -57,6 +66,7 @@ const MainPage = () => {
             fontWeight: value === 'khoa' ? 'bold' : 'normal',
           }}
         >
+          <AppstoreOutlined style={{ marginRight: 5 }} />
           Khoa
         </div>
       ),
