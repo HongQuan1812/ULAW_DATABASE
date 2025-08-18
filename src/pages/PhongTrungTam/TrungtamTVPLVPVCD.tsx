@@ -164,13 +164,13 @@ const TrungtamTVPLVPVCD: React.FC = () => {
             <ul className={styles.noteList}>
               <li>Vui lòng điền giá trị = 0 nếu không có</li>
               <li>
-                <b>(1)</b> Bao gồm các hoạt động: tuyên truyền, phổ biến pháp luật dưới các hình
+                <sup><b>(1)</b></sup> Bao gồm các hoạt động: tuyên truyền, phổ biến pháp luật dưới các hình
                 thức: báo cáo chuyên đề, diễn phiên tòa giả định, biên soạn tài liệu pháp luật, tổ
                 chức thực hiện các chương trình tuyên truyền pháp luật lưu động và các hình thức
                 khác
               </li>
               <li>
-                <b>(2)</b> Trong lĩnh vực cung cấp dịch vụ tư vấn và hỗ trợ pháp luật
+                <sup><b>(2)</b></sup> Trong lĩnh vực cung cấp dịch vụ tư vấn và hỗ trợ pháp luật
               </li>
             </ul>
           </div>

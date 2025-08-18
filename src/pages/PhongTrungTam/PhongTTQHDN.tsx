@@ -176,7 +176,7 @@ const PhongTTQHDN: React.FC = () => {
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
               <li>
-                <b>(1)</b> Theo dõi, đánh giá thông tin phản hồi của các tổ chức, cá nhân sử dụng
+                <sup><b>(1)</b></sup> Theo dõi, đánh giá thông tin phản hồi của các tổ chức, cá nhân sử dụng
                 lao động về khả năng đáp ứng yêu cầu công việc của người học sau tốt nghiệp
               </li>
             </ul>

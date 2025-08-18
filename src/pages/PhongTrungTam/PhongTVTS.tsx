@@ -179,10 +179,10 @@ const PhongTVTS: React.FC = () => {
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
               <li>
-                <b>(1)</b> Dành cho các trình độ, các chương trình và loại hình đào tạo của Trường
+                <sup><b>(1)</b></sup> Dành cho các trình độ, các chương trình và loại hình đào tạo của Trường
               </li>
               <li>
-                <b>(2)</b> Dành cho việc tư vấn, tuyển sinh, hướng nghiệp và quảng bá hình ảnh,
+                <sup><b>(2)</b></sup> Dành cho việc tư vấn, tuyển sinh, hướng nghiệp và quảng bá hình ảnh,
                 thương hiệu của Trường
               </li>
             </ul>

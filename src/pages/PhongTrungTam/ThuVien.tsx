@@ -155,15 +155,15 @@ const ThuVien: React.FC = () => {
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
               <li>
-                <b>(1)</b> Bao gồm giáo trình, tập bài giảng, khóa luận, luận văn thạc sĩ, luận án
+                <sup><b>(1)</b></sup> Bao gồm giáo trình, tập bài giảng, khóa luận, luận văn thạc sĩ, luận án
                 tiến sĩ
               </li>
               <li>
-                <b>(2)</b> Bao gồm các dạng đề tài khác không thuộc cái dạng đã liệt kê ở phía trên
+                <sup><b>(2)</b></sup> Bao gồm các dạng đề tài khác không thuộc cái dạng đã liệt kê ở phía trên
                 - Nếu có
               </li>
               <li>
-                <b>(3)</b> Thuộc các quy định của Luật sở hữu trí tuệ và Luật Thư viện
+                <sup><b>(3)</b></sup> Thuộc các quy định của Luật sở hữu trí tuệ và Luật Thư viện
               </li>
             </ul>
           </div>

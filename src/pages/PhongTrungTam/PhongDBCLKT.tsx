@@ -376,20 +376,20 @@ const PhongDBCLKT: React.FC = () => {
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
               <li>
-                <b>(1)</b> Theo khuyến nghị của các Đoàn Đánh giá ngoài
+                <sup><b>(1)</b></sup> Theo khuyến nghị của các Đoàn Đánh giá ngoài
               </li>
               <li>
-                <b>(2)</b> Theo phương pháp giảng dạy tích cực, phương pháp kiểm tra, đánh giá đáp
+                <sup><b>(2)</b></sup> Theo phương pháp giảng dạy tích cực, phương pháp kiểm tra, đánh giá đáp
                 ứng yêu cầu của chuẩn đầu ra
               </li>
               <li>
-                <b>(3)</b> Về mặt trao đổi kinh nghiệm và đào tạo giáo viên về phương pháp giảng dạy
+                <sup><b>(3)</b></sup> Về mặt trao đổi kinh nghiệm và đào tạo giáo viên về phương pháp giảng dạy
               </li>
               <li>
-                <b>(4)</b> Thuộc các chương trình đào tạo của Trường
+                <sup><b>(4)</b></sup> Thuộc các chương trình đào tạo của Trường
               </li>
               <li>
-                <b>(5)</b> Dành cho các giảng viên và chuyên viên mới được tuyển dụng
+                <sup><b>(5)</b></sup> Dành cho các giảng viên và chuyên viên mới được tuyển dụng
               </li>
             </ul>
           </div>
