@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Button, Col, Form, Input, Row, Steps } from 'antd';
 import { history, useLocation } from 'umi';
 import styles from './index.less';
+import { ArrowLeftOutlined, ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
 import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMessage/CustomMessage';
 import { getLocationName } from '@/utils/getLocationName';
-import { ArrowLeftOutlined } from '@ant-design/icons';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 
@@ -745,7 +745,7 @@ const PhongTCNS: React.FC = () => {
         {/* Buttons */}
         <div style={{ display: 'flex', marginTop: 24 }}>
           {!(current === 0 && sectionIndex === 0) && (
-            <Button className={styles.btnBack} onClick={prev}>
+            <Button className={styles.btnBack} onClick={prev} icon={<ArrowLeftOutlined />}>
               Quay lại
             </Button>
           )}
@@ -753,11 +753,13 @@ const PhongTCNS: React.FC = () => {
           {current < 2 && (
             <Button className={styles.btnNext} type="primary" onClick={next}>
               Tiếp tục
+              <ArrowRightOutlined />
             </Button>
           )}
           {current === 2 && (
             <Button className={styles.btnSubmit} type="primary" htmlType="submit">
               Hoàn thành
+              <CheckOutlined />
             </Button>
           )}
         </div>

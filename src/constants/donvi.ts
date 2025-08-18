@@ -174,7 +174,7 @@ export const vanphongCard: CardData[] = [
   {
     id: 1,
     title: 'Văn phòng Đảng ủy - Hội đồng trường - Công đoàn',
-    path: '/vanphong/vanphong-vpdu-hdt-cd',
+    path: '/vanphong',
     IconComponent: BankOutlined,
   },
 ];

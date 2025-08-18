@@ -20,7 +20,7 @@ export function getLocationName(pathname: string): string {
     '/vien/vien-lss': 'Viện Luật so sánh',
     '/vien/vien-dt-bd': 'Viện Đào tạo & Bồi dưỡng',
     '/vien/vien-dtqt': 'Viện Đào tạo quốc tế',
-    '/vanphong/vanphong-vpdu-hdt-cd': 'Văn phòng Đảng ủy - Hội đồng trường - Công đoàn',
+    '/vanphong': 'Văn phòng Đảng ủy - Hội đồng trường - Công đoàn',
     '/khoa': 'Tất cả các Khoa',
   };
 

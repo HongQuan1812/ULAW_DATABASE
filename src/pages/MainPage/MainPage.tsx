@@ -9,7 +9,7 @@ import {
   AppstoreOutlined,
   BankOutlined,
   ClusterOutlined,
-  ReconciliationOutlined,
+  DeploymentUnitOutlined,
 } from '@ant-design/icons';
 
 const MainPage = () => {
@@ -38,7 +38,7 @@ const MainPage = () => {
             fontWeight: value === 'vien' ? 'bold' : 'normal',
           }}
         >
-          <ReconciliationOutlined style={{ marginRight: 5 }} />
+          <DeploymentUnitOutlined style={{ marginRight: 5 }} />
           Viện
         </div>
       ),

@@ -1,31 +1,20 @@
 import React, { useState } from 'react';
-import { Button, Col, Form, Input, Row, Steps, Typography } from 'antd';
-import { history, useLocation } from 'umi';
+import { Button, Col, Form, Input, Row, Select, Steps } from 'antd';
+import { history } from 'umi';
 import styles from './index.less';
 import { ArrowLeftOutlined, ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
 import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMessage/CustomMessage';
-import { getLocationName } from '@/utils/getLocationName';
-import FormDateSelect from '@/components/FormDateSelect';
-import FormStageSelect from '@/components/FormStageSelect';
 
-const TrungtamTVPLVPVCD: React.FC = () => {
-  const [current, setCurrent] = useState(0);
-  const [sectionIndex, setSectionIndex] = useState(0);
+const PhongTCKT: React.FC = () => {
+  const [current, setCurrent] = useState(0); // step lớn
+  const [sectionIndex, setSectionIndex] = useState(0); // section nhỏ trong step 2
   const [form] = Form.useForm();
-
-  const location = useLocation();
-  const locationName = getLocationName(location.pathname);
 
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
-          <Input disabled />
-        </Form.Item>
-      </Col>
-      <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoTen">
           <Input />
         </Form.Item>
       </Col>
@@ -35,7 +24,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Chức vụ người nhập báo cáo" name="chucVu">
+        <Form.Item label="Vai trò người nhập báo cáo" name="vaiTro">
           <Input />
         </Form.Item>
       </Col>
@@ -45,7 +34,15 @@ const TrungtamTVPLVPVCD: React.FC = () => {
           name="namBaoCao"
           rules={[{ required: true, message: 'Vui lòng chọn năm báo cáo' }]}
         >
-          <FormDateSelect />
+          <Select placeholder="Chọn năm">
+            <Select.Option value="2020">2020</Select.Option>
+            <Select.Option value="2021">2021</Select.Option>
+            <Select.Option value="2022">2022</Select.Option>
+            <Select.Option value="2023">2023</Select.Option>
+            <Select.Option value="2024">2024</Select.Option>
+            <Select.Option value="2025">2025</Select.Option>
+            <Select.Option value="2026">2026</Select.Option>
+          </Select>
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
@@ -54,7 +51,14 @@ const TrungtamTVPLVPVCD: React.FC = () => {
           name="giaiDoan"
           rules={[{ required: true, message: 'Vui lòng chọn giai đoạn báo cáo' }]}
         >
-          <FormStageSelect />
+          <Select placeholder="Chọn giai đoạn">
+            <Select.Option value="firstHaft">
+              Giai đoạn 1 (từ 01/01 đến 30/06 hàng năm)
+            </Select.Option>
+            <Select.Option value="secondHaft">
+              Giai đoạn 2 (từ 01/07 đến 31/12 hàng năm)
+            </Select.Option>
+          </Select>
         </Form.Item>
       </Col>
     </Row>
@@ -68,17 +72,13 @@ const TrungtamTVPLVPVCD: React.FC = () => {
           <Row gutter={[16, 16]}>
             <Col xs={24} md={12}>
               <Form.Item
-                label={
-                  <Typography.Text>
-                    Số lượng dịch vụ tư vấn pháp luật có thu phí đối với <b>cá nhân</b> có nhu cầu
-                  </Typography.Text>
-                }
-                name="slDichVuTuVanCaNhanCoPhi"
+                label="Thống kê thu học phí và các khoản phải nộp của người học; theo dõi các hợp đồng dịch vụ trong Trường"
+                name="tkThuHocPhi"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng dịch vụ tư vấn pháp luật có thu phí đối với cá nhân có nhu cầu',
+                      'Vui lòng nhập thống kê thu học phí và các khoản phải nộp của người học; theo dõi các hợp đồng dịch vụ trong Trường',
                   },
                 ]}
               >
@@ -87,17 +87,13 @@ const TrungtamTVPLVPVCD: React.FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label={
-                  <Typography.Text>
-                    Số lượng dịch vụ tư vấn pháp luật có thu phí đối với <b>tổ chức</b> có nhu cầu
-                  </Typography.Text>
-                }
-                name="slDichVuTuVanToChucCoPhi"
+                label="Báo cáo tài chính năm và báo cáo quyết toán theo quy định tài chính"
+                name="bcTaiChinh"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng dịch vụ tư vấn pháp luật có thu phí đối với tổ chức có nhu cầu',
+                      'Vui lòng nhập báo cáo tài chính năm và báo cáo quyết toán theo quy định tài chính',
                   },
                 ]}
               >
@@ -106,52 +102,12 @@ const TrungtamTVPLVPVCD: React.FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng hỗ trợ pháp lý đối với các đối tượng được hưởng theo quy định của Pháp luật"
-                name="slHoTroPhapLy"
+                label="Thống kê định mức kinh tế kỹ thuật"
+                name="tkDinhMucKTKT"
                 rules={[
                   {
                     required: true,
-                    message:
-                      'Vui lòng nhập số lượng hỗ trợ pháp lý đối với các đối tượng được hưởng theo quy định của Pháp luật',
-                  },
-                ]}
-              >
-                <Input type="number" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label={
-                  <>
-                    Số lượng hoạt động tuyên truyền, phổ biến pháp luật
-                    <sup className={styles.sup}>(1)</sup>
-                  </>
-                }
-                name="slHoatDongTuyenTruyen"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng hoạt động tuyên truyền, phổ biến pháp luật',
-                  },
-                ]}
-              >
-                <Input type="number" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label={
-                  <>
-                    Số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân trong và ngoài nước
-                    <sup className={styles.sup}>(2)</sup>
-                  </>
-                }
-                name="slHoatDongLienKet"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân trong và ngoài nước',
+                    message: 'Vui lòng nhập thống kê định mức kinh tế kỹ thuật',
                   },
                 ]}
               >
@@ -159,21 +115,6 @@ const TrungtamTVPLVPVCD: React.FC = () => {
               </Form.Item>
             </Col>
           </Row>
-          <div className={styles.noteContainer}>
-            <p className={styles.note}>Ghi chú:</p>
-            <ul className={styles.noteList}>
-              <li>Vui lòng điền giá trị = 0 nếu không có</li>
-              <li>
-                <b>(1)</b> Bao gồm các hoạt động: tuyên truyền, phổ biến pháp luật dưới các hình
-                thức: báo cáo chuyên đề, diễn phiên tòa giả định, biên soạn tài liệu pháp luật, tổ
-                chức thực hiện các chương trình tuyên truyền pháp luật lưu động và các hình thức
-                khác
-              </li>
-              <li>
-                <b>(2)</b> Trong lĩnh vực cung cấp dịch vụ tư vấn và hỗ trợ pháp luật
-              </li>
-            </ul>
-          </div>
         </>
       ),
     },
@@ -244,16 +185,13 @@ const TrungtamTVPLVPVCD: React.FC = () => {
 
   return (
     <>
-      <div className={styles.stepHeader}>
-        <ArrowLeftOutlined style={{ marginRight: 4 }} onClick={() => history.push('/trangchu')} />{' '}
-        {locationName}
-      </div>
       <div className={styles.stepCard}>
         <Steps
           current={current}
           items={[{ title: 'Thông tin chung' }, { title: 'Nội dung' }, { title: 'Hoàn thành' }]}
         />
       </div>
+
       <Form
         form={form}
         layout="vertical"
@@ -286,7 +224,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
           )}
           <div style={{ flex: 1 }} />
           {current < 2 && (
-            <Button type="primary" onClick={next} className={styles.btnNext}>
+            <Button className={styles.btnNext} type="primary" onClick={next}>
               Tiếp tục
               <ArrowRightOutlined />
             </Button>
@@ -303,4 +241,4 @@ const TrungtamTVPLVPVCD: React.FC = () => {
   );
 };
 
-export default TrungtamTVPLVPVCD;
+export default PhongTCKT;
