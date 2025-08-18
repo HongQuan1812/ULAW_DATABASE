@@ -107,12 +107,26 @@ const Khoa: React.FC = () => {
                 name="DanhMucNganh"
                 rules={[{ required: true, message: 'Vui lòng chọn danh mục ngành' }]}
               >
-                <Checkbox.Group>
-                  <Checkbox value="Luat">Ngành Luật</Checkbox>
-                  <Checkbox value="QTL">Ngành Quản trị - Luật</Checkbox>
-                  <Checkbox value="QTKD">Ngành Quản trị kinh doanh</Checkbox>
-                  <Checkbox value="LTMQT">Ngành Luật Thương mại Quốc tế</Checkbox>
-                  <Checkbox value="NNA">Ngành Ngôn ngữ Anh (chuyên ngành Anh văn pháp lý)</Checkbox>
+                <Checkbox.Group style={{ marginLeft: 12, marginTop: 5 }}>
+                  <Row gutter={[0, 16]}>
+                    <Col xs={24} sm={12}>
+                      <Checkbox value="Luat">Ngành Luật</Checkbox>
+                    </Col>
+                    <Col xs={24} sm={12}>
+                      <Checkbox value="QTL">Ngành Quản trị - Luật</Checkbox>
+                    </Col>
+                    <Col xs={24} sm={12}>
+                      <Checkbox value="QTKD">Ngành Quản trị kinh doanh</Checkbox>
+                    </Col>
+                    <Col xs={24} sm={12}>
+                      <Checkbox value="LTMQT">Ngành Luật Thương mại Quốc tế</Checkbox>
+                    </Col>
+                    <Col xs={24} sm={12}>
+                      <Checkbox value="NNA">
+                        Ngành Ngôn ngữ Anh (chuyên ngành Anh văn pháp lý)
+                      </Checkbox>
+                    </Col>
+                  </Row>
                 </Checkbox.Group>
               </Form.Item>
             </Col>
@@ -145,7 +159,7 @@ const Khoa: React.FC = () => {
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
               <li>
-                <sup className={styles.sup}>(1)</sup>File dạng <b>EXCEL</b> bao gồm các cột:
+                <sup className={styles.sup}>(1)</sup> File dạng <b>EXCEL</b> bao gồm các cột:
               </li>
               <li>
                 <b>
