@@ -28,6 +28,31 @@
     path: '/vien',
     name: 'vien',
     icon: 'deploymentUnit',
+    routes: [
+      {
+        path: '/vien/vien-shtt-kn-dmst',
+        name: 'vien-shtt-kn-dmst',
+        component: './Vien/VienSHTTKNDMST',
+      },
+      {
+        path: '/vien/vien-lss',
+        name: 'vien-lss',
+        component: './Vien/VienLSS',
+      },
+      {
+        path: '/vien/vien-dt-bd',
+        name: 'vien-dt-bd',
+        component: './Vien/VienDTVBD',
+      },
+      {
+        path: '/vien/vien-dtqt',
+        name: 'vien-dtqt',
+        component: './Vien/VienDTQT',
+      },
+      {
+        component: './404',
+      },
+    ],
   },
   {
     path: 'khoa',
