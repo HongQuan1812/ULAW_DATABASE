@@ -11,7 +11,7 @@ export default {
   'menu.phong-trungtam.phong-tcns': 'Phòng TCNS',
   'menu.phong-trungtam.thuvien': 'Thư viện',
   'menu.phong-trungtam.phong-tvts': 'Phòng TVTS',
-  'menu.phong-trungtam.phong-tt-qhdn': 'Phòng TT - QHDN',
+  'menu.phong-trungtam.phong-tt-qhdn': 'Phòng TT & QHDN',
   'menu.phong-trungtam.phong-tt-pc': 'Phòng TT - PC',
   'menu.phong-trungtam.phong-tc-kt': 'Phòng TC - KT',
   'menu.phong-trungtam.phong-khcn-htpt': 'Phòng KHCN - HTPT',

@@ -180,28 +180,14 @@ const TrungtamTVPLVPVCD: React.FC = () => {
   ];
 
   const step3Content = (
-    <div
-      style={{
-        padding: '16px',
-        background: '#fffbe6',
-        border: '1px solid #ffe58f',
-        borderRadius: '6px',
-      }}
-    >
-      <p
-        style={{
-          fontWeight: 'bold',
-          fontSize: '16px',
-          color: '#ad6800',
-          marginBottom: '8px',
-        }}
-      >
+    <div className={styles.step3Container}>
+      <p className={styles.step3Content}>
         Thầy/Cô vui lòng kiểm tra lại dữ liệu đã nhập trước khi gửi!
       </p>
-      <p style={{ marginBottom: '4px', color: '#614700' }}>
+      <p className={styles.step3BackContent}>
         Nhấn nút <b>Quay lại</b> để chỉnh sửa các tiến trình trước;
       </p>
-      <p style={{ marginBottom: 0, color: '#614700' }}>
+      <p className={styles.step3SubmitContent}>
         Nhấn nút <b>Hoàn thành</b> để lưu và gửi dữ liệu.
       </p>
     </div>
