@@ -1,5 +1,6 @@
 .container {
   max-height: calc(100vh - 100px);
+  margin-top: 14px;
   padding: 24px;
   overflow-y: auto;
   background-color: #fff;
@@ -54,5 +55,16 @@
       background-color: #73d13d;
       border-color: #73d13d;
     }
+  }
+}
+
+.stepCard {
+  padding: 16px;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  @media (max-width: 575px) {
+    padding-bottom: 0;
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Col, Form, Input, Row, Select, Steps, Card } from 'antd';
+import { Button, Col, Form, Input, Row, Select, Steps } from 'antd';
 import { history } from 'umi';
 import styles from './index.less';
 import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMessage/CustomMessage';
@@ -209,18 +209,12 @@ const TrungtamTVPLVPVCD: React.FC = () => {
 
   return (
     <>
-      <Card
-        style={{
-          marginBottom: 16,
-          borderRadius: 8,
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
-        }}
-      >
+      <div className={styles.stepCard}>
         <Steps
           current={current}
           items={[{ title: 'Thông tin chung' }, { title: 'Nội dung' }, { title: 'Hoàn thành' }]}
         />
-      </Card>
+      </div>
 
       <Form
         form={form}
