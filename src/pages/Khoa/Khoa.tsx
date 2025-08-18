@@ -12,6 +12,7 @@ import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMes
 import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
+import SelectKhoaRole from '@/components/SelectKhoaRole';
 
 const Khoa: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -51,7 +52,7 @@ const Khoa: React.FC = () => {
       </Col>
       <Col xs={27} md={8}>
         <Form.Item label="Chức vụ người nhập báo cáo" name="chucVu">
-          <Input />
+          <SelectKhoaRole />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
