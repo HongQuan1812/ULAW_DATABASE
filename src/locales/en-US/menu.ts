@@ -26,8 +26,6 @@ export default {
   'menu.vien.vien-lss': 'Viện LSS',
   'menu.vien.vien-dt-bd': 'Viện ĐB & BD',
   'menu.vien.vien-dtqt': 'Viện ĐTQT',
-  'menu.khoa.khoa': 'Các Khoa',
-  'menu.vanphong.vanphong': 'VP ĐU - HĐT - CĐ',
   'menu.omni-channel.403Page': '403 Page',
   'menu.omni-channel.SearchPage': 'Search Page',
   'menu.omni-channel.FormPage': 'Form Page',
