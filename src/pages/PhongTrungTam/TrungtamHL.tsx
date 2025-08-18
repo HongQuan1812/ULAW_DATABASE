@@ -4,7 +4,7 @@ import { history } from 'umi';
 import styles from './index.less';
 import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMessage/CustomMessage';
 
-const TrungtamTVPLVPVCD: React.FC = () => {
+const TrungtamHL: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
   const [sectionIndex, setSectionIndex] = useState(0); // section nhỏ trong step 2
   const [form] = Form.useForm();
@@ -66,78 +66,186 @@ const TrungtamTVPLVPVCD: React.FC = () => {
   // Step 2 - Các section nhỏ
   const sections = [
     {
+      title: 'Hình thức học liệu - Sách của Trường',
       content: (
         <Row gutter={[16, 16]}>
-          <Col xs={24} md={12}>
+          <Col xs={24} md={6}>
             <Form.Item
-              label="Số lượng dịch vụ tư vấn pháp luật có thu phí đối với cá nhân có nhu cầu"
-              name="slDichVuTuVanCaNhanCoPhi"
+              label="Số tên giáo trình"
+              name="soTenGiaoTrinh"
+              rules={[{ required: true, message: 'Vui lòng nhập số tên giáo trình' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số cuốn của giáo trình"
+              name="soCuonGiaoTrinh"
+              rules={[{ required: true, message: 'Vui lòng nhập số cuốn của giáo trình' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số tên của tập bài giảng"
+              name="soTenTapBaiGiang"
+              rules={[{ required: true, message: 'Vui lòng nhập số tên của tập bài giảng' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số cuốn của tập bài giảng"
+              name="soCuonTapBaiGiang"
+              rules={[{ required: true, message: 'Vui lòng nhập số cuốn của tập bài giảng' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số tên của sách tình huống"
+              name="soTenSachTinhHuong"
+              rules={[{ required: true, message: 'Vui lòng nhập số tên của sách tình huống' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số cuốn của sách tình huống"
+              name="soCuonSachTinhHuong"
+              rules={[
+                { required: true, message: 'Vui lòng nhập tổng số cuốn của sách tình huống' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số tên của sách chuyên khảo"
+              name="soTenSachChuyenKhao"
+              rules={[
+                { required: true, message: 'Vui lòng nhập tổng số tên của sách chuyên khảo' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số cuốn của sách chuyên khảo"
+              name="soCuonSachChuyenKhao"
+              rules={[{ required: true, message: 'Vui lòng nhập số cuốn của sách chuyên khảo' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số tên của sách tham khảo"
+              name="soTenSachThamKhao"
+              rules={[{ required: true, message: 'Vui lòng nhập số tên của sách tham khảo' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số cuốn của sách tham khảo"
+              name="soCuonSachThamKhao"
+              rules={[{ required: true, message: 'Vui lòng nhập số cuốn của sách tham khảo' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+        </Row>
+      ),
+    },
+    {
+      title: 'Hình thức học liệu - Sách ký gửi',
+      content: (
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số tên sách ký gửi của giảng viên"
+              name="soTenSachKyGuiGiangVien"
+              rules={[
+                { required: true, message: 'Vui lòng nhập số tên sách ký gửi của giảng viên' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số cuốn sách ký gửi của giảng viên"
+              name="soCuonSachKyGuiGiangVien"
+              rules={[
+                { required: true, message: 'Vui lòng nhập số cuốn sách ký gửi của giảng viên' },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số tên sách ký gửi của tổ chức/ cá nhân khác"
+              name="soTenSachKyGuiToChucCaNhan"
               rules={[
                 {
                   required: true,
-                  message:
-                    'Vui lòng nhập số lượng dịch vụ tư vấn pháp luật có thu phí đối với cá nhân có nhu cầu',
+                  message: 'Vui lòng nhập số tên sách ký gửi của tổ chức/ cá nhân khác',
                 },
               ]}
             >
               <Input type="number" />
             </Form.Item>
           </Col>
-          <Col xs={24} md={12}>
+          <Col xs={24} md={6}>
             <Form.Item
-              label="Số lượng dịch vụ tư vấn pháp luật có thu phí đối với tổ chức có nhu cầu"
-              name="slDichVuTuVanToChucCoPhi"
+              label="Số cuốn sách ký gửi của tổ chức/ cá nhân khác"
+              name="soCuonSachKyGuiToChucCaNhan"
               rules={[
                 {
                   required: true,
-                  message:
-                    'Vui lòng nhập số lượng dịch vụ tư vấn pháp luật có thu phí đối với tổ chức có nhu cầu',
+                  message: 'Vui lòng nhập số cuốn sách ký gửi của tổ chức/ cá nhân khác',
                 },
               ]}
             >
               <Input type="number" />
             </Form.Item>
           </Col>
-          <Col xs={24} md={12}>
+        </Row>
+      ),
+    },
+    {
+      title: 'Thông tin doanh thu và thù lao phát hành (đvt: VNĐ)',
+      content: (
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={6}>
             <Form.Item
-              label="Số lượng hỗ trợ pháp lý đối với các đối tượng được hưởng theo quy định của Pháp luật"
-              name="slHoTroPhapLy"
+              label="Doanh thu từ sách của Trường"
+              name="doanhThuSachTruong"
               rules={[
                 {
                   required: true,
-                  message:
-                    'Vui lòng nhập số lượng hỗ trợ pháp lý đối với các đối tượng được hưởng theo quy định của Pháp luật',
+                  message: 'Vui lòng nhập doanh thu từ sách của Trường',
                 },
               ]}
             >
               <Input type="number" />
             </Form.Item>
           </Col>
-          <Col xs={24} md={12}>
+          <Col xs={24} md={6}>
             <Form.Item
-              label="Số lượng hoạt động tuyên truyền, phổ biến pháp luật"
-              name="slHoatDongTuyenTruyen"
-              rules={[
-                {
-                  required: true,
-                  message: 'Vui lòng nhập số lượng hoạt động tuyên truyền, phổ biến pháp luật',
-                },
-              ]}
-            >
-              <Input type="number" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={12}>
-            <Form.Item
-              label="Số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân trong và ngoài nước"
-              name="slHoatDongLienKet"
-              rules={[
-                {
-                  required: true,
-                  message:
-                    'Vui lòng nhập số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân trong và ngoài nước',
-                },
-              ]}
+              label="Thù lao từ sách ký gửi"
+              name="thuLaoSachKyGui"
+              rules={[{ required: true, message: 'Vui lòng nhập thù lao từ sách ký gửi' }]}
             >
               <Input type="number" />
             </Form.Item>
@@ -240,6 +348,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
         <div style={{ display: current === 1 ? 'block' : 'none' }}>
           {sections.map((sec, idx) => (
             <div key={idx} style={{ display: idx === sectionIndex ? 'block' : 'none' }}>
+              <h3>{sec.title}</h3>
               {sec.content}
             </div>
           ))}
@@ -272,4 +381,4 @@ const TrungtamTVPLVPVCD: React.FC = () => {
   );
 };
 
-export default TrungtamTVPLVPVCD;
+export default TrungtamHL;
