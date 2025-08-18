@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Button, Col, Form, Input, Row, Select, Steps, Typography } from 'antd';
+import { Button, Col, Form, Input, Row, Select, Steps } from 'antd';
 import { history } from 'umi';
 import styles from './index.less';
 import { ArrowLeftOutlined, ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
 import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMessage/CustomMessage';
 
-const TrungtamTVPLVPVCD: React.FC = () => {
+const PhongDTSDH: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
   const [sectionIndex, setSectionIndex] = useState(0); // section nhỏ trong step 2
   const [form] = Form.useForm();
@@ -70,92 +70,118 @@ const TrungtamTVPLVPVCD: React.FC = () => {
       content: (
         <>
           <Row gutter={[16, 16]}>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={8}>
               <Form.Item
-                label={
-                  <Typography.Text>
-                    Số lượng dịch vụ tư vấn pháp luật có thu phí đối với <b>cá nhân</b> có nhu cầu
-                  </Typography.Text>
-                }
-                name="slDichVuTuVanCaNhanCoPhi"
+                label="Số lượng mã ngành đào tạo"
+                name="slMaNganhDaoTao"
                 rules={[
                   {
                     required: true,
-                    message:
-                      'Vui lòng nhập số lượng dịch vụ tư vấn pháp luật có thu phí đối với cá nhân có nhu cầu',
+                    message: 'Vui lòng nhập số lượng mã ngành đào tạo',
                   },
                 ]}
               >
                 <Input type="number" />
               </Form.Item>
             </Col>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={8}>
               <Form.Item
-                label={
-                  <Typography.Text>
-                    Số lượng dịch vụ tư vấn pháp luật có thu phí đối với <b>tổ chức</b> có nhu cầu
-                  </Typography.Text>
-                }
-                name="slDichVuTuVanToChucCoPhi"
+                label="Số lượng chương trình đào tạo"
+                name="slChuongTrinhDaoTao"
                 rules={[
                   {
                     required: true,
-                    message:
-                      'Vui lòng nhập số lượng dịch vụ tư vấn pháp luật có thu phí đối với tổ chức có nhu cầu',
+                    message: 'Vui lòng nhập số lượng chương trình đào tạo',
                   },
                 ]}
               >
                 <Input type="number" />
               </Form.Item>
             </Col>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng hỗ trợ pháp lý đối với các đối tượng được hưởng theo quy định của Pháp luật"
-                name="slHoTroPhapLy"
+                label="Trình độ đào tạo"
+                name="tdDaoTao"
                 rules={[
                   {
                     required: true,
-                    message:
-                      'Vui lòng nhập số lượng hỗ trợ pháp lý đối với các đối tượng được hưởng theo quy định của Pháp luật',
+                    message: 'Vui chọn trình độ đào tạo',
+                  },
+                ]}
+              >
+                <Select placeholder="Chọn trình độ đào tạo">
+                  <Select.Option value="thacsi">Thạc sĩ</Select.Option>
+                  <Select.Option value="tiensi">Tiến sĩ</Select.Option>
+                  <Select.Option value="bosung">Bổ sung kiến thức</Select.Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng chỉ tiêu tuyển sinh"
+                name="slChiTieuTuyenSinh"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng chỉ tiêu tuyển sinh',
                   },
                 ]}
               >
                 <Input type="number" />
               </Form.Item>
             </Col>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={8}>
               <Form.Item
-                label={
-                  <>
-                    Số lượng hoạt động tuyên truyền, phổ biến pháp luật
-                    <sup className={styles.sup}>(1)</sup>
-                  </>
-                }
-                name="slHoatDongTuyenTruyen"
+                label="Số lượng học viên sau đại học"
+                name="slHocVienSauDH"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng hoạt động tuyên truyền, phổ biến pháp luật',
+                    message: 'Vui lòng nhập số lượng học viên sau đại học',
                   },
                 ]}
               >
                 <Input type="number" />
               </Form.Item>
             </Col>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={8}>
               <Form.Item
-                label={
-                  <>
-                    Số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân trong và ngoài nước
-                    <sup className={styles.sup}>(2)</sup>
-                  </>
-                }
-                name="slHoatDongLienKet"
+                label="Số lượng học viên cao học, nghiên cứu sinh tốt nghiệp của Trường"
+                name="slHocVienTotNghiep"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân trong và ngoài nước',
+                      'Vui lòng nhập số lượng học viên cao học, nghiên cứu sinh tốt nghiệp của Trường',
+                  },
+                ]}
+              >
+                <Input type="number" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng học viên sau đại học chấm dứt học tại Trường"
+                name="slHocVienChamDut"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng học viên sau đại học chấm dứt học tại Trường',
+                  },
+                ]}
+              >
+                <Input type="number" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số liệu đào tạo, quản lý các lớp bồi dưỡng cấp chứng chỉ sau đại học"
+                name="slLopBoiDuong"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số liệu đào tạo, quản lý các lớp bồi dưỡng cấp chứng chỉ sau đại học',
                   },
                 ]}
               >
@@ -163,21 +189,6 @@ const TrungtamTVPLVPVCD: React.FC = () => {
               </Form.Item>
             </Col>
           </Row>
-          <div className={styles.noteContainer}>
-            <p className={styles.note}>Ghi chú:</p>
-            <ul className={styles.noteList}>
-              <li>Vui lòng điền giá trị = 0 nếu không có</li>
-              <li>
-                <b>(1)</b> Bao gồm các hoạt động: tuyên truyền, phổ biến pháp luật dưới các hình
-                thức: báo cáo chuyên đề, diễn phiên tòa giả định, biên soạn tài liệu pháp luật, tổ
-                chức thực hiện các chương trình tuyên truyền pháp luật lưu động và các hình thức
-                khác
-              </li>
-              <li>
-                <b>(2)</b> Trong lĩnh vực cung cấp dịch vụ tư vấn và hỗ trợ pháp luật
-              </li>
-            </ul>
-          </div>
         </>
       ),
     },
@@ -304,4 +315,4 @@ const TrungtamTVPLVPVCD: React.FC = () => {
   );
 };
 
-export default TrungtamTVPLVPVCD;
+export default PhongDTSDH;

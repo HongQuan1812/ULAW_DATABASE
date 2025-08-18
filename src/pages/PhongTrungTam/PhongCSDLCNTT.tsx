@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Button, Col, Form, Input, Row, Select, Steps, Card } from 'antd';
+import { Button, Col, Form, Input, Row, Select, Steps } from 'antd';
 import { history } from 'umi';
 import styles from './index.less';
 import { ArrowLeftOutlined, ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
 import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMessage/CustomMessage';
 
-const TrungtamHL: React.FC = () => {
+const PhongCSDLCNTT: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
   const [sectionIndex, setSectionIndex] = useState(0); // section nhỏ trong step 2
   const [form] = Form.useForm();
@@ -67,60 +67,15 @@ const TrungtamHL: React.FC = () => {
   // Step 2 - Các section nhỏ
   const sections = [
     {
-      title: 'Hình thức học liệu - Sách của Trường',
+      title: 'Hạ tầng Công nghệ thông tin',
       content: (
         <Row gutter={[16, 16]}>
           <Col xs={24} md={6}>
             <Form.Item
-              label="Số tên giáo trình"
-              name="soTenGiaoTrinh"
-              rules={[{ required: true, message: 'Vui lòng nhập số tên giáo trình' }]}
-            >
-              <Input type="number" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số cuốn của giáo trình"
-              name="soCuonGiaoTrinh"
-              rules={[{ required: true, message: 'Vui lòng nhập số cuốn của giáo trình' }]}
-            >
-              <Input type="number" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số tên của tập bài giảng"
-              name="soTenTapBaiGiang"
-              rules={[{ required: true, message: 'Vui lòng nhập số tên của tập bài giảng' }]}
-            >
-              <Input type="number" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số cuốn của tập bài giảng"
-              name="soCuonTapBaiGiang"
-              rules={[{ required: true, message: 'Vui lòng nhập số cuốn của tập bài giảng' }]}
-            >
-              <Input type="number" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số tên của sách tình huống"
-              name="soTenSachTinhHuong"
-              rules={[{ required: true, message: 'Vui lòng nhập số tên của sách tình huống' }]}
-            >
-              <Input type="number" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số cuốn của sách tình huống"
-              name="soCuonSachTinhHuong"
+              label="Số lượng máy chủ vật lý tại trường"
+              name="slMayChuVatLy"
               rules={[
-                { required: true, message: 'Vui lòng nhập tổng số cuốn của sách tình huống' },
+                { required: true, message: 'Vui lòng nhập số lượng máy chủ vật lý tại trường' },
               ]}
             >
               <Input type="number" />
@@ -128,10 +83,28 @@ const TrungtamHL: React.FC = () => {
           </Col>
           <Col xs={24} md={6}>
             <Form.Item
-              label="Số tên của sách chuyên khảo"
-              name="soTenSachChuyenKhao"
+              label="Số lượng máy chủ ảo tại trường"
+              name="slMayChuAo"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng máy chủ ảo tại trường' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng máy chủ Cloud (Thuê)"
+              name="slMayChuThue"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng máy chủ Cloud (Thuê)' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng đường truyền Leased-line"
+              name="slLeasedline"
               rules={[
-                { required: true, message: 'Vui lòng nhập tổng số tên của sách chuyên khảo' },
+                { required: true, message: 'Vui lòng nhập số lượng đường truyền Leased-line' },
               ]}
             >
               <Input type="number" />
@@ -139,27 +112,69 @@ const TrungtamHL: React.FC = () => {
           </Col>
           <Col xs={24} md={6}>
             <Form.Item
-              label="Số cuốn của sách chuyên khảo"
-              name="soCuonSachChuyenKhao"
-              rules={[{ required: true, message: 'Vui lòng nhập số cuốn của sách chuyên khảo' }]}
+              label="Dung lượng đường truyền internet trong nước (Mbps)"
+              name="dlInternetTrongNuoc"
+              rules={[
+                {
+                  required: true,
+                  message: 'Vui lòng nhập dung lượng đường truyền internet trong nước',
+                },
+              ]}
             >
               <Input type="number" />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
             <Form.Item
-              label="Số tên của sách tham khảo"
-              name="soTenSachThamKhao"
-              rules={[{ required: true, message: 'Vui lòng nhập số tên của sách tham khảo' }]}
+              label="Dung lượng đượng truyền internet quốc tế (Mbps)"
+              name="dlInternetQuocTe"
+              rules={[
+                {
+                  required: true,
+                  message: 'Vui lòng nhập dung lượng đường truyền internet quốc tế',
+                },
+              ]}
             >
               <Input type="number" />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
             <Form.Item
-              label="Số cuốn của sách tham khảo"
-              name="soCuonSachThamKhao"
-              rules={[{ required: true, message: 'Vui lòng nhập số cuốn của sách tham khảo' }]}
+              label="Số lượng Switch tầng"
+              name="slSwitch"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng Switch tầng' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng thiết bị Camera"
+              name="slCamera"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng thiết bị Camera' }]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng tổng đài điện thoại thuộc phạm vi Trường"
+              name="slTongDai"
+              rules={[
+                {
+                  required: true,
+                  message: 'Vui lòng nhập số lượng tổng đài điện thoại thuộc phạm vi Trường',
+                },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={6}>
+            <Form.Item
+              label="Số lượng thiết bị wifi"
+              name="slWifi"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng thiết bị wifi' }]}
             >
               <Input type="number" />
             </Form.Item>
@@ -168,85 +183,68 @@ const TrungtamHL: React.FC = () => {
       ),
     },
     {
-      title: 'Hình thức học liệu - Sách ký gửi',
+      title: 'Các danh mục có liên quan',
       content: (
         <Row gutter={[16, 16]}>
-          <Col xs={24} md={6}>
+          <Col xs={24} md={8}>
             <Form.Item
-              label="Số tên sách ký gửi của giảng viên"
-              name="soTenSachKyGuiGiangVien"
-              rules={[
-                { required: true, message: 'Vui lòng nhập số tên sách ký gửi của giảng viên' },
-              ]}
+              label="Số lượng trang web"
+              name="slTrangWeb"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng trang web' }]}
             >
               <Input type="number" />
             </Form.Item>
           </Col>
-          <Col xs={24} md={6}>
+          <Col xs={24} md={8}>
             <Form.Item
-              label="Số cuốn sách ký gửi của giảng viên"
-              name="soCuonSachKyGuiGiangVien"
-              rules={[
-                { required: true, message: 'Vui lòng nhập số cuốn sách ký gửi của giảng viên' },
-              ]}
+              label="Số lượng phần mềm"
+              name="slPhanMem"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng phần mềm' }]}
             >
               <Input type="number" />
             </Form.Item>
           </Col>
-          <Col xs={24} md={6}>
+          <Col xs={24} md={8}>
             <Form.Item
-              label="Số tên sách ký gửi của tổ chức/ cá nhân khác"
-              name="soTenSachKyGuiToChucCaNhan"
+              label="Số lượng, thông tin hệ thống cơ sở dữ liệu dùng chung của Trường"
+              name="slThongTin"
               rules={[
                 {
                   required: true,
-                  message: 'Vui lòng nhập số tên sách ký gửi của tổ chức/ cá nhân khác',
+                  message:
+                    'Vui lòng nhập số lượng, thông tin hệ thống cơ sở dữ liệu dùng chung của Trường',
                 },
               ]}
             >
               <Input type="number" />
             </Form.Item>
           </Col>
-          <Col xs={24} md={6}>
+          <Col xs={24} md={8}>
             <Form.Item
-              label="Số cuốn sách ký gửi của tổ chức/ cá nhân khác"
-              name="soCuonSachKyGuiToChucCaNhan"
+              label="Số lượng, thông tin danh sách Tường lửa (Firewall) và phần mềm diệt virus"
+              name="slTuongLua"
               rules={[
                 {
                   required: true,
-                  message: 'Vui lòng nhập số cuốn sách ký gửi của tổ chức/ cá nhân khác',
+                  message:
+                    'Vui lòng nhập số lượng, thông tin danh sách Tường lửa (Firewall) và phần mềm diệt virus',
                 },
               ]}
             >
               <Input type="number" />
             </Form.Item>
           </Col>
-        </Row>
-      ),
-    },
-    {
-      title: 'Thông tin doanh thu và thù lao phát hành (đvt: VNĐ)',
-      content: (
-        <Row gutter={[16, 16]}>
-          <Col xs={24} md={6}>
+          <Col xs={24} md={8}>
             <Form.Item
-              label="Doanh thu từ sách của Trường"
-              name="doanhThuSachTruong"
+              label="Số lượng thẻ từ đã cấp phát cho sinh viên, người học, người lao động"
+              name="slTheTu"
               rules={[
                 {
                   required: true,
-                  message: 'Vui lòng nhập doanh thu từ sách của Trường',
+                  message:
+                    'Vui lòng nhập số lượng thẻ từ đã cấp phát cho sinh viên, người học, người lao động',
                 },
               ]}
-            >
-              <Input type="number" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Thù lao từ sách ký gửi"
-              name="thuLaoSachKyGui"
-              rules={[{ required: true, message: 'Vui lòng nhập thù lao từ sách ký gửi' }]}
             >
               <Input type="number" />
             </Form.Item>
@@ -321,18 +319,12 @@ const TrungtamHL: React.FC = () => {
 
   return (
     <>
-      <Card
-        style={{
-          marginBottom: 16,
-          borderRadius: 8,
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
-        }}
-      >
+      <div className={styles.stepCard}>
         <Steps
           current={current}
           items={[{ title: 'Thông tin chung' }, { title: 'Nội dung' }, { title: 'Hoàn thành' }]}
         />
-      </Card>
+      </div>
 
       <Form
         form={form}
@@ -349,6 +341,7 @@ const TrungtamHL: React.FC = () => {
         <div style={{ display: current === 1 ? 'block' : 'none' }}>
           {sections.map((sec, idx) => (
             <div key={idx} style={{ display: idx === sectionIndex ? 'block' : 'none' }}>
+              <h3>{sec.title}</h3>
               {sec.content}
             </div>
           ))}
@@ -383,4 +376,4 @@ const TrungtamHL: React.FC = () => {
   );
 };
 
-export default TrungtamHL;
+export default PhongCSDLCNTT;

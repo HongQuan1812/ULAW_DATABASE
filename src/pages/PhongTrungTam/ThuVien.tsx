@@ -5,7 +5,7 @@ import styles from './index.less';
 import { ArrowLeftOutlined, ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
 import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMessage/CustomMessage';
 
-const TrungtamTVPLVPVCD: React.FC = () => {
+const ThuVien: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
   const [sectionIndex, setSectionIndex] = useState(0); // section nhỏ trong step 2
   const [form] = Form.useForm();
@@ -73,69 +73,18 @@ const TrungtamTVPLVPVCD: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label={
-                  <Typography.Text>
-                    Số lượng dịch vụ tư vấn pháp luật có thu phí đối với <b>cá nhân</b> có nhu cầu
-                  </Typography.Text>
-                }
-                name="slDichVuTuVanCaNhanCoPhi"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng dịch vụ tư vấn pháp luật có thu phí đối với cá nhân có nhu cầu',
-                  },
-                ]}
-              >
-                <Input type="number" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label={
-                  <Typography.Text>
-                    Số lượng dịch vụ tư vấn pháp luật có thu phí đối với <b>tổ chức</b> có nhu cầu
-                  </Typography.Text>
-                }
-                name="slDichVuTuVanToChucCoPhi"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng dịch vụ tư vấn pháp luật có thu phí đối với tổ chức có nhu cầu',
-                  },
-                ]}
-              >
-                <Input type="number" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số lượng hỗ trợ pháp lý đối với các đối tượng được hưởng theo quy định của Pháp luật"
-                name="slHoTroPhapLy"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng hỗ trợ pháp lý đối với các đối tượng được hưởng theo quy định của Pháp luật',
-                  },
-                ]}
-              >
-                <Input type="number" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label={
                   <>
-                    Số lượng hoạt động tuyên truyền, phổ biến pháp luật
+                    Số lượng đề tài nghiên cứu khoa học đã được nghiệm thu do thư viện quản lý và
+                    khai thác
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="slHoatDongTuyenTruyen"
+                name="slDeTaiNghienCuu"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng hoạt động tuyên truyền, phổ biến pháp luật',
+                    message:
+                      'Vui lòng nhập số lượng đề tài nghiên cứu khoa học đã được nghiệm thu do thư viện quản lý và khai thác',
                   },
                 ]}
               >
@@ -146,16 +95,59 @@ const TrungtamTVPLVPVCD: React.FC = () => {
               <Form.Item
                 label={
                   <>
-                    Số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân trong và ngoài nước
+                    Số lượng đề tài nghiên cứu khoa học đã được nghiệm thu do thư viện quản lý và
+                    khai thác
                     <sup className={styles.sup}>(2)</sup>
                   </>
                 }
-                name="slHoatDongLienKet"
+                name="slDeTaiNghienCuuKhac"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân trong và ngoài nước',
+                      'Vui lòng nhập số lượng đề tài nghiên cứu khoa học đã được nghiệm thu do thư viện quản lý và khai thác',
+                  },
+                ]}
+              >
+                <Input type="number" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label={
+                  <Typography.Text>
+                    Số lượng người dùng truy nhập <b>tại chỗ</b> đến nguồn tài nguyên thông tin đa
+                    dạng
+                    <sup className={styles.sup}>(3)</sup>
+                  </Typography.Text>
+                }
+                name="slNguoiDungTruyNhapTaiCho"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng người dùng truy nhập tại chỗ đến nguồn tài nguyên thông tin đa dạng',
+                  },
+                ]}
+              >
+                <Input type="number" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label={
+                  <Typography.Text>
+                    Số lượng người dùng truy nhập <b>từ xa</b> đến nguồn tài nguyên thông tin đa
+                    dạng
+                    <sup className={styles.sup}>(3)</sup>
+                  </Typography.Text>
+                }
+                name="slNguoiDungTruyNhapTuXa"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng người dùng truy từ xa chỗ đến nguồn tài nguyên thông tin đa dạng',
                   },
                 ]}
               >
@@ -166,15 +158,16 @@ const TrungtamTVPLVPVCD: React.FC = () => {
           <div className={styles.noteContainer}>
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
-              <li>Vui lòng điền giá trị = 0 nếu không có</li>
               <li>
-                <b>(1)</b> Bao gồm các hoạt động: tuyên truyền, phổ biến pháp luật dưới các hình
-                thức: báo cáo chuyên đề, diễn phiên tòa giả định, biên soạn tài liệu pháp luật, tổ
-                chức thực hiện các chương trình tuyên truyền pháp luật lưu động và các hình thức
-                khác
+                <b>(1)</b> Bao gồm giáo trình, tập bài giảng, khóa luận, luận văn thạc sĩ, luận án
+                tiến sĩ
               </li>
               <li>
-                <b>(2)</b> Trong lĩnh vực cung cấp dịch vụ tư vấn và hỗ trợ pháp luật
+                <b>(2)</b> Bao gồm các dạng đề tài khác không thuộc cái dạng đã liệt kê ở phía trên
+                - Nếu có
+              </li>
+              <li>
+                <b>(3)</b> Thuộc các quy định của Luật sở hữu trí tuệ và Luật Thư viện
               </li>
             </ul>
           </div>
@@ -304,4 +297,4 @@ const TrungtamTVPLVPVCD: React.FC = () => {
   );
 };
 
-export default TrungtamTVPLVPVCD;
+export default ThuVien;

@@ -1,10 +1,11 @@
 .container {
   max-height: calc(100vh - 100px);
+  margin-top: 14px;
   padding: 24px;
   overflow-y: auto;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   .ant-form-item-label > label {
     color: #333;
@@ -14,6 +15,33 @@
   .ant-input,
   .ant-select-selector {
     border-radius: 6px;
+  }
+
+  .noteContainer {
+    margin-top: 16px;
+    padding: 12px;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+    background: #f9f9f9;
+    border: 1px dashed #d9d9d9;
+    border-radius: 8px;
+  }
+
+  .sup {
+    color: black;
+    font-weight: bold;
+  }
+
+  .note {
+    margin: 0;
+    color: #333;
+    font-weight: bold;
+  }
+
+  .noteList {
+    margin: 8px 0 0 20px;
+    padding: 0;
   }
 
   .btnBack,
@@ -54,5 +82,16 @@
       background-color: #73d13d;
       border-color: #73d13d;
     }
+  }
+}
+
+.stepCard {
+  padding: 16px;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  @media (max-width: 575px) {
+    padding-bottom: 0;
   }
 }

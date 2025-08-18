@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Button, Col, Form, Input, Row, Select, Steps, Typography } from 'antd';
+import { Button, Col, Form, Input, Row, Select, Steps } from 'antd';
 import { history } from 'umi';
 import styles from './index.less';
 import { ArrowLeftOutlined, ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
 import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMessage/CustomMessage';
 
-const TrungtamTVPLVPVCD: React.FC = () => {
+const PhongTVTS: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
   const [sectionIndex, setSectionIndex] = useState(0); // section nhỏ trong step 2
   const [form] = Form.useForm();
@@ -73,69 +73,17 @@ const TrungtamTVPLVPVCD: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label={
-                  <Typography.Text>
-                    Số lượng dịch vụ tư vấn pháp luật có thu phí đối với <b>cá nhân</b> có nhu cầu
-                  </Typography.Text>
-                }
-                name="slDichVuTuVanCaNhanCoPhi"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng dịch vụ tư vấn pháp luật có thu phí đối với cá nhân có nhu cầu',
-                  },
-                ]}
-              >
-                <Input type="number" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label={
-                  <Typography.Text>
-                    Số lượng dịch vụ tư vấn pháp luật có thu phí đối với <b>tổ chức</b> có nhu cầu
-                  </Typography.Text>
-                }
-                name="slDichVuTuVanToChucCoPhi"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng dịch vụ tư vấn pháp luật có thu phí đối với tổ chức có nhu cầu',
-                  },
-                ]}
-              >
-                <Input type="number" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số lượng hỗ trợ pháp lý đối với các đối tượng được hưởng theo quy định của Pháp luật"
-                name="slHoTroPhapLy"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng hỗ trợ pháp lý đối với các đối tượng được hưởng theo quy định của Pháp luật',
-                  },
-                ]}
-              >
-                <Input type="number" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label={
                   <>
-                    Số lượng hoạt động tuyên truyền, phổ biến pháp luật
+                    Số lượng chiến lược, kế hoạch thực hiện tư vấn tuyển sinh, hướng nghiệp
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="slHoatDongTuyenTruyen"
+                name="slChienLuocKeHoach"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng hoạt động tuyên truyền, phổ biến pháp luật',
+                    message:
+                      'Vui lòng nhập số lượng chiến lược, kế hoạch thực hiện tư vấn tuyển sinh, hướng nghiệp',
                   },
                 ]}
               >
@@ -146,16 +94,84 @@ const TrungtamTVPLVPVCD: React.FC = () => {
               <Form.Item
                 label={
                   <>
-                    Số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân trong và ngoài nước
-                    <sup className={styles.sup}>(2)</sup>
+                    Số lượng công tác tổ chức thực hiện tư vấn tuyển sinh, hướng nghiệp
+                    <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="slHoatDongLienKet"
+                name="slCongTacToChuc"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân trong và ngoài nước',
+                      'Vui lòng nhập số lượng công tác tổ chức thực hiện tư vấn tuyển sinh, hướng nghiệp',
+                  },
+                ]}
+              >
+                <Input type="number" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label={
+                  <>
+                    Số lượng chiến lược, kế hoạch thực hiện các loại hình truyền thống
+                    <sup className={styles.sup}>(2)</sup>
+                  </>
+                }
+                name="slChienLuocKeHoachTruyenThong"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng chiến lược, kế hoạch thực hiện các loại hình truyền thống',
+                  },
+                ]}
+              >
+                <Input type="number" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label={
+                  <>
+                    Số lượng công tác tổ chức thực hiện các loại hình truyền thông
+                    <sup className={styles.sup}>(2)</sup>
+                  </>
+                }
+                name="slCongTacToChucTruyenThong"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng công tác tổ chức thực hiện các loại hình truyền thông',
+                  },
+                ]}
+              >
+                <Input type="number" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng lượt tư vấn tuyển sinh qua các đợt"
+                name="slLuotTuVanTuyenSinh"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng lượt tư vấn tuyển sinh qua các đợt',
+                  },
+                ]}
+              >
+                <Input type="number" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng hoạt động chăm sóc người học được thực hiện"
+                name="slHoatDongChamSoc"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng hoạt động chăm sóc người học được thực hiện',
                   },
                 ]}
               >
@@ -166,15 +182,13 @@ const TrungtamTVPLVPVCD: React.FC = () => {
           <div className={styles.noteContainer}>
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
-              <li>Vui lòng điền giá trị = 0 nếu không có</li>
               <li>
-                <b>(1)</b> Bao gồm các hoạt động: tuyên truyền, phổ biến pháp luật dưới các hình
-                thức: báo cáo chuyên đề, diễn phiên tòa giả định, biên soạn tài liệu pháp luật, tổ
-                chức thực hiện các chương trình tuyên truyền pháp luật lưu động và các hình thức
-                khác
+                <b>(1)</b> Dành cho các trình độ, các chương trình và loại hình đào tạo của
+                Trường
               </li>
               <li>
-                <b>(2)</b> Trong lĩnh vực cung cấp dịch vụ tư vấn và hỗ trợ pháp luật
+                <b>(2)</b> Dành cho việc tư vấn, tuyển sinh, hướng nghiệp và quảng bá hình ảnh,
+                thương hiệu của Trường
               </li>
             </ul>
           </div>
@@ -304,4 +318,4 @@ const TrungtamTVPLVPVCD: React.FC = () => {
   );
 };
 
-export default TrungtamTVPLVPVCD;
+export default PhongTVTS;

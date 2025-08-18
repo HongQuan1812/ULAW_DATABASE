@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Button, Col, Form, Input, Row, Select, Steps, Typography } from 'antd';
+import { Button, Col, Form, Input, Row, Select, Steps } from 'antd';
 import { history } from 'umi';
 import styles from './index.less';
 import { ArrowLeftOutlined, ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
 import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMessage/CustomMessage';
 
-const TrungtamTVPLVPVCD: React.FC = () => {
+const PhongTCKT: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
   const [sectionIndex, setSectionIndex] = useState(0); // section nhỏ trong step 2
   const [form] = Form.useForm();
@@ -72,17 +72,13 @@ const TrungtamTVPLVPVCD: React.FC = () => {
           <Row gutter={[16, 16]}>
             <Col xs={24} md={12}>
               <Form.Item
-                label={
-                  <Typography.Text>
-                    Số lượng dịch vụ tư vấn pháp luật có thu phí đối với <b>cá nhân</b> có nhu cầu
-                  </Typography.Text>
-                }
-                name="slDichVuTuVanCaNhanCoPhi"
+                label="Thống kê thu học phí và các khoản phải nộp của người học; theo dõi các hợp đồng dịch vụ trong Trường"
+                name="tkThuHocPhi"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng dịch vụ tư vấn pháp luật có thu phí đối với cá nhân có nhu cầu',
+                      'Vui lòng nhập thống kê thu học phí và các khoản phải nộp của người học; theo dõi các hợp đồng dịch vụ trong Trường',
                   },
                 ]}
               >
@@ -91,17 +87,13 @@ const TrungtamTVPLVPVCD: React.FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label={
-                  <Typography.Text>
-                    Số lượng dịch vụ tư vấn pháp luật có thu phí đối với <b>tổ chức</b> có nhu cầu
-                  </Typography.Text>
-                }
-                name="slDichVuTuVanToChucCoPhi"
+                label="Báo cáo tài chính năm và báo cáo quyết toán theo quy định tài chính"
+                name="bcTaiChinh"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng dịch vụ tư vấn pháp luật có thu phí đối với tổ chức có nhu cầu',
+                      'Vui lòng nhập báo cáo tài chính năm và báo cáo quyết toán theo quy định tài chính',
                   },
                 ]}
               >
@@ -110,52 +102,12 @@ const TrungtamTVPLVPVCD: React.FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng hỗ trợ pháp lý đối với các đối tượng được hưởng theo quy định của Pháp luật"
-                name="slHoTroPhapLy"
+                label="Thống kê định mức kinh tế kỹ thuật"
+                name="tkDinhMucKTKT"
                 rules={[
                   {
                     required: true,
-                    message:
-                      'Vui lòng nhập số lượng hỗ trợ pháp lý đối với các đối tượng được hưởng theo quy định của Pháp luật',
-                  },
-                ]}
-              >
-                <Input type="number" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label={
-                  <>
-                    Số lượng hoạt động tuyên truyền, phổ biến pháp luật
-                    <sup className={styles.sup}>(1)</sup>
-                  </>
-                }
-                name="slHoatDongTuyenTruyen"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng hoạt động tuyên truyền, phổ biến pháp luật',
-                  },
-                ]}
-              >
-                <Input type="number" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label={
-                  <>
-                    Số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân trong và ngoài nước
-                    <sup className={styles.sup}>(2)</sup>
-                  </>
-                }
-                name="slHoatDongLienKet"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân trong và ngoài nước',
+                    message: 'Vui lòng nhập thống kê định mức kinh tế kỹ thuật',
                   },
                 ]}
               >
@@ -163,21 +115,6 @@ const TrungtamTVPLVPVCD: React.FC = () => {
               </Form.Item>
             </Col>
           </Row>
-          <div className={styles.noteContainer}>
-            <p className={styles.note}>Ghi chú:</p>
-            <ul className={styles.noteList}>
-              <li>Vui lòng điền giá trị = 0 nếu không có</li>
-              <li>
-                <b>(1)</b> Bao gồm các hoạt động: tuyên truyền, phổ biến pháp luật dưới các hình
-                thức: báo cáo chuyên đề, diễn phiên tòa giả định, biên soạn tài liệu pháp luật, tổ
-                chức thực hiện các chương trình tuyên truyền pháp luật lưu động và các hình thức
-                khác
-              </li>
-              <li>
-                <b>(2)</b> Trong lĩnh vực cung cấp dịch vụ tư vấn và hỗ trợ pháp luật
-              </li>
-            </ul>
-          </div>
         </>
       ),
     },
@@ -304,4 +241,4 @@ const TrungtamTVPLVPVCD: React.FC = () => {
   );
 };
 
-export default TrungtamTVPLVPVCD;
+export default PhongTCKT;
