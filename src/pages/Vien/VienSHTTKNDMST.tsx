@@ -36,7 +36,11 @@ const VienSHTTKNDMST: React.FC = () => {
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Chức vụ người nhập báo cáo" name="chucVu">
+        <Form.Item
+          label="Chức vụ người nhập báo cáo"
+          name="chucVu"
+          rules={[{ required: true, message: 'Vui lòng chọn chức vụ' }]}
+        >
           <SelectVPRole />
         </Form.Item>
       </Col>
