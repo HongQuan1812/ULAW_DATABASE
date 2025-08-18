@@ -130,7 +130,7 @@ const Khoa: React.FC = () => {
                 </Checkbox.Group>
               </Form.Item>
             </Col>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={8}>
               <Form.Item
                 label="Tổng số bộ môn của Khoa"
                 name="tongBoMon"
@@ -139,7 +139,7 @@ const Khoa: React.FC = () => {
                 <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={24}>
               <Form.Item
                 label={
                   <>
