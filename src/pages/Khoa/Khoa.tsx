@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { Button, Col, Form, Input, Row, Steps, Checkbox, Upload } from 'antd';
 import { history, useLocation } from 'umi';
 import styles from './index.less';
-import { ArrowLeftOutlined, ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
+import {
+  ArrowLeftOutlined,
+  ArrowRightOutlined,
+  CheckOutlined,
+  UploadOutlined,
+} from '@ant-design/icons';
 import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMessage/CustomMessage';
 import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
@@ -15,6 +20,16 @@ const Khoa: React.FC = () => {
 
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
+
+  const beforeUploadFile = (file: File) => {
+    const isExcel =
+      file.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+    if (!isExcel) {
+      CustomMessageError({ content: 'Chỉ nhận file Excel (.xlsx)' });
+      return Upload.LIST_IGNORE;
+    }
+    return true;
+  };
 
   // Step 1 - Thông tin chung
   const step1Content = (
@@ -149,8 +164,14 @@ const Khoa: React.FC = () => {
                 name="fileDanhMuc"
                 rules={[{ required: true, message: 'Vui lòng tải lên File danh mục môn học' }]}
               >
-                <Upload>
-                  <Button>Tải lên</Button>
+                <Upload
+                  name="file"
+                  beforeUpload={beforeUploadFile}
+                  accept=".xlsx"
+                  listType="text"
+                  maxCount={1}
+                >
+                  <Button icon={<UploadOutlined />}>Tải lên</Button>
                 </Upload>
               </Form.Item>
             </Col>
