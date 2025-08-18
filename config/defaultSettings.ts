@@ -12,7 +12,7 @@ const Settings: LayoutSettings & {
   fixedHeader: true,
   fixSiderbar: true,
   colorWeak: false,
-  title: 'Đăng ký xét tuyển',
+  title: 'Báo cáo số liệu',
   pwa: false,
   logo: '/ulaw_logo.png',
   iconfontUrl: '',

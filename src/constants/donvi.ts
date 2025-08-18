@@ -76,7 +76,7 @@ export const phongTrungTamCards: CardData[] = [
   },
   {
     id: 5,
-    title: 'Phòng Truyền thông và Quan hệ doanh nghiệp',
+    title: 'Phòng Truyền thông & Quan hệ doanh nghiệp',
     path: '/phong-trungtam/phong-tt-qhdn',
     IconComponent: FundProjectionScreenOutlined,
   },
@@ -100,7 +100,7 @@ export const phongTrungTamCards: CardData[] = [
   },
   {
     id: 9,
-    title: 'Phòng Khoa học công nghệ và Hợp tác phát triển',
+    title: 'Phòng Khoa học công nghệ & Hợp tác phát triển',
     path: '/phong-trungtam/phong-khcn-htpt',
     IconComponent: BulbOutlined,
   },
@@ -124,7 +124,7 @@ export const phongTrungTamCards: CardData[] = [
   },
   {
     id: 13,
-    title: 'Phòng Đảm bảo chất lượng và Khảo thí',
+    title: 'Phòng Đảm bảo chất lượng & Khảo thí',
     path: '/phong-trungtam/phong-dbcl-kt',
     IconComponent: AuditOutlined,
   },
@@ -142,7 +142,7 @@ export const phongTrungTamCards: CardData[] = [
   },
   {
     id: 16,
-    title: 'Phòng Cơ sở dữ liệu và Công nghệ thông tin',
+    title: 'Phòng Cơ sở dữ liệu & Công nghệ thông tin',
     path: '/phong-trungtam/phong-csdl-cntt',
     IconComponent: LaptopOutlined,
   },
@@ -151,7 +151,7 @@ export const phongTrungTamCards: CardData[] = [
 export const vienCards: CardData[] = [
   {
     id: 1,
-    title: 'Viện Sở hữu trí tuệ, Khởi nghiệp và Đổi mới sáng tạo',
+    title: 'Viện Sở hữu trí tuệ, Khởi nghiệp & Đổi mới sáng tạo',
     path: '/vien/vien-shtt-kn-dmst',
     IconComponent: GlobalOutlined,
   },

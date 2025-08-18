@@ -131,7 +131,7 @@ const Login = () => {
               style={{ verticalAlign: '-webkit-baseline-middle' }}
             />
           }
-          title="ĐĂNG KÝ XÉT TUYỂN"
+          title="BÁO CÁO SỐ LIỆU"
           onFinish={async (values) => {
             switch (activeTabKey) {
               case 'login':
