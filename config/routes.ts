@@ -1,4 +1,6 @@
-﻿export default [
+﻿import component from "@/locales/en-US/component";
+
+export default [
   {
     path: '/user',
     layout: false,
@@ -58,11 +60,31 @@
     path: 'khoa',
     name: 'khoa',
     icon: 'appstore',
+    routes: [
+      {
+        path: '/khoa/khoa',
+        name: 'khoa',
+        component: './Khoa/Khoa',
+      },
+      {
+        component: './404',
+      },
+    ],
   },
   {
     path: 'vanphong',
     name: 'vanphong',
     icon: 'bank',
+    routes: [
+      {
+        path: '/vanphong/vanphong',
+        name: 'vanphong',
+        component: './VanPhong/VanPhong'
+      },
+      {
+        component: './404',
+      },
+    ],
   },
   {
     path: '/phong-trungtam',
