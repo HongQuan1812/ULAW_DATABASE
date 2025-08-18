@@ -1,7 +1,7 @@
 import { Button, Result } from 'antd';
 import { ResultStatusType } from 'antd/lib/result';
 import React from 'react';
-import { history, useModel } from 'umi';
+import { history } from 'umi';
 
 type NoFoundPageProps = {
   status?: ResultStatusType;
@@ -10,15 +10,8 @@ type NoFoundPageProps = {
 };
 
 const NoFoundPage: React.FC<NoFoundPageProps> = ({}) => {
-  const { initialState } = useModel('@@initialState');
-  const currentUserRole = initialState?.currentUser?.role;
-
   const handleBackToHome = () => {
-    if (currentUserRole === 'adminPdt' || currentUserRole === 'adminSdh') {
-      history.push('/quanly-hoso');
-    } else {
-      history.push('/trangchu');
-    }
+    history.push('/trangchu');
   };
 
   return (
