@@ -1,19 +1,31 @@
 import React, { useState } from 'react';
-import { Button, Col, Form, Input, Row, Select, Steps } from 'antd';
-import { history } from 'umi';
+import { Button, Col, Form, Input, Row, Steps } from 'antd';
+import { history, useLocation } from 'umi';
 import styles from './index.less';
 import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMessage/CustomMessage';
+import { getLocationName } from '@/utils/getLocationName';
+import { ArrowLeftOutlined } from '@ant-design/icons';
+import FormDateSelect from '@/components/FormDateSelect';
+import FormStageSelect from '@/components/FormStageSelect';
 
 const TrungtamTVPLVPVCD: React.FC = () => {
-  const [current, setCurrent] = useState(0); // step lớn
-  const [sectionIndex, setSectionIndex] = useState(0); // section nhỏ trong step 2
+  const [current, setCurrent] = useState(0);
+  const [sectionIndex, setSectionIndex] = useState(0);
   const [form] = Form.useForm();
+
+  const location = useLocation();
+  const locationName = getLocationName(location.pathname);
 
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="hoTen">
+        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+          <Input disabled />
+        </Form.Item>
+      </Col>
+      <Col xs={27} md={8}>
+        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
           <Input />
         </Form.Item>
       </Col>
@@ -23,7 +35,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Vai trò người nhập báo cáo" name="vaiTro">
+        <Form.Item label="Chức vụ người nhập báo cáo" name="chucVu">
           <Input />
         </Form.Item>
       </Col>
@@ -33,15 +45,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
           name="namBaoCao"
           rules={[{ required: true, message: 'Vui lòng chọn năm báo cáo' }]}
         >
-          <Select placeholder="Chọn năm">
-            <Select.Option value="2020">2020</Select.Option>
-            <Select.Option value="2021">2021</Select.Option>
-            <Select.Option value="2022">2022</Select.Option>
-            <Select.Option value="2023">2023</Select.Option>
-            <Select.Option value="2024">2024</Select.Option>
-            <Select.Option value="2025">2025</Select.Option>
-            <Select.Option value="2026">2026</Select.Option>
-          </Select>
+          <FormDateSelect />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
@@ -50,14 +54,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
           name="giaiDoan"
           rules={[{ required: true, message: 'Vui lòng chọn giai đoạn báo cáo' }]}
         >
-          <Select placeholder="Chọn giai đoạn">
-            <Select.Option value="firstHaft">
-              Giai đoạn 1 (từ 01/01 đến 30/06 hàng năm)
-            </Select.Option>
-            <Select.Option value="secondHaft">
-              Giai đoạn 2 (từ 01/07 đến 31/12 hàng năm)
-            </Select.Option>
-          </Select>
+          <FormStageSelect />
         </Form.Item>
       </Col>
     </Row>
@@ -209,13 +206,16 @@ const TrungtamTVPLVPVCD: React.FC = () => {
 
   return (
     <>
+      <div className={styles.stepHeader}>
+        <ArrowLeftOutlined style={{ marginRight: 4 }} onClick={() => history.push('/trangchu')} />{' '}
+        {locationName}
+      </div>
       <div className={styles.stepCard}>
         <Steps
           current={current}
           items={[{ title: 'Thông tin chung' }, { title: 'Nội dung' }, { title: 'Hoàn thành' }]}
         />
       </div>
-
       <Form
         form={form}
         layout="vertical"
@@ -248,7 +248,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
           )}
           <div style={{ flex: 1 }} />
           {current < 2 && (
-            <Button className={styles.btnNext} type="primary" onClick={next}>
+            <Button type="primary" onClick={next} className={styles.btnNext}>
               Tiếp tục
             </Button>
           )}

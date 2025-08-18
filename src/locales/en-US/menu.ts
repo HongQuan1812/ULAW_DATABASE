@@ -4,7 +4,7 @@ export default {
   'menu.chinhquy': 'Chính quy',
   'menu.phong-trungtam': 'Phòng - Trung tâm',
   'menu.phong-trungtam.phong-tcns': 'Phòng TCNS',
-  'menu.phong-trungtam.trungtam-tvpl-pvcd': 'Trung tâm TVPL - PVCD',
+  'menu.phong-trungtam.trungtam-tvpl-pvcd': 'Trung tâm TVPL&PVCD',
   'menu.omni-channel.403Page': '403 Page',
   'menu.omni-channel.SearchPage': 'Search Page',
   'menu.omni-channel.FormPage': 'Form Page',
