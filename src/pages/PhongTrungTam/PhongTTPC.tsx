@@ -78,7 +78,7 @@ const PhongTTPC: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={24}>
@@ -93,7 +93,7 @@ const PhongTTPC: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={24}>
@@ -108,7 +108,7 @@ const PhongTTPC: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
           </Row>

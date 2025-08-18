@@ -72,7 +72,7 @@ const PhongTCNS: React.FC = () => {
               name="hopDongMoi"
               rules={[{ required: true, message: 'Vui lòng nhập số lượng ký hợp đồng mới' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -81,7 +81,7 @@ const PhongTCNS: React.FC = () => {
               name="thanhLyHopDong"
               rules={[{ required: true, message: 'Vui lòng nhập số lượng thanh lý hợp đồng' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -92,7 +92,7 @@ const PhongTCNS: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số lượng thỏa thuận cộng tác viên' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -101,7 +101,7 @@ const PhongTCNS: React.FC = () => {
               name="tongVienChuc"
               rules={[{ required: true, message: 'Vui lòng nhập tổng số viên chức' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -110,7 +110,7 @@ const PhongTCNS: React.FC = () => {
               name="vienChucNam"
               rules={[{ required: true, message: 'Vui lòng nhập tổng số viên chức nam' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -119,7 +119,7 @@ const PhongTCNS: React.FC = () => {
               name="vienChucNu"
               rules={[{ required: true, message: 'Vui lòng nhập tổng số viên chức nữ' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -128,7 +128,7 @@ const PhongTCNS: React.FC = () => {
               name="tongCTV"
               rules={[{ required: true, message: 'Vui lòng nhập tổng số cộng tác viên' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -137,7 +137,7 @@ const PhongTCNS: React.FC = () => {
               name="giaoSu"
               rules={[{ required: true, message: 'Vui lòng nhập tổng số học hàm giáo sư' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -146,7 +146,7 @@ const PhongTCNS: React.FC = () => {
               name="phoGiaoSu"
               rules={[{ required: true, message: 'Vui lòng nhập tổng số học hàm phó giáo sư' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -155,7 +155,7 @@ const PhongTCNS: React.FC = () => {
               name="tienSi"
               rules={[{ required: true, message: 'Vui lòng nhập tổng số học vị tiến sĩ' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -164,7 +164,7 @@ const PhongTCNS: React.FC = () => {
               name="thacSi"
               rules={[{ required: true, message: 'Vui lòng nhập tổng số học vị thạc sĩ' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -173,7 +173,7 @@ const PhongTCNS: React.FC = () => {
               name="daiHoc"
               rules={[{ required: true, message: 'Vui lòng nhập tổng số học vị đại học' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -182,7 +182,7 @@ const PhongTCNS: React.FC = () => {
               name="duoiDaiHoc"
               rules={[{ required: true, message: 'Vui lòng nhập tổng số học vị dưới đại học' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -191,7 +191,7 @@ const PhongTCNS: React.FC = () => {
               name="giangVienCoHuu"
               rules={[{ required: true, message: 'Vui lòng nhập tổng số giảng viên cơ hữu' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -200,7 +200,7 @@ const PhongTCNS: React.FC = () => {
               name="giangVienThinhGiang"
               rules={[{ required: true, message: 'Vui lòng nhập tổng số giảng viên thỉnh giảng' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -209,7 +209,7 @@ const PhongTCNS: React.FC = () => {
               name="tuoiBinhQuan"
               rules={[{ required: true, message: 'Vui lòng nhập tổng số tuổi bình quân' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -218,7 +218,7 @@ const PhongTCNS: React.FC = () => {
               name="thuNhapBinhQuan"
               rules={[{ required: true, message: 'Vui lòng nhập tổng số thu nhập bình quân' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
         </Row>
@@ -234,7 +234,7 @@ const PhongTCNS: React.FC = () => {
               name="quyHoach"
               rules={[{ required: true, message: 'Vui lòng nhập số lượng quy hoạch' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -243,7 +243,7 @@ const PhongTCNS: React.FC = () => {
               name="quyHoachBoSung"
               rules={[{ required: true, message: 'Vui lòng nhập số lượng quy hoạch bổ sung' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -252,7 +252,7 @@ const PhongTCNS: React.FC = () => {
               name="boNhiem"
               rules={[{ required: true, message: 'Vui lòng nhập số liệu bổ nhiệm' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -261,7 +261,7 @@ const PhongTCNS: React.FC = () => {
               name="boNhiemLai"
               rules={[{ required: true, message: 'Vui lòng nhập số liệu bổ nhiệm lại' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -272,7 +272,7 @@ const PhongTCNS: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số liệu kéo dài thời gian giữ chức vụ' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -281,7 +281,7 @@ const PhongTCNS: React.FC = () => {
               name="thoiChucVu"
               rules={[{ required: true, message: 'Vui lòng nhập số liệu thôi giữ chức vụ' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -290,7 +290,7 @@ const PhongTCNS: React.FC = () => {
               name="tuChuc"
               rules={[{ required: true, message: 'Vui lòng nhập số liệu từ chức' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -299,7 +299,7 @@ const PhongTCNS: React.FC = () => {
               name="mienNhiem"
               rules={[{ required: true, message: 'Vui lòng nhập số liệu miễn nhiệm' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -308,7 +308,7 @@ const PhongTCNS: React.FC = () => {
               name="chuyenCongTac"
               rules={[{ required: true, message: 'Vui lòng nhập số liệu chuyển đổi công tác' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -319,7 +319,7 @@ const PhongTCNS: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số liệu bổ nhiệm chức danh nghề nghiệp' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -333,7 +333,7 @@ const PhongTCNS: React.FC = () => {
                 },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
         </Row>
@@ -354,7 +354,7 @@ const PhongTCNS: React.FC = () => {
                 },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -365,7 +365,7 @@ const PhongTCNS: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số liệu đào tạo nâng cao trình độ' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -376,7 +376,7 @@ const PhongTCNS: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số liệu đào tạo về lý luận chính trị' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -385,7 +385,7 @@ const PhongTCNS: React.FC = () => {
               name="daoTaoNgoaiNuoc"
               rules={[{ required: true, message: 'Vui lòng nhập số liệu đào tạo ngoài nước' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
         </Row>
@@ -403,7 +403,7 @@ const PhongTCNS: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số liệu nâng bậc lương thường xuyên' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -414,7 +414,7 @@ const PhongTCNS: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số liệu nâng bậc lương trước hạn' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -425,7 +425,7 @@ const PhongTCNS: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số liệu nâng bậc lương vượt khung' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -439,7 +439,7 @@ const PhongTCNS: React.FC = () => {
                 },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
         </Row>
@@ -457,7 +457,7 @@ const PhongTCNS: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số liệu nghỉ chế độ bảo hiểm, hưu trí' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -466,7 +466,7 @@ const PhongTCNS: React.FC = () => {
               name="thoiViec"
               rules={[{ required: true, message: 'Vui lòng nhập số liệu thôi việc' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -475,7 +475,7 @@ const PhongTCNS: React.FC = () => {
               name="chuyenCongTac2"
               rules={[{ required: true, message: 'Vui lòng nhập số liệu chuyển công tác' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -489,7 +489,7 @@ const PhongTCNS: React.FC = () => {
                 },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
         </Row>
@@ -505,7 +505,7 @@ const PhongTCNS: React.FC = () => {
               name="chienSiThiDua"
               rules={[{ required: true, message: 'Vui lòng nhập số liệu chiến sĩ thi đua' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -514,7 +514,7 @@ const PhongTCNS: React.FC = () => {
               name="laoDongTienTien"
               rules={[{ required: true, message: 'Vui lòng nhập số liệu lao động tiên tiến' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -523,7 +523,7 @@ const PhongTCNS: React.FC = () => {
               name="hoanThanhXuatSac"
               rules={[{ required: true, message: 'Vui lòng nhập số liệu hoàn thành xuất sắc' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -532,7 +532,7 @@ const PhongTCNS: React.FC = () => {
               name="hoanThanhTot"
               rules={[{ required: true, message: 'Vui lòng nhập số liệu hoàn thành tốt' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -541,7 +541,7 @@ const PhongTCNS: React.FC = () => {
               name="hoanThanhNhiemVu"
               rules={[{ required: true, message: 'Vui lòng nhập số liệu hoàn thành nhiệm vụ' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -555,7 +555,7 @@ const PhongTCNS: React.FC = () => {
                 },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -563,7 +563,7 @@ const PhongTCNS: React.FC = () => {
               label="Số liệu viên chức - người lao đọng khen thưởng khác (Nếu có)"
               name="khenThuongKhac"
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
         </Row>
@@ -581,7 +581,7 @@ const PhongTCNS: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số lượng tập thể lao động tiên tiến' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -592,7 +592,7 @@ const PhongTCNS: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số lượng tập thể hoàn thành xuất sắc' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -601,7 +601,7 @@ const PhongTCNS: React.FC = () => {
               name="tapTheTot"
               rules={[{ required: true, message: 'Vui lòng nhập số lượng tập thể hoàn thành tốt' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -612,7 +612,7 @@ const PhongTCNS: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số lượng tập thể hoàn thành nhiệm vụ' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -626,7 +626,7 @@ const PhongTCNS: React.FC = () => {
                 },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -634,7 +634,7 @@ const PhongTCNS: React.FC = () => {
               label="Số lượng tập thể khen thưởng khác (Nếu có)"
               name="tapTheKhenThuongKhac"
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
         </Row>

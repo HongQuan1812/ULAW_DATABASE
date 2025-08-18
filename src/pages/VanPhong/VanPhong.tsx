@@ -8,7 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 
-const PhongTTQHDN: React.FC = () => {
+const VanPhong: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
   const [sectionIndex, setSectionIndex] = useState(0); // section nhỏ trong step 2
   const [form] = Form.useForm();
@@ -66,122 +66,112 @@ const PhongTTQHDN: React.FC = () => {
       content: (
         <>
           <Row gutter={[16, 16]}>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng truyền thông thương hiệu ULAW"
-                name="slTruyenThongThuongHieu"
+                label="Số lượng hồ sơ phát triển Đảng"
+                name="slHSD"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng truyền thông thương hiệu ULAW',
+                    message: 'Vui lòng nhập số lượng hồ sơ phát triển Đảng',
                   },
                 ]}
               >
                 <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng hình ảnh thương hiệu"
-                name="slHinhAnhThuongHieu"
+                label="Số lượng hồ sơ chuyển Đảng chính thức"
+                name="slHSDChuyen"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng hình ảnh thương hiệu',
+                    message: 'Vui lòng nhập số lượng hồ sơ chuyển Đảng chính thức',
                   },
                 ]}
               >
                 <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng khủng hoảng truyền thông"
-                name="slKhungHoangTruyenThong"
+                label="Số lượng hồ sơ khen thưởng"
+                name="slHSKhen"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng khủng hoảng truyền thông',
+                    message: 'Vui lòng nhập số lượng hồ sơ khen thưởng',
                   },
                 ]}
               >
                 <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={8}>
               <Form.Item
-                label={
-                  <>
-                    Số lượng khảo sát tình trạng việc làm của sinh viên sau khi tốt nghiệp
-                    <sup className={styles.sup}>(1)</sup>
-                  </>
-                }
-                name="slKhaoSatViecLam"
+                label="Số lượng Đảng viên dự bị"
+                name="slDVDuBi"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng Đảng viên dự bị',
+                  },
+                ]}
+              >
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng Đảng viên vi phạm kỷ luật"
+                name="slDVViPham"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng Đảng viên vi phạm kỷ luật',
+                  },
+                ]}
+              >
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng văn thư được lưu trữ liên quan đến công tác Đảng"
+                name="slVanThuD"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng khảo sát tình trạng việc làm của sinh viên sau khi tốt nghiệp',
+                      'Vui lòng nhập số lượng văn thư được lưu trữ liên quan đến công tác Đảng',
                   },
                 ]}
               >
                 <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng chương trình thực tập, kiến tập theo nhu cầu của doanh nghiệp"
-                name="slChuongTrinhThucTap"
+                label="Số lượng văn thư được lưu trữ liên quan đến công tác Công đoàn"
+                name="slVanThuCD"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng chương trình thực tập, kiến tập theo nhu cầu của doanh nghiệp',
+                      'Vui lòng nhập số lượng văn thư được lưu trữ liên quan đến công tác Công đoàn',
                   },
                 ]}
               >
                 <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số lượng hoạt động chăm sóc người học được thực hiện"
-                name="slHoatDongChamSoc"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng hoạt động chăm sóc người học được thực hiện',
-                  },
-                ]}
-              >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số lượng Cựu sinh viên (Alumni ULAW)"
-                name="slCuuSinhVien"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng Cựu sinh viên (Alumni ULAW)',
-                  },
-                ]}
-              >
+            <Col xs={24} md={8}>
+              <Form.Item label="Số lượng văn thư khác (Nếu có)" name="slVanThuKhac">
                 <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
           </Row>
-          <div className={styles.noteContainer}>
-            <p className={styles.note}>Ghi chú:</p>
-            <ul className={styles.noteList}>
-              <li>
-                <sup className={styles.sup}>(1)</sup> Theo dõi, đánh giá thông tin phản hồi của các
-                tổ chức, cá nhân sử dụng lao động về khả năng đáp ứng yêu cầu công việc của người
-                học sau tốt nghiệp
-              </li>
-            </ul>
-          </div>
         </>
       ),
     },
@@ -297,4 +287,4 @@ const PhongTTQHDN: React.FC = () => {
   );
 };
 
-export default PhongTTQHDN;
+export default VanPhong;

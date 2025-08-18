@@ -78,7 +78,7 @@ const PhongCTSV: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -93,7 +93,7 @@ const PhongCTSV: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -107,7 +107,7 @@ const PhongCTSV: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -121,7 +121,7 @@ const PhongCTSV: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -136,7 +136,7 @@ const PhongCTSV: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
           </Row>

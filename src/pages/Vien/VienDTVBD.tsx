@@ -8,7 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 
-const PhongTTQHDN: React.FC = () => {
+const VienDTVBD: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
   const [sectionIndex, setSectionIndex] = useState(0); // section nhỏ trong step 2
   const [form] = Form.useForm();
@@ -68,40 +68,17 @@ const PhongTTQHDN: React.FC = () => {
           <Row gutter={[16, 16]}>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng truyền thông thương hiệu ULAW"
-                name="slTruyenThongThuongHieu"
+                label={
+                  <>
+                    Số lượng khóa học ngắn hạn
+                    <sup className={styles.sup}>(1)</sup>
+                  </>
+                }
+                name="slKhoaNH"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng truyền thông thương hiệu ULAW',
-                  },
-                ]}
-              >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số lượng hình ảnh thương hiệu"
-                name="slHinhAnhThuongHieu"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng hình ảnh thương hiệu',
-                  },
-                ]}
-              >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số lượng khủng hoảng truyền thông"
-                name="slKhungHoangTruyenThong"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng khủng hoảng truyền thông',
+                    message: 'Vui lòng nhập số lượng khóa học ngắn hạn',
                   },
                 ]}
               >
@@ -112,16 +89,30 @@ const PhongTTQHDN: React.FC = () => {
               <Form.Item
                 label={
                   <>
-                    Số lượng khảo sát tình trạng việc làm của sinh viên sau khi tốt nghiệp
-                    <sup className={styles.sup}>(1)</sup>
+                    Số lượng nhân sự được đào tạo, bồi dưỡng hằng năm
+                    <sup className={styles.sup}>(2)</sup>
                   </>
                 }
-                name="slKhaoSatViecLam"
+                name="slNhanSu"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng nhân sự được đào tạo',
+                  },
+                ]}
+              >
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={24}>
+              <Form.Item
+                label="Số lượng cơ quan, doanh nghiệp, tổ chức và cá nhân được đào tạo, bồi dưỡng, tập huấn, nâng cao kiến thức pháp luật, kỹ năng hành chính, kỹ năng chuyên môn nghiệp vụ"
+                name="slKNCMNV"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng khảo sát tình trạng việc làm của sinh viên sau khi tốt nghiệp',
+                      'Vui lòng nhập số lượng cơ quan, doanh nghiệp, tổ chức và cá nhân được đào tạo, bồi dưỡng, tập huấn, nâng cao kiến thức pháp luật, kỹ năng hành chính, kỹ năng chuyên môn nghiệp vụ',
                   },
                 ]}
               >
@@ -130,13 +121,13 @@ const PhongTTQHDN: React.FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng chương trình thực tập, kiến tập theo nhu cầu của doanh nghiệp"
-                name="slChuongTrinhThucTap"
+                label="Số lượng nhu cầu được đào tạo, bồi dưỡng ngoại ngữ, ngoại ngữ pháp lý, tin học"
+                name="slNhuCau"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng chương trình thực tập, kiến tập theo nhu cầu của doanh nghiệp',
+                      'Vui lòng nhập số lượng nhu cầu được đào tạo, bồi dưỡng ngoại ngữ, ngoại ngữ pháp lý, tin học',
                   },
                 ]}
               >
@@ -145,26 +136,18 @@ const PhongTTQHDN: React.FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng hoạt động chăm sóc người học được thực hiện"
-                name="slHoatDongChamSoc"
+                label={
+                  <>
+                    Số lượng công tác tổ chức kiểm tra, thi, đánh giá năng lực ngoại ngữ, tin học
+                    <sup className={styles.sup}>(3)</sup>
+                  </>
+                }
+                name="slToChuc"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng hoạt động chăm sóc người học được thực hiện',
-                  },
-                ]}
-              >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số lượng Cựu sinh viên (Alumni ULAW)"
-                name="slCuuSinhVien"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng Cựu sinh viên (Alumni ULAW)',
+                    message:
+                      'Vui lòng nhập số lượng công tác tổ chức kiểm tra, thi, đánh giá năng lực ngoại ngữ, tin học',
                   },
                 ]}
               >
@@ -176,9 +159,15 @@ const PhongTTQHDN: React.FC = () => {
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
               <li>
-                <sup className={styles.sup}>(1)</sup> Theo dõi, đánh giá thông tin phản hồi của các
-                tổ chức, cá nhân sử dụng lao động về khả năng đáp ứng yêu cầu công việc của người
-                học sau tốt nghiệp
+                <sup className={styles.sup}>(1)</sup> Dành cho cơ quan, doanh nghiệp, tổ chức
+              </li>
+              <li>
+                <sup className={styles.sup}>(2)</sup> Dành cho cơ quan, doanh nghiệp, tổ chức theo
+                nhu cầu
+              </li>
+              <li>
+                <sup className={styles.sup}>(3)</sup> Đáp ứng nhu cầu cấp chứng chỉ, chứng nhận theo
+                quy định pháp luật
               </li>
             </ul>
           </div>
@@ -297,4 +286,4 @@ const PhongTTQHDN: React.FC = () => {
   );
 };
 
-export default PhongTTQHDN;
+export default VienDTVBD;

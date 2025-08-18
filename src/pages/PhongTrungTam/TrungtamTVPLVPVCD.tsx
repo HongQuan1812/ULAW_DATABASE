@@ -82,7 +82,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -101,7 +101,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -135,7 +135,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -155,7 +155,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
           </Row>
@@ -164,13 +164,14 @@ const TrungtamTVPLVPVCD: React.FC = () => {
             <ul className={styles.noteList}>
               <li>Vui lòng điền giá trị = 0 nếu không có</li>
               <li>
-                <sup style={{color: 'black'}}><b>(1)</b></sup> Bao gồm các hoạt động: tuyên truyền, phổ biến pháp luật dưới các hình
-                thức: báo cáo chuyên đề, diễn phiên tòa giả định, biên soạn tài liệu pháp luật, tổ
-                chức thực hiện các chương trình tuyên truyền pháp luật lưu động và các hình thức
-                khác
+                <sup className={styles.sup}>(1)</sup> Bao gồm các hoạt động: tuyên truyền, phổ biến
+                pháp luật dưới các hình thức: báo cáo chuyên đề, diễn phiên tòa giả định, biên soạn
+                tài liệu pháp luật, tổ chức thực hiện các chương trình tuyên truyền pháp luật lưu
+                động và các hình thức khác
               </li>
               <li>
-                <sup style={{color: 'black'}}><b>(2)</b></sup> Trong lĩnh vực cung cấp dịch vụ tư vấn và hỗ trợ pháp luật
+                <sup className={styles.sup}>(2)</sup> Trong lĩnh vực cung cấp dịch vụ tư vấn và hỗ
+                trợ pháp luật
               </li>
             </ul>
           </div>

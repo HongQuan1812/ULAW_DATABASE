@@ -8,7 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 
-const PhongTTQHDN: React.FC = () => {
+const VienLSS: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
   const [sectionIndex, setSectionIndex] = useState(0); // section nhỏ trong step 2
   const [form] = Form.useForm();
@@ -66,122 +66,45 @@ const PhongTTQHDN: React.FC = () => {
       content: (
         <>
           <Row gutter={[16, 16]}>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng truyền thông thương hiệu ULAW"
-                name="slTruyenThongThuongHieu"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng truyền thông thương hiệu ULAW',
-                  },
-                ]}
-              >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số lượng hình ảnh thương hiệu"
-                name="slHinhAnhThuongHieu"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng hình ảnh thương hiệu',
-                  },
-                ]}
-              >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số lượng khủng hoảng truyền thông"
-                name="slKhungHoangTruyenThong"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng khủng hoảng truyền thông',
-                  },
-                ]}
-              >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label={
-                  <>
-                    Số lượng khảo sát tình trạng việc làm của sinh viên sau khi tốt nghiệp
-                    <sup className={styles.sup}>(1)</sup>
-                  </>
-                }
-                name="slKhaoSatViecLam"
+                label="Số lượng hoạt động nghiên cứu khoa học và công nghệ trong lĩnh vực Luật học so sánh"
+                name="slHoatDongLSS"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng khảo sát tình trạng việc làm của sinh viên sau khi tốt nghiệp',
+                      'Vui lòng nhập số lượng hoạt động nghiên cứu khoa học và công nghệ trong lĩnh vực Luật học so sánh',
                   },
                 ]}
               >
                 <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng chương trình thực tập, kiến tập theo nhu cầu của doanh nghiệp"
-                name="slChuongTrinhThucTap"
+                label="Số lượng hoạt động nghiên cứu khoa học và công nghệ trong lĩnh vực Pháp luật nước ngoài"
+                name="slHoatDongPLNN"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng chương trình thực tập, kiến tập theo nhu cầu của doanh nghiệp',
+                      'Vui lòng nhập số lượng hoạt động nghiên cứu khoa học và công nghệ trong lĩnh vực Pháp luật nước ngoài',
                   },
                 ]}
               >
                 <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng hoạt động chăm sóc người học được thực hiện"
-                name="slHoatDongChamSoc"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng hoạt động chăm sóc người học được thực hiện',
-                  },
-                ]}
-              >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số lượng Cựu sinh viên (Alumni ULAW)"
-                name="slCuuSinhVien"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng Cựu sinh viên (Alumni ULAW)',
-                  },
-                ]}
+                label="Số lượng hoạt động nghiên cứu khoa học và công nghệ trong các lĩnh vực khác (Nếu có)"
+                name="slHoatDongKhac"
               >
                 <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
           </Row>
-          <div className={styles.noteContainer}>
-            <p className={styles.note}>Ghi chú:</p>
-            <ul className={styles.noteList}>
-              <li>
-                <sup className={styles.sup}>(1)</sup> Theo dõi, đánh giá thông tin phản hồi của các
-                tổ chức, cá nhân sử dụng lao động về khả năng đáp ứng yêu cầu công việc của người
-                học sau tốt nghiệp
-              </li>
-            </ul>
-          </div>
         </>
       ),
     },
@@ -297,4 +220,4 @@ const PhongTTQHDN: React.FC = () => {
   );
 };
 
-export default PhongTTQHDN;
+export default VienLSS;

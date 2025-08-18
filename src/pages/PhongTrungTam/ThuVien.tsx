@@ -84,7 +84,7 @@ const ThuVien: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -105,7 +105,7 @@ const ThuVien: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -126,7 +126,7 @@ const ThuVien: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -147,7 +147,7 @@ const ThuVien: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
           </Row>
@@ -155,15 +155,16 @@ const ThuVien: React.FC = () => {
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
               <li>
-                <sup style={{color: 'black'}}><b>(1)</b></sup> Bao gồm giáo trình, tập bài giảng, khóa luận, luận văn thạc sĩ, luận án
-                tiến sĩ
+                <sup className={styles.sup}>(1)</sup> Bao gồm giáo trình, tập bài giảng, khóa luận,
+                luận văn thạc sĩ, luận án tiến sĩ
               </li>
               <li>
-                <sup style={{color: 'black'}}><b>(2)</b></sup> Bao gồm các dạng đề tài khác không thuộc cái dạng đã liệt kê ở phía trên
-                - Nếu có
+                <sup className={styles.sup}>(2)</sup> Bao gồm các dạng đề tài khác không thuộc cái
+                dạng đã liệt kê ở phía trên - Nếu có
               </li>
               <li>
-                <sup style={{color: 'black'}}><b>(3)</b></sup> Thuộc các quy định của Luật sở hữu trí tuệ và Luật Thư viện
+                <sup className={styles.sup}>(3)</sup> Thuộc các quy định của Luật sở hữu trí tuệ và
+                Luật Thư viện
               </li>
             </ul>
           </div>

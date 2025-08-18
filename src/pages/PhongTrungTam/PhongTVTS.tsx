@@ -83,7 +83,7 @@ const PhongTVTS: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -103,7 +103,7 @@ const PhongTVTS: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -123,7 +123,7 @@ const PhongTVTS: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -143,7 +143,7 @@ const PhongTVTS: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -157,7 +157,7 @@ const PhongTVTS: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -171,7 +171,7 @@ const PhongTVTS: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
           </Row>
@@ -179,11 +179,12 @@ const PhongTVTS: React.FC = () => {
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
               <li>
-                <sup style={{color: 'black'}}><b>(1)</b></sup> Dành cho các trình độ, các chương trình và loại hình đào tạo của Trường
+                <sup className={styles.sup}>(1)</sup> Dành cho các trình độ, các chương trình và
+                loại hình đào tạo của Trường
               </li>
               <li>
-                <sup style={{color: 'black'}}><b>(2)</b></sup> Dành cho việc tư vấn, tuyển sinh, hướng nghiệp và quảng bá hình ảnh,
-                thương hiệu của Trường
+                <sup className={styles.sup}>(2)</sup> Dành cho việc tư vấn, tuyển sinh, hướng nghiệp
+                và quảng bá hình ảnh, thương hiệu của Trường
               </li>
             </ul>
           </div>

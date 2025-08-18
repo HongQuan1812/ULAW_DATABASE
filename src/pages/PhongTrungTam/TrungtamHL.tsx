@@ -72,7 +72,7 @@ const TrungtamHL: React.FC = () => {
               name="soTenGiaoTrinh"
               rules={[{ required: true, message: 'Vui lòng nhập số tên giáo trình' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -81,7 +81,7 @@ const TrungtamHL: React.FC = () => {
               name="soCuonGiaoTrinh"
               rules={[{ required: true, message: 'Vui lòng nhập số cuốn của giáo trình' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -90,7 +90,7 @@ const TrungtamHL: React.FC = () => {
               name="soTenTapBaiGiang"
               rules={[{ required: true, message: 'Vui lòng nhập số tên của tập bài giảng' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -99,7 +99,7 @@ const TrungtamHL: React.FC = () => {
               name="soCuonTapBaiGiang"
               rules={[{ required: true, message: 'Vui lòng nhập số cuốn của tập bài giảng' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -108,7 +108,7 @@ const TrungtamHL: React.FC = () => {
               name="soTenSachTinhHuong"
               rules={[{ required: true, message: 'Vui lòng nhập số tên của sách tình huống' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -119,7 +119,7 @@ const TrungtamHL: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập tổng số cuốn của sách tình huống' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -130,7 +130,7 @@ const TrungtamHL: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập tổng số tên của sách chuyên khảo' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -139,7 +139,7 @@ const TrungtamHL: React.FC = () => {
               name="soCuonSachChuyenKhao"
               rules={[{ required: true, message: 'Vui lòng nhập số cuốn của sách chuyên khảo' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -148,7 +148,7 @@ const TrungtamHL: React.FC = () => {
               name="soTenSachThamKhao"
               rules={[{ required: true, message: 'Vui lòng nhập số tên của sách tham khảo' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -157,7 +157,7 @@ const TrungtamHL: React.FC = () => {
               name="soCuonSachThamKhao"
               rules={[{ required: true, message: 'Vui lòng nhập số cuốn của sách tham khảo' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
         </Row>
@@ -175,7 +175,7 @@ const TrungtamHL: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số tên sách ký gửi của giảng viên' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -186,7 +186,7 @@ const TrungtamHL: React.FC = () => {
                 { required: true, message: 'Vui lòng nhập số cuốn sách ký gửi của giảng viên' },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -200,7 +200,7 @@ const TrungtamHL: React.FC = () => {
                 },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -214,7 +214,7 @@ const TrungtamHL: React.FC = () => {
                 },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
         </Row>
@@ -235,7 +235,7 @@ const TrungtamHL: React.FC = () => {
                 },
               ]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={6}>
@@ -244,7 +244,7 @@ const TrungtamHL: React.FC = () => {
               name="thuLaoSachKyGui"
               rules={[{ required: true, message: 'Vui lòng nhập thù lao từ sách ký gửi' }]}
             >
-              <Input type="number" />
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
         </Row>

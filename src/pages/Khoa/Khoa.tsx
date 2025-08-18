@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Col, Form, Input, Row, Steps } from 'antd';
+import { Button, Col, Form, Input, Row, Steps, Checkbox, Upload } from 'antd';
 import { history, useLocation } from 'umi';
 import styles from './index.less';
 import { ArrowLeftOutlined, ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
@@ -8,7 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 
-const PhongCSDLCNTT: React.FC = () => {
+const Khoa: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
   const [sectionIndex, setSectionIndex] = useState(0); // section nhỏ trong step 2
   const [form] = Form.useForm();
@@ -63,114 +63,32 @@ const PhongCSDLCNTT: React.FC = () => {
   // Step 2 - Các section nhỏ
   const sections = [
     {
-      title: 'Hạ tầng Công nghệ thông tin',
+      title: 'Thống kê số lượng giảng viên và người lao động',
       content: (
         <Row gutter={[16, 16]}>
-          <Col xs={24} md={6}>
+          <Col xs={24} md={8}>
             <Form.Item
-              label="Số lượng máy chủ vật lý tại trường"
-              name="slMayChuVatLy"
-              rules={[
-                { required: true, message: 'Vui lòng nhập số lượng máy chủ vật lý tại trường' },
-              ]}
+              label="Số lượng giảng viên cơ hữu"
+              name="slGVCoHuu"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng giảng viên cơ hữu' }]}
             >
               <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
-          <Col xs={24} md={6}>
+          <Col xs={24} md={8}>
             <Form.Item
-              label="Số lượng máy chủ ảo tại trường"
-              name="slMayChuAo"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng máy chủ ảo tại trường' }]}
+              label="Số lượng giảng viên thỉnh giảng"
+              name="slGVThinhGiang"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng giảng viên thỉnh giảng' }]}
             >
               <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
-          <Col xs={24} md={6}>
+          <Col xs={24} md={8}>
             <Form.Item
-              label="Số lượng máy chủ Cloud (Thuê)"
-              name="slMayChuThue"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng máy chủ Cloud (Thuê)' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số lượng đường truyền Leased-line"
-              name="slLeasedline"
-              rules={[
-                { required: true, message: 'Vui lòng nhập số lượng đường truyền Leased-line' },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Dung lượng đường truyền internet trong nước (Mbps)"
-              name="dlInternetTrongNuoc"
-              rules={[
-                {
-                  required: true,
-                  message: 'Vui lòng nhập dung lượng đường truyền internet trong nước',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Dung lượng đượng truyền internet quốc tế (Mbps)"
-              name="dlInternetQuocTe"
-              rules={[
-                {
-                  required: true,
-                  message: 'Vui lòng nhập dung lượng đường truyền internet quốc tế',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số lượng Switch tầng"
-              name="slSwitch"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng Switch tầng' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số lượng thiết bị Camera"
-              name="slCamera"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng thiết bị Camera' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số lượng tổng đài điện thoại thuộc phạm vi Trường"
-              name="slTongDai"
-              rules={[
-                {
-                  required: true,
-                  message: 'Vui lòng nhập số lượng tổng đài điện thoại thuộc phạm vi Trường',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số lượng thiết bị wifi"
-              name="slWifi"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng thiết bị wifi' }]}
+              label="Số lượng người lao động"
+              name="slNguoiLaoDong"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng người lao động' }]}
             >
               <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
@@ -179,68 +97,162 @@ const PhongCSDLCNTT: React.FC = () => {
       ),
     },
     {
-      title: 'Các danh mục có liên quan',
+      title: 'Chương trình đào tạo của Khoa được Trường giao nhiệm vụ xây dựng',
+      content: (
+        <>
+          <Row gutter={[16, 16]}>
+            <Col xs={24} md={24}>
+              <Form.Item
+                label="Danh mục ngành"
+                name="DanhMucNganh"
+                rules={[{ required: true, message: 'Vui lòng chọn danh mục ngành' }]}
+              >
+                <Checkbox.Group>
+                  <Checkbox value="Luat">Ngành Luật</Checkbox>
+                  <Checkbox value="QTL">Ngành Quản trị - Luật</Checkbox>
+                  <Checkbox value="QTKD">Ngành Quản trị kinh doanh</Checkbox>
+                  <Checkbox value="LTMQT">Ngành Luật Thương mại Quốc tế</Checkbox>
+                  <Checkbox value="NNA">Ngành Ngôn ngữ Anh (chuyên ngành Anh văn pháp lý)</Checkbox>
+                </Checkbox.Group>
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Tổng số bộ môn của Khoa"
+                name="tongBoMon"
+                rules={[{ required: true, message: 'Vui lòng nhập tổng số bộ môn của Khoa' }]}
+              >
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label={
+                  <>
+                    Cập nhật (upload) File danh mục môn học<sup className={styles.sup}>(1)</sup>
+                  </>
+                }
+                name="fileDanhMuc"
+                rules={[{ required: true, message: 'Vui lòng tải lên File danh mục môn học' }]}
+              >
+                <Upload>
+                  <Button>Tải lên</Button>
+                </Upload>
+              </Form.Item>
+            </Col>
+          </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>
+                <sup className={styles.sup}>(1)</sup>File dạng <b>EXCEL</b> bao gồm các cột:
+              </li>
+              <li>
+                <b>
+                  <i>
+                    Hệ đào tạo, Mã môn, Tên môn, Số tín chỉ, Số tiết lý thuyết, Số tiết thảo luận,
+                    Mã học phần tiên quyết, Ghi chú (mô tả tóm tắt).
+                  </i>
+                </b>
+              </li>
+              <li>
+                Đặt tên file theo mẫu: <b>tenkhoa_nam_giaidoan.xlsx</b>
+              </li>
+              <li>
+                Ví dụ: Khoa dân sự báo cáo năm 2020 giai đoạn 1 → <b>KhoaDansu_2020_1.xlsx</b>
+              </li>
+            </ul>
+          </div>
+        </>
+      ),
+    },
+    {
+      title: 'Kế hoạch của Khoa',
       content: (
         <Row gutter={[16, 16]}>
-          <Col xs={24} md={8}>
+          <Col xs={24} md={12}>
             <Form.Item
-              label="Số lượng trang web"
-              name="slTrangWeb"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng trang web' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={8}>
-            <Form.Item
-              label="Số lượng phần mềm"
-              name="slPhanMem"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng phần mềm' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={8}>
-            <Form.Item
-              label="Số lượng, thông tin hệ thống cơ sở dữ liệu dùng chung của Trường"
-              name="slThongTin"
+              label="Tổng số chương trình cần cải tiến"
+              name="tsCTCaiTien"
               rules={[
                 {
                   required: true,
-                  message:
-                    'Vui lòng nhập số lượng, thông tin hệ thống cơ sở dữ liệu dùng chung của Trường',
+                  message: 'Vui lòng nhập số tổng số chương trình cần cải tiến',
                 },
               ]}
             >
               <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
-          <Col xs={24} md={8}>
+          <Col xs={24} md={12}>
             <Form.Item
-              label="Số lượng, thông tin danh sách Tường lửa (Firewall) và phần mềm diệt virus"
-              name="slTuongLua"
+              label="Tổng số chương trình đào tạo xây dựng mới"
+              name="tsCTMoi"
               rules={[
                 {
                   required: true,
-                  message:
-                    'Vui lòng nhập số lượng, thông tin danh sách Tường lửa (Firewall) và phần mềm diệt virus',
+                  message: 'Vui lòng nhập tổng số chương trình đào tạo xây dựng mới',
                 },
               ]}
             >
               <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
           </Col>
-          <Col xs={24} md={8}>
+          <Col xs={24} md={12}>
             <Form.Item
-              label="Số lượng thẻ từ đã cấp phát cho sinh viên, người học, người lao động"
-              name="slTheTu"
+              label="Tổng số tài liệu, giáo trình cần chỉnh sửa"
+              name="tsTLChinhSua"
+              rules={[
+                {
+                  required: true,
+                  message: 'Vui lòng nhập tổng số tài liệu, giáo trình cần chỉnh sửa',
+                },
+              ]}
+            >
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item
+              label="Tổng số tài liệu, giáo trình biên soạn mới"
+              name="tsTLMoi"
+              rules={[
+                {
+                  required: true,
+                  message: 'Vui lòng nhập tổng số tài liệu, giáo trình biên soạn mới',
+                },
+              ]}
+            >
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+            </Form.Item>
+          </Col>
+        </Row>
+      ),
+    },
+    {
+      title: 'Kế hoạch về nhân sự của Khoa',
+      content: (
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
+            <Form.Item
+              label="Số lượng giảng viên cần đào tạo, bồi dưỡng, nâng cao trình độ chuyên môn"
+              name="slDTGV"
               rules={[
                 {
                   required: true,
                   message:
-                    'Vui lòng nhập số lượng thẻ từ đã cấp phát cho sinh viên, người học, người lao động',
+                    'Vui lòng nhập số lượng giảng viên cần đào tạo, bồi dưỡng, nâng cao trình độ chuyên môn',
                 },
               ]}
+            >
+              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item
+              label="Số lượng giảng viên cần tuyển"
+              name="slGVCanTuyen"
+              rules={[{ required: true, message: 'Vui lòng nhập số lượng giảng viên cần tuyển' }]}
             >
               <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
             </Form.Item>
@@ -311,6 +323,7 @@ const PhongCSDLCNTT: React.FC = () => {
           items={[{ title: 'Thông tin chung' }, { title: 'Nội dung' }, { title: 'Hoàn thành' }]}
         />
       </div>
+
       <Form
         form={form}
         layout="vertical"
@@ -344,7 +357,7 @@ const PhongCSDLCNTT: React.FC = () => {
           )}
           <div style={{ flex: 1 }} />
           {current < 2 && (
-            <Button type="primary" onClick={next} className={styles.btnNext}>
+            <Button className={styles.btnNext} type="primary" onClick={next}>
               Tiếp tục
               <ArrowRightOutlined />
             </Button>
@@ -361,4 +374,4 @@ const PhongCSDLCNTT: React.FC = () => {
   );
 };
 
-export default PhongCSDLCNTT;
+export default Khoa;

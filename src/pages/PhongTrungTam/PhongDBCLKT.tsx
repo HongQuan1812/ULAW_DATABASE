@@ -78,7 +78,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -93,7 +93,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -108,7 +108,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -123,7 +123,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -142,7 +142,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -161,7 +161,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -176,7 +176,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -191,7 +191,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -210,7 +210,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -229,7 +229,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -248,7 +248,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -268,7 +268,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -282,7 +282,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -296,7 +296,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -315,7 +315,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -334,7 +334,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -348,7 +348,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -368,7 +368,7 @@ const PhongDBCLKT: React.FC = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
               </Form.Item>
             </Col>
           </Row>
@@ -376,20 +376,22 @@ const PhongDBCLKT: React.FC = () => {
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
               <li>
-                <sup style={{color: 'black'}}><b>(1)</b></sup> Theo khuyến nghị của các Đoàn Đánh giá ngoài
+                <sup className={styles.sup}>(1)</sup> Theo khuyến nghị của các Đoàn Đánh giá ngoài
               </li>
               <li>
-                <sup style={{color: 'black'}}><b>(2)</b></sup> Theo phương pháp giảng dạy tích cực, phương pháp kiểm tra, đánh giá đáp
-                ứng yêu cầu của chuẩn đầu ra
+                <sup className={styles.sup}>(2)</sup> Theo phương pháp giảng dạy tích cực, phương
+                pháp kiểm tra, đánh giá đáp ứng yêu cầu của chuẩn đầu ra
               </li>
               <li>
-                <sup style={{color: 'black'}}><b>(3)</b></sup> Về mặt trao đổi kinh nghiệm và đào tạo giáo viên về phương pháp giảng dạy
+                <sup className={styles.sup}>(3)</sup> Về mặt trao đổi kinh nghiệm và đào tạo giáo
+                viên về phương pháp giảng dạy
               </li>
               <li>
-                <sup style={{color: 'black'}}><b>(4)</b></sup> Thuộc các chương trình đào tạo của Trường
+                <sup className={styles.sup}>(4)</sup> Thuộc các chương trình đào tạo của Trường
               </li>
               <li>
-                <sup style={{color: 'black'}}><b>(5)</b></sup> Dành cho các giảng viên và chuyên viên mới được tuyển dụng
+                <sup className={styles.sup}>(5)</sup> Dành cho các giảng viên và chuyên viên mới
+                được tuyển dụng
               </li>
             </ul>
           </div>
