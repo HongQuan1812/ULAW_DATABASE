@@ -4,7 +4,7 @@ import PhongTrungtamCard from '@/components/CardOption/PhongTrungtamCard';
 import VienCard from '@/components/CardOption/VienCard';
 import VanphongCard from '@/components/CardOption/VanphongCard';
 import KhoaCard from '@/components/CardOption/KhoaCard';
-import styles from './MainPage.less';
+import styles from './index.less';
 import {
   AppstoreOutlined,
   BankOutlined,

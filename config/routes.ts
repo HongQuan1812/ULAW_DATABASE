@@ -25,6 +25,12 @@
     component: './MainPage/MainPage',
   },
   {
+    path: '/dashboard',
+    name: 'dashboard',
+    icon: 'deploymentUnit',
+    component: './MainPage/Dashboard',
+  },
+  {
     path: 'khoa',
     name: 'khoa',
     icon: 'appstore',
