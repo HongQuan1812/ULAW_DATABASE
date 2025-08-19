@@ -25,6 +25,18 @@
     component: './MainPage/MainPage',
   },
   {
+    path: 'khoa',
+    name: 'khoa',
+    icon: 'appstore',
+    component: './Khoa/Khoa',
+  },
+  {
+    path: 'vanphong',
+    name: 'vanphong',
+    icon: 'bank',
+    component: './VanPhong/VanPhong',
+  },
+  {
     path: '/vien',
     name: 'vien',
     icon: 'deploymentUnit',
@@ -53,18 +65,6 @@
         component: './404',
       },
     ],
-  },
-  {
-    path: 'khoa',
-    name: 'khoa',
-    icon: 'appstore',
-    component: './Khoa/Khoa',
-  },
-  {
-    path: 'vanphong',
-    name: 'vanphong',
-    icon: 'bank',
-    component: './VanPhong/VanPhong',
   },
   {
     path: '/phong-trungtam',
