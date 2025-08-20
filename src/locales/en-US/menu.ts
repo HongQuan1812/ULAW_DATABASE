@@ -1,7 +1,7 @@
 export default {
   //Omni Channel
   'menu.trangchu': 'Trang chủ',
-  'menu.dashboard': 'Dashboard',
+  'menu.dashboard': 'Bảng điều khiển',
   'menu.phong-trungtam': 'Phòng - Trung tâm',
   'menu.vien': 'Viện',
   'menu.vanphong': 'Văn phòng',

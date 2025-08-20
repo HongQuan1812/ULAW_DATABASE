@@ -27,7 +27,7 @@
   {
     path: '/dashboard',
     name: 'dashboard',
-    icon: 'deploymentUnit',
+    icon: 'barChart',
     component: './MainPage/Dashboard',
   },
   {

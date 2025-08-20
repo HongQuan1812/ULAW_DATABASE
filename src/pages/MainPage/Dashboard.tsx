@@ -213,7 +213,7 @@ const Dashboard = () => {
       const matchPhase = phaseFilter === 'all' || u.phase === phaseFilter;
       const matchCategory = categoryFilter === 'all' || u.category === categoryFilter;
       if (!matchPhase || !matchCategory) return false;
-      if (expandedChart === 'line') return true; 
+      if (expandedChart === 'line') return true;
       if (yearFilter === 'all') {
         return [currentYear - 2, currentYear - 1, currentYear].includes(u.year);
       }
@@ -248,7 +248,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h2 className={styles.title}>Dashboard</h2>
+      <h2 className={styles.title}>Bảng điều khiển</h2>
 
       {/* Stats cards */}
       <Row gutter={16} className={styles.statsRow}>
