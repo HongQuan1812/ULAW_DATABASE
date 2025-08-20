@@ -17,6 +17,13 @@ const PhongDTSDH: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -74,40 +81,43 @@ const PhongDTSDH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng mã ngành đào tạo"
-                name="slMaNganhDaoTao"
+                name="soLuongMaNganhDT"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng mã ngành đào tạo',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng chương trình đào tạo"
-                name="slChuongTrinhDaoTao"
+                name="soLuongCTrinhDT"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng chương trình đào tạo',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Trình độ đào tạo"
-                name="tdDaoTao"
+                name="trinhDoDT"
                 rules={[
                   {
                     required: true,
                     message: 'Vui chọn trình độ đào tạo',
                   },
+                  ...numberRule,
                 ]}
               >
                 <Select placeholder="Chọn trình độ đào tạo">
@@ -120,76 +130,102 @@ const PhongDTSDH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng chỉ tiêu tuyển sinh"
-                name="slChiTieuTuyenSinh"
+                name="soLuongChiTieuTS"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng chỉ tiêu tuyển sinh',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng học viên sau đại học"
-                name="slHocVienSauDH"
+                name="soLuongHVSDH"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng học viên sau đại học',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng học viên cao học, nghiên cứu sinh tốt nghiệp của Trường"
-                name="slHocVienTotNghiep"
+                label="Số lượng học viên cao học tốt nghiệp của Trường"
+                name="soLuongCaoHocTotNghiep"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng học viên cao học tốt nghiệp của Trường',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng học viên nghiên cứu sinh tốt nghiệp của Trường"
+                name="soLuongNCSTotNghiep"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng học viên cao học, nghiên cứu sinh tốt nghiệp của Trường',
+                      'Vui lòng nhập số lượng học viên nghiên cứu sinh tốt nghiệp của Trường',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng học viên sau đại học chấm dứt học tại Trường"
-                name="slHocVienChamDut"
+                name="soLuongHVSDHChamDutHoc"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng học viên sau đại học chấm dứt học tại Trường',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số liệu đào tạo, quản lý các lớp bồi dưỡng cấp chứng chỉ sau đại học"
-                name="slLopBoiDuong"
+                name="daoTaoQuanLyLopBoiDuongSDH"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số liệu đào tạo, quản lý các lớp bồi dưỡng cấp chứng chỉ sau đại học',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
           </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
         </>
       ),
     },

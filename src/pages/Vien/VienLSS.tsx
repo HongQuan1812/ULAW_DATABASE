@@ -17,6 +17,13 @@ const VienLSS: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -74,42 +81,51 @@ const VienLSS: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hoạt động nghiên cứu khoa học và công nghệ trong lĩnh vực Luật học so sánh"
-                name="slHoatDongLSS"
+                name="soLuongHoatDongLSS"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng hoạt động nghiên cứu khoa học và công nghệ trong lĩnh vực Luật học so sánh',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hoạt động nghiên cứu khoa học và công nghệ trong lĩnh vực Pháp luật nước ngoài"
-                name="slHoatDongPLNN"
+                name="soLuongHoatDongPLNN"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng hoạt động nghiên cứu khoa học và công nghệ trong lĩnh vực Pháp luật nước ngoài',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hoạt động nghiên cứu khoa học và công nghệ trong các lĩnh vực khác (Nếu có)"
-                name="slHoatDongKhac"
+                name="soLuongHoatDongKhac"
+                rules={numberRule}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
           </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
         </>
       ),
     },

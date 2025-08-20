@@ -17,6 +17,13 @@ const PhongCSDLCNTT: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -70,187 +77,232 @@ const PhongCSDLCNTT: React.FC = () => {
     {
       title: 'Hạ tầng Công nghệ thông tin',
       content: (
-        <Row gutter={[16, 16]}>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số lượng máy chủ vật lý tại trường"
-              name="slMayChuVatLy"
-              rules={[
-                { required: true, message: 'Vui lòng nhập số lượng máy chủ vật lý tại trường' },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số lượng máy chủ ảo tại trường"
-              name="slMayChuAo"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng máy chủ ảo tại trường' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số lượng máy chủ Cloud (Thuê)"
-              name="slMayChuThue"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng máy chủ Cloud (Thuê)' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số lượng đường truyền Leased-line"
-              name="slLeasedline"
-              rules={[
-                { required: true, message: 'Vui lòng nhập số lượng đường truyền Leased-line' },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Dung lượng đường truyền internet trong nước (Mbps)"
-              name="dlInternetTrongNuoc"
-              rules={[
-                {
-                  required: true,
-                  message: 'Vui lòng nhập dung lượng đường truyền internet trong nước',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Dung lượng đượng truyền internet quốc tế (Mbps)"
-              name="dlInternetQuocTe"
-              rules={[
-                {
-                  required: true,
-                  message: 'Vui lòng nhập dung lượng đường truyền internet quốc tế',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số lượng Switch tầng"
-              name="slSwitch"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng Switch tầng' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số lượng thiết bị Camera"
-              name="slCamera"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng thiết bị Camera' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số lượng tổng đài điện thoại thuộc phạm vi Trường"
-              name="slTongDai"
-              rules={[
-                {
-                  required: true,
-                  message: 'Vui lòng nhập số lượng tổng đài điện thoại thuộc phạm vi Trường',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số lượng thiết bị wifi"
-              name="slWifi"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng thiết bị wifi' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-        </Row>
+        <>
+          <Row gutter={[16, 16]}>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số lượng máy chủ vật lý tại trường"
+                name="mayChuVatLy"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số lượng máy chủ vật lý tại trường' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số lượng máy chủ ảo tại trường"
+                name="mayChuAo"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số lượng máy chủ ảo tại trường' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số lượng máy chủ Cloud (Thuê)"
+                name="mayChuThue"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số lượng máy chủ Cloud (Thuê)' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số lượng đường truyền Leased-line"
+                name="duongTruyenLeasedLine"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số lượng đường truyền Leased-line' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Dung lượng đường truyền internet trong nước (Mbps)"
+                name="duongTruyenInternetTN"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập dung lượng đường truyền internet trong nước',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Dung lượng đượng truyền internet quốc tế (Mbps)"
+                name="duongTruyenInternetQT"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập dung lượng đường truyền internet quốc tế',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số lượng Switch tầng"
+                name="soLuongSwitch"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số lượng Switch tầng' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số lượng thiết bị Camera"
+                name="soLuongCamera"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số lượng thiết bị Camera' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số lượng tổng đài điện thoại thuộc phạm vi Trường"
+                name="soLuongTongDai"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng tổng đài điện thoại thuộc phạm vi Trường',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số lượng thiết bị wifi"
+                name="soLuongWifi"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số lượng thiết bị wifi' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
+        </>
       ),
     },
     {
       title: 'Các danh mục có liên quan',
       content: (
-        <Row gutter={[16, 16]}>
-          <Col xs={24} md={8}>
-            <Form.Item
-              label="Số lượng trang web"
-              name="slTrangWeb"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng trang web' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={8}>
-            <Form.Item
-              label="Số lượng phần mềm"
-              name="slPhanMem"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng phần mềm' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={8}>
-            <Form.Item
-              label="Số lượng, thông tin hệ thống cơ sở dữ liệu dùng chung của Trường"
-              name="slThongTin"
-              rules={[
-                {
-                  required: true,
-                  message:
-                    'Vui lòng nhập số lượng, thông tin hệ thống cơ sở dữ liệu dùng chung của Trường',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={8}>
-            <Form.Item
-              label="Số lượng, thông tin danh sách Tường lửa (Firewall) và phần mềm diệt virus"
-              name="slTuongLua"
-              rules={[
-                {
-                  required: true,
-                  message:
-                    'Vui lòng nhập số lượng, thông tin danh sách Tường lửa (Firewall) và phần mềm diệt virus',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={8}>
-            <Form.Item
-              label="Số lượng thẻ từ đã cấp phát cho sinh viên, người học, người lao động"
-              name="slTheTu"
-              rules={[
-                {
-                  required: true,
-                  message:
-                    'Vui lòng nhập số lượng thẻ từ đã cấp phát cho sinh viên, người học, người lao động',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-        </Row>
+        <>
+          <Row gutter={[16, 16]}>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng trang web"
+                name="soLuongTrangWeb"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số lượng trang web' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng phần mềm"
+                name="soLuongPhanMem"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số lượng phần mềm' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng, thông tin hệ thống cơ sở dữ liệu dùng chung của Trường"
+                name="soLuongThongTin"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng, thông tin hệ thống cơ sở dữ liệu dùng chung của Trường',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng, thông tin danh sách Tường lửa (Firewall) và phần mềm diệt virus"
+                name="soLuongTuongLua"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng, thông tin danh sách Tường lửa (Firewall) và phần mềm diệt virus',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng thẻ từ đã cấp phát cho sinh viên, người học, người lao động"
+                name="soLuongTheTu"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng thẻ từ đã cấp phát cho sinh viên, người học, người lao động',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
+        </>
       ),
     },
   ];

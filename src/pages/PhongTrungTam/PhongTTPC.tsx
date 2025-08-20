@@ -17,6 +17,13 @@ const PhongTTPC: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -71,52 +78,108 @@ const PhongTTPC: React.FC = () => {
       content: (
         <>
           <Row gutter={[16, 16]}>
-            <Col xs={24} md={24}>
+            <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng chương trình, kế hoạch thanh tra, pháp chế định kỳ, đột xuất và tổ chức thực hiện"
-                name="slChuongTrinhKeHoach"
+                label="Số lượng các chương trình, kế hoạch thanh tra, pháp chế định kỳ, đột xuất"
+                name="soLuongChuongTrinhThanhTra"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng chương trình, kế hoạch thanh tra, pháp chế định kỳ, đột xuất và tổ chức thực hiện',
+                      'Vui lòng nhập số lượng các chương trình, kế hoạch thanh tra, pháp chế định kỳ, đột xuất',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
-            <Col xs={24} md={24}>
+            <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng công tác tiếp công dân, công tác giải quyết khiếu nại, tố cáo, thực hiện quy chế dân chủ và công tác phòng, chống tham nhũng của Trường"
-                name="slCongTacTiepCongDan"
+                label="Số lượng công tác tổ chức thực hiện các chương trình, kế hoạch thanh tra, pháp chế định kỳ, đột xuất"
+                name="soLuongToChucThanhTra"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng công tác tiếp công dân, công tác giải quyết khiếu nại, tố cáo, thực hiện quy chế dân chủ và công tác phòng, chống tham nhũng của Trường',
+                      'Vui lòng nhập số lượng công tác tổ chức thực hiện các chương trình, kế hoạch thanh tra, pháp chế định kỳ, đột xuất',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
-            <Col xs={24} md={24}>
+            <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng vụ xác minh tính pháp lý của văn bằng, chứng chỉ theo quy định về quy trình xác minh văn bằng, chứng chỉ"
-                name="slXacMinhVanBang"
+                label="Số lượng công tác tiếp công dân, công tác giải quyết khiếu nại, tố cáo, thực hiện quy chế dân chủ"
+                name="soLuongCongTacQuyCheDanChu"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng xác minh tính pháp lý của văn bằng, chứng chỉ theo quy định về quy trình xác minh văn bằng, chứng chỉ',
+                      'Vui lòng nhập số lượng công tác tiếp công dân, công tác giải quyết khiếu nại, tố cáo, thực hiện quy chế dân chủ',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng công tác phòng chống tham nhũng của Trường"
+                name="soLuongCongTacChongThamNhung"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng công tác phòng chống tham nhũng của Trường',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng vụ xác minh tính pháp lý của văn bằng theo quy định về quy trình xác minh văn bằng, chứng chỉ"
+                name="soLuongXacMinhVanBang"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng vụ xác minh tính pháp lý của văn bằng theo quy định về quy trình xác minh văn bằng, chứng chỉ',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng vụ xác minh tính pháp lý của chứng chỉ theo quy định về quy trình xác minh văn bằng, chứng chỉ"
+                name="soLuongXacMinhChungChi"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập Số lượng vụ xác minh tính pháp lý của chứng chỉ theo quy định về quy trình xác minh văn bằng, chứng chỉ',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
               </Form.Item>
             </Col>
           </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
         </>
       ),
     },

@@ -17,6 +17,13 @@ const PhongTCKT: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -73,49 +80,132 @@ const PhongTCKT: React.FC = () => {
           <Row gutter={[16, 16]}>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Thống kê thu học phí và các khoản phải nộp của người học; theo dõi các hợp đồng dịch vụ trong Trường"
-                name="tkThuHocPhi"
+                label="Số liệu tổng học phí của người học phải nộp"
+                name="tongHPPhaiNop"
                 rules={[
                   {
                     required: true,
-                    message:
-                      'Vui lòng nhập thống kê thu học phí và các khoản phải nộp của người học; theo dõi các hợp đồng dịch vụ trong Trường',
+                    message: 'Vui lòng nhập số liệu tổng học phí của người học phải nộp',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Báo cáo tài chính năm và báo cáo quyết toán theo quy định tài chính"
-                name="bcTaiChinh"
+                label="Số liệu tổng học phí của người học đã nộp"
+                name="tongHPDaNop"
                 rules={[
                   {
                     required: true,
-                    message:
-                      'Vui lòng nhập báo cáo tài chính năm và báo cáo quyết toán theo quy định tài chính',
+                    message: 'Vui lòng nhập số liệu tổng học phí của người học đã nộp',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Thống kê định mức kinh tế kỹ thuật"
-                name="tkDinhMucKTKT"
+                label="Số liệu tổng các khoản khác của người học phải nộp"
+                name="tongKhoanKhacPhaiNop"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập thống kê định mức kinh tế kỹ thuật',
+                    message: 'Vui lòng nhập số liệu tổng các khoản khác của người học phải nộp',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số liệu tổng các khoản khác của người học đã nộp"
+                name="tongKhoanKhacDaNop"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số liệu tổng các khoản khác của người học đã nộp',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số liệu tổng các hợp đồng dịch vụ trong Trường"
+                name="tongHopDongDV"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số liệu tổng các hợp đồng dịch vụ trong Trường',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số liệu các báo cáo tài chính năm theo quy định tài chính"
+                name="baoCaoTaiChinhNam"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số liệu các báo cáo tài chính năm theo quy định tài chính',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số liệu các báo cáo quyết toán theo quy định tài chính"
+                name="baoCaoQuyetToan"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số liệu các báo cáo quyết toán theo quy định tài chính',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số liệu thống kê định mức kinh tế kỹ thuật"
+                name="thongKeDinhMuc"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số liệu thống kê định mức kinh tế kỹ thuật',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
               </Form.Item>
             </Col>
           </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
         </>
       ),
     },

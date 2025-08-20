@@ -17,6 +17,13 @@ const PhongHCTH: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -74,133 +81,148 @@ const PhongHCTH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng văn bản đến"
-                name="slVanBanDen"
+                name="soLuongVanBanDen"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng văn bản đến',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng văn bản đi"
-                name="slVanBanDi"
+                name="soLuongVanBanDi"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng văn bản đi',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng văn bản mật"
-                name="slVanBanMat"
+                name="soLuongVanBanMat"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng văn bản mật',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng chứng thực - sao y các văn bản giấy tờ của Nhà trường"
-                name="slChungThucSaoY"
+                name="soLuongChungThuc"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng chứng thực - sao y các văn bản giấy tờ của Nhà trường',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng cấp phát văn bằng - chứng chỉ của Trường"
-                name="slCapPhatVanBang"
+                name="soLuongCapPhatVanBang"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng cấp phát văn bằng - chứng chỉ của Trường',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng các báo cáo về công tác hành chính, quản trị định kỳ - đột xuất"
-                name="slBaoCaoHanhChinh"
+                name="soLuongBaoCao"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng các báo cáo về công tác hành chính, quản trị định kỳ - đột xuất',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng định mức sử dụng văn phòng phẩm"
-                name="slDinhMucVanPhongPham"
+                name="soLuongDinhMucVPP"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng định mức sử dụng văn phòng phẩm',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hồ sơ lưu trữ, tài liệu lưu trữ tại Trường"
-                name="slHoSoLuuTru"
+                name="soLuongHSLuuTruTaiTruong"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng hồ sơ lưu trữ, tài liệu lưu trữ tại Trường',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hồ sơ lưu trữ, tài liệu lưu trữ nộp kho lưu trữ"
-                name="slHoSoLuuTruKho"
+                name="soLuongHSLuuTru"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng hồ sơ lưu trữ, tài liệu lưu trữ nộp kho lưu trữ',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
           </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
         </>
       ),
     },

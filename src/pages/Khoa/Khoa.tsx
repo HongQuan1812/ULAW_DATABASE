@@ -32,6 +32,13 @@ const Khoa: React.FC = () => {
     return true;
   };
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -85,35 +92,52 @@ const Khoa: React.FC = () => {
     {
       title: 'Thống kê số lượng giảng viên và người lao động',
       content: (
-        <Row gutter={[16, 16]}>
-          <Col xs={24} md={8}>
-            <Form.Item
-              label="Số lượng giảng viên cơ hữu"
-              name="slGVCoHuu"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng giảng viên cơ hữu' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={8}>
-            <Form.Item
-              label="Số lượng giảng viên thỉnh giảng"
-              name="slGVThinhGiang"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng giảng viên thỉnh giảng' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={8}>
-            <Form.Item
-              label="Số lượng người lao động"
-              name="slNguoiLaoDong"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng người lao động' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-        </Row>
+        <>
+          <Row gutter={[16, 16]}>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng giảng viên cơ hữu"
+                name="gVCoHuu"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số lượng giảng viên cơ hữu' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng giảng viên thỉnh giảng"
+                name="gVThinhGiang"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số lượng giảng viên thỉnh giảng' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng người lao động"
+                name="nguoiLaoDong"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số lượng người lao động' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
+        </>
       ),
     },
     {
@@ -124,7 +148,7 @@ const Khoa: React.FC = () => {
             <Col xs={24} md={24}>
               <Form.Item
                 label="Danh mục ngành"
-                name="DanhMucNganh"
+                name="danhMucNganh"
                 rules={[{ required: true, message: 'Vui lòng chọn danh mục ngành' }]}
               >
                 <Checkbox.Group style={{ marginLeft: 12, marginTop: 5 }}>
@@ -154,9 +178,12 @@ const Khoa: React.FC = () => {
               <Form.Item
                 label="Tổng số bộ môn của Khoa"
                 name="tongBoMon"
-                rules={[{ required: true, message: 'Vui lòng nhập tổng số bộ môn của Khoa' }]}
+                rules={[
+                  { required: true, message: 'Vui lòng nhập tổng số bộ môn của Khoa' },
+                  ...numberRule,
+                ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={24}>
@@ -184,6 +211,7 @@ const Khoa: React.FC = () => {
           <div className={styles.noteContainer}>
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
               <li>
                 <sup className={styles.sup}>(1)</sup> File dạng <b>EXCEL</b> bao gồm các cột:
               </li>
@@ -209,95 +237,119 @@ const Khoa: React.FC = () => {
     {
       title: 'Kế hoạch của Khoa',
       content: (
-        <Row gutter={[16, 16]}>
-          <Col xs={24} md={12}>
-            <Form.Item
-              label="Tổng số chương trình cần cải tiến"
-              name="tsCTCaiTien"
-              rules={[
-                {
-                  required: true,
-                  message: 'Vui lòng nhập số tổng số chương trình cần cải tiến',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={12}>
-            <Form.Item
-              label="Tổng số chương trình đào tạo xây dựng mới"
-              name="tsCTMoi"
-              rules={[
-                {
-                  required: true,
-                  message: 'Vui lòng nhập tổng số chương trình đào tạo xây dựng mới',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={12}>
-            <Form.Item
-              label="Tổng số tài liệu, giáo trình cần chỉnh sửa"
-              name="tsTLChinhSua"
-              rules={[
-                {
-                  required: true,
-                  message: 'Vui lòng nhập tổng số tài liệu, giáo trình cần chỉnh sửa',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={12}>
-            <Form.Item
-              label="Tổng số tài liệu, giáo trình biên soạn mới"
-              name="tsTLMoi"
-              rules={[
-                {
-                  required: true,
-                  message: 'Vui lòng nhập tổng số tài liệu, giáo trình biên soạn mới',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-        </Row>
+        <>
+          <Row gutter={[16, 16]}>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Tổng số chương trình cần cải tiến"
+                name="cTrinhCaiTien"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số tổng số chương trình cần cải tiến',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Tổng số chương trình đào tạo xây dựng mới"
+                name="cTrinhXayDungMoi"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập tổng số chương trình đào tạo xây dựng mới',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Tổng số tài liệu, giáo trình cần chỉnh sửa"
+                name="taiLieuCanSua"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập tổng số tài liệu, giáo trình cần chỉnh sửa',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Tổng số tài liệu, giáo trình biên soạn mới"
+                name="taiLieuSoanMoi"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập tổng số tài liệu, giáo trình biên soạn mới',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
+        </>
       ),
     },
     {
       title: 'Kế hoạch về nhân sự của Khoa',
       content: (
-        <Row gutter={[16, 16]}>
-          <Col xs={24} md={12}>
-            <Form.Item
-              label="Số lượng giảng viên cần đào tạo, bồi dưỡng, nâng cao trình độ chuyên môn"
-              name="slDTGV"
-              rules={[
-                {
-                  required: true,
-                  message:
-                    'Vui lòng nhập số lượng giảng viên cần đào tạo, bồi dưỡng, nâng cao trình độ chuyên môn',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={12}>
-            <Form.Item
-              label="Số lượng giảng viên cần tuyển"
-              name="slGVCanTuyen"
-              rules={[{ required: true, message: 'Vui lòng nhập số lượng giảng viên cần tuyển' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-        </Row>
+        <>
+          <Row gutter={[16, 16]}>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng giảng viên cần đào tạo, bồi dưỡng, nâng cao trình độ chuyên môn"
+                name="gVCanDaoTao"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng giảng viên cần đào tạo, bồi dưỡng, nâng cao trình độ chuyên môn',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng giảng viên cần tuyển"
+                name="gVCanTuyen"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số lượng giảng viên cần tuyển' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
+        </>
       ),
     },
   ];

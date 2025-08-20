@@ -17,6 +17,13 @@ const PhongTTQHDN: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -74,43 +81,46 @@ const PhongTTQHDN: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng truyền thông thương hiệu ULAW"
-                name="slTruyenThongThuongHieu"
+                name="soLuongTruyenThongThuongHieu"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng truyền thông thương hiệu ULAW',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng hình ảnh thương hiệu"
-                name="slHinhAnhThuongHieu"
+                name="soLuongHinhAnhThuongHieu"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng hình ảnh thương hiệu',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng khủng hoảng truyền thông"
-                name="slKhungHoangTruyenThong"
+                name="soLuongKhungHoangTruyenThong"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng khủng hoảng truyền thông',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -121,65 +131,70 @@ const PhongTTQHDN: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="slKhaoSatViecLam"
+                name="soLuongKhaoSatViecLam"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng khảo sát tình trạng việc làm của sinh viên sau khi tốt nghiệp',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng chương trình thực tập, kiến tập theo nhu cầu của doanh nghiệp"
-                name="slChuongTrinhThucTap"
+                name="soLuongChuongTrinhThucTap"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng chương trình thực tập, kiến tập theo nhu cầu của doanh nghiệp',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng hoạt động chăm sóc người học được thực hiện"
-                name="slHoatDongChamSoc"
+                name="soLuongHoatDongChamSoc"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng hoạt động chăm sóc người học được thực hiện',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng Cựu sinh viên (Alumni ULAW)"
-                name="slCuuSinhVien"
+                name="soLuongCuuSinhVien"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng Cựu sinh viên (Alumni ULAW)',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
           </Row>
           <div className={styles.noteContainer}>
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
               <li>
                 <sup className={styles.sup}>(1)</sup> Theo dõi, đánh giá thông tin phản hồi của các
                 tổ chức, cá nhân sử dụng lao động về khả năng đáp ứng yêu cầu công việc của người

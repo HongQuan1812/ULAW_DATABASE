@@ -17,6 +17,13 @@ const PhongTVTS: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -79,16 +86,17 @@ const PhongTVTS: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="slChienLuocKeHoach"
+                name="soLuongChienLuocKeHoach"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng chiến lược, kế hoạch thực hiện tư vấn tuyển sinh, hướng nghiệp',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -99,16 +107,17 @@ const PhongTVTS: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="slCongTacToChuc"
+                name="soLuongCongTacToChuc"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng công tác tổ chức thực hiện tư vấn tuyển sinh, hướng nghiệp',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -119,16 +128,17 @@ const PhongTVTS: React.FC = () => {
                     <sup className={styles.sup}>(2)</sup>
                   </>
                 }
-                name="slChienLuocKeHoachTruyenThong"
+                name="soLuongChienLuocKeHoachTruyenThong"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng chiến lược, kế hoạch thực hiện các loại hình truyền thống',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -139,50 +149,54 @@ const PhongTVTS: React.FC = () => {
                     <sup className={styles.sup}>(2)</sup>
                   </>
                 }
-                name="slCongTacToChucTruyenThong"
+                name="soLuongCongTacToChucTruyenThong"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng công tác tổ chức thực hiện các loại hình truyền thông',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng lượt tư vấn tuyển sinh qua các đợt"
-                name="slLuotTuVanTuyenSinh"
+                name="soLuongLuotTuVanTuyenSinh"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng lượt tư vấn tuyển sinh qua các đợt',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng hoạt động chăm sóc người học được thực hiện"
-                name="slHoatDongChamSoc"
+                name="soLuongHoatDongChamSoc"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng hoạt động chăm sóc người học được thực hiện',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
           </Row>
           <div className={styles.noteContainer}>
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
               <li>
                 <sup className={styles.sup}>(1)</sup> Dành cho các trình độ, các chương trình và
                 loại hình đào tạo của Trường

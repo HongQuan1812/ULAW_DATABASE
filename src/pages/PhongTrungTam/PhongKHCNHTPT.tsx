@@ -17,6 +17,13 @@ const PhongKHCNHTPT: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -71,125 +78,233 @@ const PhongKHCNHTPT: React.FC = () => {
       content: (
         <>
           <Row gutter={[16, 16]}>
-            <Col xs={24} md={24}>
+            <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng đề tài nghiên cứu khoa học các cấp do Trường chủ trì và/hoặc do viên chức, người lao động của Trường thực hiện"
-                name="slDeTaiNghienCuu"
+                label="Số lượng đề tài nghiên cứu khoa học các cấp do Trường chủ trì tổ chức thực hiện"
+                name="soLuongDeTaiNCKHCapTruong"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng đề tài nghiên cứu khoa học các cấp do Trường chủ trì và/hoặc do viên chức, người lao động của Trường thực hiện',
+                      'Vui lòng nhập số lượng đề tài nghiên cứu khoa học các cấp do Trường chủ trì tổ chức thực hiện',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
-            <Col xs={24} md={24}>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng đề tài nghiên cứu khoa học các cấp do viên chức, người lao động của Trường thực hiện"
+                name="soLuongDeTaiNCKHCapVienChuc"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng đề tài nghiên cứu khoa học các cấp do viên chức, người lao động của Trường thực hiện',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng chuyển giao kết quả nghiên cứu khoa học của Trường với các tổ chức, cá nhân ngoài Trường"
-                name="slChuyenGiaoKetQua"
+                name="soLuongChuyenGiaoKetQua"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng chuyển giao kết quả nghiên cứu khoa học của Trường với các tổ chức, cá nhân ngoài Trường',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
-            <Col xs={24} md={24}>
-              <Form.Item
-                label="Số liệu tiếp nhận, đề xuất lập hội đồng xét thưởng các công bố quốc tế của viên chức, người lao động và người học của Trường"
-                name="slCongBoQuocTe"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số liệu tiếp nhận, đề xuất lập hội đồng xét thưởng các công bố quốc tế của viên chức, người lao động và người học của Trường',
-                  },
-                ]}
-              >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={24}>
-              <Form.Item
-                label="Số lượng các hội thảo, hội nghị khoa học từ cấp Trường trở lên và quản lý việc thực hiện các hội thảo, hội nghị khoa học trong Trường"
-                name="slHoiThaoHoiNghi"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng các hội thảo, hội nghị khoa học từ cấp Trường trở lên và quản lý việc thực hiện các hội thảo, hội nghị khoa học trong Trường',
-                  },
-                ]}
-              >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={24}>
+            <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng các dự án hợp tác quốc tế về nghiên cứu khoa học và đào tạo"
-                name="slDuAnHopTac"
+                name="soLuongDuAnHopTacQT"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng các dự án hợp tác quốc tế về nghiên cứu khoa học và đào tạo',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
-            <Col xs={24} md={24}>
+            <Col xs={24} md={12}>
               <Form.Item
-                label="Thống kê đoàn ra, đoàn vào; số liệu viên chức, người lao động và người học của Trường ra nước ngoài dự hội thảo, hội nghị khoa học hoặc đi đào tạo, học tập ngắn hạn ở nước ngoài"
-                name="tkDoanRaDoanVao"
+                label="Số liệu tiếp nhận, đề xuất lập hội đồng xét thưởng các công bố quốc tế của viên chức, người lao động và người học của Trường"
+                name="deXuatLapHoiDong"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập thống kê đoàn ra, đoàn vào; số liệu viên chức, người lao động và người học của Trường ra nước ngoài dự hội thảo, hội nghị khoa học hoặc đi đào tạo, học tập ngắn hạn ở nước ngoài',
+                      'Vui lòng nhập số liệu tiếp nhận, đề xuất lập hội đồng xét thưởng các công bố quốc tế của viên chức, người lao động và người học của Trường',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
-            <Col xs={24} md={24}>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng các hội thảo, hội nghị khoa học từ cấp Trường trở lên và quản lý việc thực hiện các hội thảo, hội nghị khoa học trong Trường"
+                name="soLuongHoiThao"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng các hội thảo, hội nghị khoa học từ cấp Trường trở lên và quản lý việc thực hiện các hội thảo, hội nghị khoa học trong Trường',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng đoàn ra vào"
+                name="soLuongDoanRaVao"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng đoàn ra vào',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng viên chức, người lao động của Trường ra nước ngoài dự hội thảo, hội nghị khoa học"
+                name="soLuongVienChucHoiThaoNuocNgoai"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng viên chức, người lao động của Trường ra nước ngoài dự hội thảo, hội nghị khoa học',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng viên chức, người lao động của Trường đi đào tạo, học tập ngắn hạn ở nước ngoài"
+                name="soLuongVienChucDaoTaoNuocNgoai"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng viên chức, người lao động của Trường đi đào tạo, học tập ngắn hạn ở nước ngoài',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng người học của Trường ra nước ngoài dự hội thảo, hội nghị khoa học"
+                name="soLuongNguoiHocHoiThaoNuocNgoai"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng người học của Trường ra nước ngoài dự hội thảo, hội nghị khoa học',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng người học của Trường đi đào tạo, học tập ngắn hạn ở nước ngoài"
+                name="soLuongNguoiHocDaoTaoNuocNgoai"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng người học của Trường đi đào tạo, học tập ngắn hạn ở nước ngoài',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng công trình KHCN toàn Trường"
-                name="slCongTrinhKHCN"
+                name="soLuongCongTrinhKHCN"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng công trình KHCN toàn Trường',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
-            <Col xs={24} md={24}>
+            <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng ký hợp tác với các tổ chức trong và ngoài"
-                name="slKyHopTac"
+                label="Số lượng ký hợp tác với các tổ chức trong nước"
+                name="soLuongHopTacTrongNuoc"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng ký hợp tác với các tổ chức trong và ngoài',
+                    message: 'Vui lòng nhập số lượng ký hợp tác với các tổ chức trong nước',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng ký hợp tác với các tổ chức ngoài nước"
+                name="soLuongHopTacNgoaiNuoc"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng ký hợp tác với các tổ chức ngoài nước',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
               </Form.Item>
             </Col>
           </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
         </>
       ),
     },
