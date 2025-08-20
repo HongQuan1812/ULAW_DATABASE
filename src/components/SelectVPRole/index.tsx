@@ -8,7 +8,7 @@ interface SelectVPRoleProps {
 }
 
 const SelectVPRole: React.FC<SelectVPRoleProps> = ({
-  placeholder = 'Chọn Chức vụ',
+  placeholder = 'Chọn chức vụ',
   value,
   onChange,
 }) => {

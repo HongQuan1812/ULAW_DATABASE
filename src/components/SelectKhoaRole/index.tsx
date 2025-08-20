@@ -8,7 +8,7 @@ interface SelectKhoaRoleProps {
 }
 
 const SelectKhoaRole: React.FC<SelectKhoaRoleProps> = ({
-  placeholder = 'Chọn Chức vụ',
+  placeholder = 'Chọn chức vụ',
   value,
   onChange,
 }) => {
