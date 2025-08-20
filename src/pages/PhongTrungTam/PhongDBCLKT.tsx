@@ -17,6 +17,13 @@ const PhongDBCLKT: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -74,61 +81,65 @@ const PhongDBCLKT: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng kế hoạch đảm bảo chất lượng của Trường được thực hiện"
-                name="slKeHoachDBCL"
+                name="keHoachDBCLThucHien"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng kế hoạch đảm bảo chất lượng của Trường được thực hiện',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng kế hoạch đảm bảo chất lượng của Trường được rà soát, điều chỉnh"
-                name="slKeHoachRaoSoat"
+                name="keHoachDBCLRaSoat"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng kế hoạch đảm bảo chất lượng của Trường được rà soát, điều chỉnh',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng kế hoạch đảm bảo chất lượng của Trường được tổng kết"
-                name="slKeHoachTongKet"
+                name="keHoachDBCLTongKet"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng kế hoạch đảm bảo chất lượng của Trường được tổng kết',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng kế hoạch khảo sát thuộc chức năng, nhiệm vụ của đơn vị"
-                name="slKeHoachKhaoSat"
+                name="keHoachKhaoSat"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng kế hoạch khảo sát thuộc chức năng, nhiệm vụ của đơn vị',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -139,15 +150,16 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="slKeHoachCaiTien"
+                name="keHoachCaiTien"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng kế hoạch cải tiến cấp cơ sở giáo dục',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -158,45 +170,48 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="slKeHoachCaiTienCTDT"
+                name="keHoachCaiTienCTDT"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng kế hoạch cải tiến cấp chương trình đào tạo',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hệ thống văn bản về đảm bảo chất lượng của Trường được cập nhật"
-                name="slVanBanDBCL"
+                name="vanBanDBCL"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng hệ thống văn bản về đảm bảo chất lượng của Trường được cập nhật',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hội thảo, tập huấn, trao đổi kinh nghiệm giảng dạy cho giảng viên mới"
-                name="slHoiThaoTapHuan"
+                name="hoiThaoGiangDay"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng hội thảo, tập huấn, trao đổi kinh nghiệm giảng dạy cho giảng viên mới',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -207,34 +222,56 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(2)</sup>
                   </>
                 }
-                name="slHoiThaoHoiNghi"
+                name="soLuongHoiThao"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng hội thảo, hội nghị, tọa đàm cấp Trường',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label={
                   <>
-                    Số lượng văn bản hợp tác trong nước và ngoài nước
+                    Số lượng văn bản hợp tác trong nước
                     <sup className={styles.sup}>(3)</sup>
                   </>
                 }
-                name="slVanBanHopTac"
+                name="soLuongVanBanHopTacTrongNuoc"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng văn bản hợp tác trong nước và ngoài nước',
+                    message: 'Vui lòng nhập số lượng văn bản hợp tác trong nước',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label={
+                  <>
+                    Số lượng văn bản hợp tác ngoài nước
+                    <sup className={styles.sup}>(3)</sup>
+                  </>
+                }
+                name="soLuongVanBanHopTacNgoaiNuoc"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng văn bản hợp tác ngoài nước',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -245,15 +282,16 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(4)</sup>
                   </>
                 }
-                name="slDeThiKetThuc"
+                name="soLuongDeThi"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng đề thi kết thúc học phần được in/sao',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -264,44 +302,47 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(4)</sup>
                   </>
                 }
-                name="slCanBoCoiThi"
+                name="soLuongCanBoCoiThi"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng cán bộ coi thi kết thúc học phần được điều phối',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng cán bộ coi thi vi phạm quy chế"
-                name="slCanBoViPham"
+                name="soLuongCanBoViPham"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng cán bộ coi thi vi phạm quy chế',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng sinh viên vi phạm quy chế"
-                name="slSinhVienViPham"
+                name="soLuongSVViPham"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng sinh viên vi phạm quy chế',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -312,15 +353,16 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(4)</sup>
                   </>
                 }
-                name="slCanBoCoiThi"
+                name="soLuongBaiThiDuocCham"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng bài thi được chấm',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -331,29 +373,31 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(4)</sup>
                   </>
                 }
-                name="slCanBoCoiThi"
+                name="soLuongBaiThiQuanLy"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng bài thi được quản lý',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng giảng viên chấm thi vi phạm quy chế"
-                name="slGiangVienChamThiViPham"
+                name="soLuongGVChamThiViPham"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng giảng viên chấm thi vi phạm quy chế',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -364,22 +408,24 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(5)</sup>
                   </>
                 }
-                name="slBuoiTapHuan"
+                name="soLuongBuoiTapHuan"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng buổi tập huấn công tác coi thi kết thúc học phần',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
           </Row>
           <div className={styles.noteContainer}>
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
               <li>
                 <sup className={styles.sup}>(1)</sup> Theo khuyến nghị của các Đoàn Đánh giá ngoài
               </li>

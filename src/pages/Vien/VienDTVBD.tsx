@@ -17,6 +17,13 @@ const VienDTVBD: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -79,15 +86,16 @@ const VienDTVBD: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="slKhoaNH"
+                name="soLuongKhoaNganHan"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng khóa học ngắn hạn',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -98,71 +106,143 @@ const VienDTVBD: React.FC = () => {
                     <sup className={styles.sup}>(2)</sup>
                   </>
                 }
-                name="slNhanSu"
+                name="soLuongNhanSu"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng nhân sự được đào tạo',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={24}>
-              <Form.Item
-                label="Số lượng cơ quan, doanh nghiệp, tổ chức và cá nhân được đào tạo, bồi dưỡng, tập huấn, nâng cao kiến thức pháp luật, kỹ năng hành chính, kỹ năng chuyên môn nghiệp vụ"
-                name="slKNCMNV"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng cơ quan, doanh nghiệp, tổ chức và cá nhân được đào tạo, bồi dưỡng, tập huấn, nâng cao kiến thức pháp luật, kỹ năng hành chính, kỹ năng chuyên môn nghiệp vụ',
-                  },
-                ]}
-              >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng nhu cầu được đào tạo, bồi dưỡng ngoại ngữ, ngoại ngữ pháp lý, tin học"
-                name="slNhuCau"
+                label="Số lượng cơ quan, doanh nghiệp, tổ chức được đào tạo, bồi dưỡng, tập huấn, nâng cao kiến thức pháp luật, kỹ năng hành chính, kỹ năng chuyên môn nghiệp vụ"
+                name="soLuongCoQuanDuocDaoTao"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng nhu cầu được đào tạo, bồi dưỡng ngoại ngữ, ngoại ngữ pháp lý, tin học',
+                      'Vui lòng nhập số lượng cơ quan, doanh nghiệp, tổ chức được đào tạo, bồi dưỡng, tập huấn, nâng cao kiến thức pháp luật, kỹ năng hành chính, kỹ năng chuyên môn nghiệp vụ',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng cá nhân được đào tạo, bồi dưỡng, tập huấn, nâng cao kiến thức pháp luật, kỹ năng hành chính, kỹ năng chuyên môn nghiệp vụ"
+                name="soLuongCaNhanDuocDaoTao"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng cá nhân được đào tạo, bồi dưỡng, tập huấn, nâng cao kiến thức pháp luật, kỹ năng hành chính, kỹ năng chuyên môn nghiệp vụ',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng nhu cầu được đào tạo, bồi dưỡng ngoại ngữ"
+                name="soLuongNhuCauNN"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng nhu cầu được đào tạo, bồi dưỡng ngoại ngữ',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng nhu cầu được đào tạo, bồi dưỡng ngoại ngữ pháp lý"
+                name="soLuongNhuCauNNPL"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng nhu cầu được đào tạo, bồi dưỡng ngoại ngữ pháp lý',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng nhu cầu được đào tạo, bồi dưỡng tin học"
+                name="soLuongNhuCauTH"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng nhu cầu được đào tạo, bồi dưỡng tin học',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
                 label={
                   <>
-                    Số lượng công tác tổ chức kiểm tra, thi, đánh giá năng lực ngoại ngữ, tin học
+                    Số lượng công tác tổ chức kiểm tra, thi, đánh giá năng lực ngoại ngữ
                     <sup className={styles.sup}>(3)</sup>
                   </>
                 }
-                name="slToChuc"
+                name="soLuongToChucThiNN"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng công tác tổ chức kiểm tra, thi, đánh giá năng lực ngoại ngữ, tin học',
+                      'Vui lòng nhập số lượng công tác tổ chức kiểm tra, thi, đánh giá năng lực ngoại ngữ',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label={
+                  <>
+                    Số lượng công tác tổ chức kiểm tra, thi, đánh giá năng lực tin học
+                    <sup className={styles.sup}>(3)</sup>
+                  </>
+                }
+                name="soLuongToChucThiTH"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng công tác tổ chức kiểm tra, thi, đánh giá năng lực tin học',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
               </Form.Item>
             </Col>
           </Row>
           <div className={styles.noteContainer}>
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
               <li>
                 <sup className={styles.sup}>(1)</sup> Dành cho cơ quan, doanh nghiệp, tổ chức
               </li>

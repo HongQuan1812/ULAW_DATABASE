@@ -17,6 +17,13 @@ const TrungtamHL: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -70,189 +77,253 @@ const TrungtamHL: React.FC = () => {
     {
       title: 'Hình thức học liệu - Sách của Trường',
       content: (
-        <Row gutter={[16, 16]}>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số tên giáo trình"
-              name="soTenGiaoTrinh"
-              rules={[{ required: true, message: 'Vui lòng nhập số tên giáo trình' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số cuốn của giáo trình"
-              name="soCuonGiaoTrinh"
-              rules={[{ required: true, message: 'Vui lòng nhập số cuốn của giáo trình' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số tên của tập bài giảng"
-              name="soTenTapBaiGiang"
-              rules={[{ required: true, message: 'Vui lòng nhập số tên của tập bài giảng' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số cuốn của tập bài giảng"
-              name="soCuonTapBaiGiang"
-              rules={[{ required: true, message: 'Vui lòng nhập số cuốn của tập bài giảng' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số tên của sách tình huống"
-              name="soTenSachTinhHuong"
-              rules={[{ required: true, message: 'Vui lòng nhập số tên của sách tình huống' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số cuốn của sách tình huống"
-              name="soCuonSachTinhHuong"
-              rules={[
-                { required: true, message: 'Vui lòng nhập tổng số cuốn của sách tình huống' },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số tên của sách chuyên khảo"
-              name="soTenSachChuyenKhao"
-              rules={[
-                { required: true, message: 'Vui lòng nhập tổng số tên của sách chuyên khảo' },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số cuốn của sách chuyên khảo"
-              name="soCuonSachChuyenKhao"
-              rules={[{ required: true, message: 'Vui lòng nhập số cuốn của sách chuyên khảo' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số tên của sách tham khảo"
-              name="soTenSachThamKhao"
-              rules={[{ required: true, message: 'Vui lòng nhập số tên của sách tham khảo' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số cuốn của sách tham khảo"
-              name="soCuonSachThamKhao"
-              rules={[{ required: true, message: 'Vui lòng nhập số cuốn của sách tham khảo' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-        </Row>
+        <>
+          <Row gutter={[16, 16]}>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số tên giáo trình"
+                name="soTenGiaoTrinh"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số tên giáo trình' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số cuốn của giáo trình"
+                name="soCuonGiaoTrinh"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số cuốn của giáo trình' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số tên của tập bài giảng"
+                name="soTenTapBaiGiang"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số tên của tập bài giảng' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số cuốn của tập bài giảng"
+                name="soCuonTapBaiGiang"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số cuốn của tập bài giảng' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số tên của sách tình huống"
+                name="soTenSachTinhHuong"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số tên của sách tình huống' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số cuốn của sách tình huống"
+                name="soCuonSachTinhHuong"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập tổng số cuốn của sách tình huống' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số tên của sách chuyên khảo"
+                name="soTenSachChuyenKhao"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập tổng số tên của sách chuyên khảo' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số cuốn của sách chuyên khảo"
+                name="soCuonSachChuyenKhao"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số cuốn của sách chuyên khảo' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số tên của sách tham khảo"
+                name="soTenSachThamKhao"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số tên của sách tham khảo' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số cuốn của sách tham khảo"
+                name="soCuonSachThamKhao"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số cuốn của sách tham khảo' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
+        </>
       ),
     },
     {
       title: 'Hình thức học liệu - Sách ký gửi',
       content: (
-        <Row gutter={[16, 16]}>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số tên sách ký gửi của giảng viên"
-              name="soTenSachKyGuiGiangVien"
-              rules={[
-                { required: true, message: 'Vui lòng nhập số tên sách ký gửi của giảng viên' },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số cuốn sách ký gửi của giảng viên"
-              name="soCuonSachKyGuiGiangVien"
-              rules={[
-                { required: true, message: 'Vui lòng nhập số cuốn sách ký gửi của giảng viên' },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số tên sách ký gửi của tổ chức/ cá nhân khác"
-              name="soTenSachKyGuiToChucCaNhan"
-              rules={[
-                {
-                  required: true,
-                  message: 'Vui lòng nhập số tên sách ký gửi của tổ chức/ cá nhân khác',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Số cuốn sách ký gửi của tổ chức/ cá nhân khác"
-              name="soCuonSachKyGuiToChucCaNhan"
-              rules={[
-                {
-                  required: true,
-                  message: 'Vui lòng nhập số cuốn sách ký gửi của tổ chức/ cá nhân khác',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-        </Row>
+        <>
+          <Row gutter={[16, 16]}>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số tên sách ký gửi của giảng viên"
+                name="soTenSachKyGuiGiangVien"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số tên sách ký gửi của giảng viên' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số cuốn sách ký gửi của giảng viên"
+                name="soCuonSachKyGuiGiangVien"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số cuốn sách ký gửi của giảng viên' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số tên sách ký gửi của tổ chức khác"
+                name="soTenSachToChucKhac"
+                rules={numberRule}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số tên sách ký gửi của cá nhân khác"
+                name="soTenSachCaNhanKhac"
+                rules={numberRule}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số cuốn sách ký gửi của tổ chức khác"
+                name="soCuonSachToChucKhac"
+                rules={numberRule}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số cuốn sách ký gửi của cá nhân khác"
+                name="soCuonSachCaNhanKhac"
+                rules={numberRule}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
+        </>
       ),
     },
     {
       title: 'Thông tin doanh thu và thù lao phát hành (đvt: VNĐ)',
       content: (
-        <Row gutter={[16, 16]}>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Doanh thu từ sách của Trường"
-              name="doanhThuSachTruong"
-              rules={[
-                {
-                  required: true,
-                  message: 'Vui lòng nhập doanh thu từ sách của Trường',
-                },
-              ]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={6}>
-            <Form.Item
-              label="Thù lao từ sách ký gửi"
-              name="thuLaoSachKyGui"
-              rules={[{ required: true, message: 'Vui lòng nhập thù lao từ sách ký gửi' }]}
-            >
-              <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
-            </Form.Item>
-          </Col>
-        </Row>
+        <>
+          <Row gutter={[16, 16]}>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Doanh thu từ sách của Trường"
+                name="doanhThuSachTruong"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập doanh thu từ sách của Trường',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Thù lao từ sách ký gửi"
+                name="thuLaoSachKyGui"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập thù lao từ sách ký gửi' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
+        </>
       ),
     },
   ];

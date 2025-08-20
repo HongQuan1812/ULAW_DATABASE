@@ -17,6 +17,13 @@ const PhongCTSV: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -73,78 +80,134 @@ const PhongCTSV: React.FC = () => {
           <Row gutter={[16, 16]}>
             <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng xác nhận, chứng nhận và các giấy tờ khác cho sinh viên trình độ đại học"
-                name="slChungNhan"
+                label="Số lượng các giấy tờ xác nhận, chứng nhận cho sinh viên trình độ đại học"
+                name="chungNhanSVDH"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng xác nhận, chứng nhận và các giấy tờ khác cho sinh viên trình độ đại học',
+                      'Vui lòng nhập số lượng các giấy tờ xác nhận, chứng nhận cho sinh viên trình độ đại học',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng khen thưởng, kỷ luật, cấp học bổng đối với sinh viên"
-                name="slKhenThuong"
+                label="Số lượng các giấy tờ khác cho sinh viên trình độ đại học"
+                name="giayToKhacSVDH"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng khen thưởng, kỷ luật, cấp học bổng đối với sinh viên',
+                      'Vui lòng nhập số lượng các giấy tờ khác cho sinh viên trình độ đại học',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng sinh viên được khen thưởng"
+                name="soLuongSVKhenThuong"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng sinh viên được khen thưởng',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng sinh viên bị kỷ luật"
+                name="soLuongSVKyLuat"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng sinh viên bị kỷ luật',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng sinh viên được cấp học bổng"
+                name="soLuongSVHocBong"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng sinh viên được cấp học bổng',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng giải quyết chế độ, chính sách cho sinh viên"
-                name="slCheDo"
+                name="giaiQuyetCheDo"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng giải quyết chế độ, chính sách cho sinh viên',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng đơn, thư của sinh viên"
-                name="slDon"
+                name="donThuSV"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng đơn, thư của sinh viên',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Thống kê hàng năm về sinh viên theo quy định của pháp luật"
-                name="tkSinhVien"
+                name="thongKeSV"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập thống kê hàng năm về sinh viên theo quy định của pháp luật',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
           </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
         </>
       ),
     },

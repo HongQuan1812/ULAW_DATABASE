@@ -17,6 +17,13 @@ const PhongCSVC: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -74,88 +81,187 @@ const PhongCSVC: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng đất đai"
-                name="slDatDai"
+                name="soLuongDatDai"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng đất đai',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng công trình"
-                name="slCongTrinh"
+                name="soLuongCongTrinh"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng công trình',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hệ thống hạ tầng kỹ thuật"
-                name="slHaTang"
+                name="soLuongHaTang"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng hệ thống hạ tầng kỹ thuật',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng cây xanh cảnh quan"
-                name="slCayXanh"
+                name="soLuongCayXanh"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng cây xanh cảnh quan',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng máy móc, trang thiết bị điện, nước"
-                name="slMayMoc"
+                name="soLuongMayMoc"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng máy mọc, trang thiết bị điện, nước',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
-                label="Thống kê mua sắm trang thiết bị"
-                name="tkMuaSam"
+                label={
+                  <>
+                    Số liệu đơn giá của công tác mua sắm trang thiết bị phục vụ nhu cầu của Trường
+                    <sup className={styles.sup}>(1)</sup>
+                  </>
+                }
+                name="donGiaTBHaTang"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập thống kê mua sắm trang thiết bị',
+                    message:
+                      'Vui lòng nhập số liệu đơn giá của công tác mua sắm trang thiết bị phục vụ nhu cầu của Trường',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label={
+                  <>
+                    Số liệu đơn giá của công tác mua sắm trang thiết bị phục vụ nhu cầu của Trường
+                    <sup className={styles.sup}>(2)</sup>
+                  </>
+                }
+                name="donGiaMayMoc"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số liệu đơn giá của công tác mua sắm trang thiết bị phục vụ nhu cầu của Trường',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label={
+                  <>
+                    Số liệu đơn giá các tài sản khác của Trường
+                    <sup className={styles.sup}>(3)</sup>
+                  </>
+                }
+                name="donGiaTaiSanKhac"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số liệu đơn giá các tài sản khác của Trường',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số liệu đơn giá các tài sản khác của Trường ngoài các danh mục đã nêu"
+                name="donGiaTaiSanKhacNgoaiDanhMuc"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số liệu đơn giá các tài sản khác của Trường ngoài các danh mục đã nêu',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng danh mục các cơ sở vật chất khác"
+                name="soLuongCSVCKhac"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng danh mục các cơ sở vật chất khác',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
               </Form.Item>
             </Col>
           </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+              <li>
+                <sup className={styles.sup}>(1)</sup> Hệ thống; Hạ tầng kỹ thuật
+              </li>
+              <li>
+                <sup className={styles.sup}>(2)</sup> Máy móc; Trang thiết bị
+              </li>
+              <li>
+                <sup className={styles.sup}>(3)</sup> Đất đai; Công trình; Cây xanh
+              </li>
+            </ul>
+          </div>
         </>
       ),
     },

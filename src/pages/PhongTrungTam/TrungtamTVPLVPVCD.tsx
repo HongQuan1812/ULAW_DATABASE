@@ -17,6 +17,13 @@ const TrungtamTVPLVPVCD: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -78,16 +85,17 @@ const TrungtamTVPLVPVCD: React.FC = () => {
                     Số lượng dịch vụ tư vấn pháp luật có thu phí đối với <b>cá nhân</b> có nhu cầu
                   </Typography.Text>
                 }
-                name="slDichVuTuVanCaNhanCoPhi"
+                name="soLuongDichVuCaNhan"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng dịch vụ tư vấn pháp luật có thu phí đối với cá nhân có nhu cầu',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -97,31 +105,33 @@ const TrungtamTVPLVPVCD: React.FC = () => {
                     Số lượng dịch vụ tư vấn pháp luật có thu phí đối với <b>tổ chức</b> có nhu cầu
                   </Typography.Text>
                 }
-                name="slDichVuTuVanToChucCoPhi"
+                name="soLuongDichVuToChuc"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng dịch vụ tư vấn pháp luật có thu phí đối với tổ chức có nhu cầu',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng hỗ trợ pháp lý đối với các đối tượng được hưởng theo quy định của Pháp luật"
-                name="slHoTroPhapLy"
+                name="soLuongHoTroPhapLy"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng hỗ trợ pháp lý đối với các đối tượng được hưởng theo quy định của Pháp luật',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input type="number" />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -132,35 +142,58 @@ const TrungtamTVPLVPVCD: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="slHoatDongTuyenTruyen"
+                name="soLuongHDTuyenTruyen"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng hoạt động tuyên truyền, phổ biến pháp luật',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
                 label={
-                  <>
-                    Số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân trong và ngoài nước
+                  <Typography>
+                    Số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân <b>trong nước</b>
                     <sup className={styles.sup}>(2)</sup>
-                  </>
+                  </Typography>
                 }
-                name="slHoatDongLienKet"
+                name="soLuongHDLienKetTrongNuoc"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân trong và ngoài nước',
+                      'Vui lòng nhập số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân trong nước',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label={
+                  <Typography>
+                    Số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân <b>ngoài nước</b>
+                    <sup className={styles.sup}>(2)</sup>
+                  </Typography>
+                }
+                name="soLuongHDLienKetNgoaiNuoc"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng các hoạt động liên kết với cơ quan, đơn vị, cá nhân ngoài nước',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
               </Form.Item>
             </Col>
           </Row>

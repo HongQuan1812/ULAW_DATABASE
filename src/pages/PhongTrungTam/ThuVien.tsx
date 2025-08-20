@@ -17,6 +17,13 @@ const ThuVien: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -80,37 +87,127 @@ const ThuVien: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="slDeTaiNghienCuu"
+                name="soLuongDeTaiNghienCuu"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng đề tài nghiên cứu khoa học đã được nghiệm thu do thư viện quản lý và khai thác',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
                 label={
                   <>
-                    Số lượng đề tài nghiên cứu khoa học đã được nghiệm thu do thư viện quản lý và
-                    khai thác
+                    Số lượng đề tài dạng Giáo trình đã được nghiệm thu do thư viện quản lý và khai
+                    thác
                     <sup className={styles.sup}>(2)</sup>
                   </>
                 }
-                name="slDeTaiNghienCuuKhac"
+                name="soLuongDeTaiGiaoTrinh"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng đề tài nghiên cứu khoa học đã được nghiệm thu do thư viện quản lý và khai thác',
+                      'Vui lòng nhập số lượng đề tài dạng Giáo trình đã được nghiệm thu do thư viện quản lý và khai thác',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label={
+                  <>
+                    Số lượng đề tài dạng Tập bài giảng đã được nghiệm thu do thư viện quản lý và
+                    khai thác
+                    <sup className={styles.sup}>(2)</sup>
+                  </>
+                }
+                name="soLuongDeTaiTapBaiGiang"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng đề tài dạng Tập bài giảng đã được nghiệm thu do thư viện quản lý và khai thác',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label={
+                  <>
+                    Số lượng đề tài dạng Khóa luận đã được nghiệm thu do thư viện quản lý và khai
+                    thác
+                    <sup className={styles.sup}>(2)</sup>
+                  </>
+                }
+                name="soLuongDeTaiKhoaLuan"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng đề tài dạng Khóa luận đã được nghiệm thu do thư viện quản lý và khai thác',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label={
+                  <>
+                    Số lượng đề tài dạng Luận văn thạc sĩ luận đã được nghiệm thu do thư viện quản
+                    lý và khai thác
+                    <sup className={styles.sup}>(2)</sup>
+                  </>
+                }
+                name="soLuongDeTaiLuanVan"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng đề tài dạng Luận văn thạc sĩ luận đã được nghiệm thu do thư viện quản lý và khai thác',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label={
+                  <>
+                    Số lượng đề tài dạng Luận án tiến sĩ luận đã được nghiệm thu do thư viện quản lý
+                    và khai thác
+                    <sup className={styles.sup}>(2)</sup>
+                  </>
+                }
+                name="soLuongDeTaiLuanAn"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng đề tài dạng Luận án tiến sĩ luận đã được nghiệm thu do thư viện quản lý và khai thác',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -122,16 +219,17 @@ const ThuVien: React.FC = () => {
                     <sup className={styles.sup}>(3)</sup>
                   </Typography.Text>
                 }
-                name="slNguoiDungTruyNhapTaiCho"
+                name="soLuongNguoiDungTruyNhapTaiCho"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng người dùng truy nhập tại chỗ đến nguồn tài nguyên thông tin đa dạng',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -143,22 +241,24 @@ const ThuVien: React.FC = () => {
                     <sup className={styles.sup}>(3)</sup>
                   </Typography.Text>
                 }
-                name="slNguoiDungTruyNhapTuXa"
+                name="soLuongNguoiDungTruyNhapTuXa"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng người dùng truy từ xa chỗ đến nguồn tài nguyên thông tin đa dạng',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
           </Row>
           <div className={styles.noteContainer}>
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
               <li>
                 <sup className={styles.sup}>(1)</sup> Bao gồm giáo trình, tập bài giảng, khóa luận,
                 luận văn thạc sĩ, luận án tiến sĩ

@@ -24,7 +24,7 @@ export default {
   'menu.phong-trungtam.phong-csdl-cntt': 'Phòng CSDL & CNTT',
   'menu.vien.vien-shtt-kn-dmst': 'Viện SHTT, KN & ĐMST',
   'menu.vien.vien-lss': 'Viện LSS',
-  'menu.vien.vien-dt-bd': 'Viện ĐB & BD',
+  'menu.vien.vien-dt-bd': 'Viện ĐT & BD',
   'menu.vien.vien-dtqt': 'Viện ĐTQT',
   'menu.omni-channel.403Page': '403 Page',
   'menu.omni-channel.SearchPage': 'Search Page',

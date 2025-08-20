@@ -17,6 +17,13 @@ const VienDTQT: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -71,52 +78,109 @@ const VienDTQT: React.FC = () => {
       content: (
         <>
           <Row gutter={[16, 16]}>
-            <Col xs={24} md={24}>
+            <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng sinh viên các lớp chất lượng cao trình độ đại học hình thức đào tạo chính quy"
-                name="slSV9Q"
+                name="soLuongSVCLC"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng sinh viên các lớp chất lượng cao trình độ đại học hình thức đào tạo chính quy',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
-            <Col xs={24} md={24}>
+            <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng tổ chức chương trình học ngoại khóa, chương trình trao đổi tín chỉ có thu phí, các chương trình bồi dưỡng chứng chỉ quốc tế, chương trình thực tập cuối khóa cho sinh viên chất lượng cao"
-                name="slCTNgoaiKhoa"
+                label="Số lượng tổ chức các chương trình học ngoại khóa cho sinh viên chất lượng cao"
+                name="soLuongCTrinhNK"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng tổ chức chương trình học ngoại khóa, chương trình trao đổi tín chỉ có thu phí, các chương trình bồi dưỡng chứng chỉ quốc tế, chương trình thực tập cuối khóa cho sinh viên chất lượng cao',
+                      'Vui lòng nhập số lượng tổ chức các chương trình học ngoại khóa cho sinh viên chất lượng cao',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
-            <Col xs={24} md={24}>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng tổ chức các chương trình trao đổi tín chỉ có thu phí cho sinh viên chất lượng cao"
+                name="soLuongCTrinhTC"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng tổ chức các chương trình trao đổi tín chỉ có thu phí cho sinh viên chất lượng cao',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng tổ chức các chương trình bồi dưỡng chứng chỉ quốc tế cho sinh viên chất lượng cao"
+                name="soLuongCTrinhBDCC"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng tổ chức các chương trình bồi dưỡng chứng chỉ quốc tế cho sinh viên chất lượng cao',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng tổ chức các chương trình thực tập cuối khóa cho sinh viên chất lượng cao"
+                name="soLuongCTrinhTTCK"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng tổ chức các chương trình thực tập cuối khóa cho sinh viên chất lượng cao',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng hoạt động tư vấn du học sau đại học cho sinh viên chất lượng cao"
-                name="slTuVan"
+                name="soLuongTuVanSDH"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng hoạt động tư vấn du học sau đại học cho sinh viên chất lượng cao',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
           </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
         </>
       ),
     },

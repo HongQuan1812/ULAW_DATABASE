@@ -17,6 +17,13 @@ const VienSHTTKNDMST: React.FC = () => {
   const location = useLocation();
   const locationName = getLocationName(location.pathname);
 
+  const numberRule = [
+    {
+      pattern: /^[1-9][0-9]*$/,
+      message: 'Chỉ được nhập số nguyên',
+    },
+  ];
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
@@ -79,35 +86,57 @@ const VienSHTTKNDMST: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="slTuVan"
+                name="soLuongTuVan"
                 rules={[
                   {
                     required: true,
                     message:
                       'Vui lòng nhập số lượng hoạt động tư vấn và thiết kế các chương trình đào tạo ngắn hạn',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
                 label={
                   <>
-                    Số lượng các khóa đào tạo ngắn hạn và tập huấn
+                    Số lượng các khóa đào tạo ngắn hạn
                     <sup className={styles.sup}>(2)</sup>
                   </>
                 }
-                name="slKhoaDaoTao"
+                name="soLuongKhoaDTNganHan"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng các khóa đào tạo ngắn hạn và tập huấn',
+                    message: 'Vui lòng nhập số lượng các khóa đào tạo ngắn hạn',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label={
+                  <>
+                    Số lượng các khóa đào tạo tập huấn
+                    <sup className={styles.sup}>(2)</sup>
+                  </>
+                }
+                name="soLuongKhoaDTTapHuan"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng các khóa đào tạo tập huấn',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
               </Form.Item>
             </Col>
             <Col xs={24} md={8}>
@@ -119,15 +148,17 @@ const VienSHTTKNDMST: React.FC = () => {
                     required: true,
                     message: 'Vui lòng nhập tỷ lệ học viên tham gia khóa học tốt nghiệp',
                   },
+                  ...numberRule,
                 ]}
               >
-                <Input.TextArea autoSize={{ minRows: 1, maxRows: 3 }} />
+                <Input />
               </Form.Item>
             </Col>
           </Row>
           <div className={styles.noteContainer}>
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
               <li>
                 <sup className={styles.sup}>(1)</sup> Theo yêu cầu về sở hữu trí tuệ, đổi mới sáng
                 tạo và khởi nghiệp cho các cá nhân, đơn vị, trong và ngoài Trường có nhu cầu
