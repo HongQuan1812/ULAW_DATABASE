@@ -1,8 +1,10 @@
 import { useEffect, useState, useMemo } from 'react';
-import { Card, Row, Col, Table, Tag } from 'antd';
+import { Card, Row, Col, Table, Tag, Select, Button } from 'antd';
 import { Pie, Column, Line } from '@ant-design/plots';
-import { FullscreenOutlined, FullscreenExitOutlined } from '@ant-design/icons';
+import { FullscreenOutlined, FullscreenExitOutlined, ClearOutlined } from '@ant-design/icons';
 import styles from './index.less';
+
+const { Option } = Select;
 
 const Dashboard = () => {
   const [stats, setStats] = useState({ total: 0, completed: 0, pending: 0 });
@@ -13,6 +15,8 @@ const Dashboard = () => {
 
   const years = [2020, 2021, 2022, 2023, 2024, 2025];
   const phases = ['Giai đoạn 1', 'Giai đoạn 2'];
+
+  const currentYear = new Date().getFullYear();
 
   // Gom nhóm đơn vị ngay từ đầu
   const unitGroups: Record<string, string[]> = {
@@ -91,9 +95,6 @@ const Dashboard = () => {
     setStats({ total, completed, pending });
   }, [filtered]);
 
-  const currentYear = new Date().getFullYear();
-  const lastThreeYears = [currentYear - 2, currentYear - 1, currentYear];
-
   // Gom data theo đơn vị
   const groupedData = useMemo(() => {
     const map = new Map<
@@ -115,7 +116,6 @@ const Dashboard = () => {
   }, [filtered]);
 
   // Pie chart
-  // Pie chart (thu nhỏ: 1 pie, phóng to: nhiều pie)
   const pieData =
     expandedChart === 'pie'
       ? years.map((y) => {
@@ -130,16 +130,23 @@ const Dashboard = () => {
         })
       : [
           {
-            year: currentYear,
+            year: yearFilter === 'all' ? currentYear : yearFilter,
             data: [
               {
                 type: 'Đã nhập',
-                value: filtered.filter((u) => u.year === currentYear && u.status === 'done').length,
+                value: filtered.filter(
+                  (u) =>
+                    u.year === (yearFilter === 'all' ? currentYear : yearFilter) &&
+                    u.status === 'done',
+                ).length,
               },
               {
                 type: 'Chưa nhập',
-                value: filtered.filter((u) => u.year === currentYear && u.status === 'pending')
-                  .length,
+                value: filtered.filter(
+                  (u) =>
+                    u.year === (yearFilter === 'all' ? currentYear : yearFilter) &&
+                    u.status === 'pending',
+                ).length,
               },
             ],
           },
@@ -162,17 +169,18 @@ const Dashboard = () => {
     expandedChart === 'column'
       ? years.flatMap((year) =>
           Object.keys(unitGroups).map((category) => {
-            const doneCount = unitStatus.filter(
+            const doneCount = filtered.filter(
               (u) => u.category === category && u.year === year && u.status === 'done',
             ).length;
             return { year: String(year), category, giaiDoanDone: doneCount };
           }),
         )
       : Object.keys(unitGroups).map((category) => {
-          const doneCount = unitStatus.filter(
-            (u) => u.category === category && u.year === currentYear && u.status === 'done',
+          const selectedYear = yearFilter === 'all' ? currentYear : yearFilter;
+          const doneCount = filtered.filter(
+            (u) => u.category === category && u.year === selectedYear && u.status === 'done',
           ).length;
-          return { year: String(currentYear), category, giaiDoanDone: doneCount };
+          return { year: String(selectedYear), category, giaiDoanDone: doneCount };
         });
 
   const columnConfig = {
@@ -199,8 +207,19 @@ const Dashboard = () => {
     },
   };
 
-  // Line chart (4 lines theo category)
+  // Line chart
   const lineData = unitStatus
+    .filter((u) => {
+      const matchPhase = phaseFilter === 'all' || u.phase === phaseFilter;
+      const matchCategory = categoryFilter === 'all' || u.category === categoryFilter;
+      if (!matchPhase || !matchCategory) return false;
+      if (expandedChart === 'line') return true; 
+      if (yearFilter === 'all') {
+        return [currentYear - 2, currentYear - 1, currentYear].includes(u.year);
+      }
+      const y = Number(yearFilter);
+      return [y - 1, y, y + 1].includes(u.year);
+    })
     .reduce((acc, cur) => {
       const exist = acc.find((a) => a.period === String(cur.year) && a.category === cur.category);
       if (exist) {
@@ -214,12 +233,6 @@ const Dashboard = () => {
       }
       return acc;
     }, [] as { period: string; category: string; value: number }[])
-    .filter(
-      (d) =>
-        expandedChart === 'line'
-          ? true // fullscreen => giữ tất cả các năm
-          : lastThreeYears.includes(Number(d.period)), // nhỏ => chỉ 2 năm gần nhất
-    )
     .sort((a, b) => a.period.localeCompare(b.period));
 
   const lineConfig = {
@@ -267,44 +280,58 @@ const Dashboard = () => {
 
       {/* Filters */}
       <Card style={{ marginTop: 24 }} title="Bộ lọc">
-        <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-          <select
+        <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
+          <Select
             className={styles.selectBox}
             value={yearFilter}
-            onChange={(e) =>
-              setYearFilter(e.target.value === 'all' ? 'all' : Number(e.target.value))
-            }
+            onChange={(value) => setYearFilter(value === 'all' ? 'all' : Number(value))}
+            allowClear={false}
           >
-            <option value="all">Tất cả năm</option>
+            <Option value="all">Tất cả năm</Option>
             {years.map((y) => (
-              <option key={y} value={y}>{`Năm ${y}`}</option>
+              <Option key={y} value={y}>{`Năm ${y}`}</Option>
             ))}
-          </select>
+          </Select>
 
-          <select
+          <Select
             className={styles.selectBox}
             value={phaseFilter}
-            onChange={(e) => setPhaseFilter(e.target.value)}
+            onChange={(value) => setPhaseFilter(value)}
+            allowClear={false}
           >
-            <option value="all">Tất cả giai đoạn</option>
+            <Option value="all">Tất cả giai đoạn</Option>
             {phases.map((p) => (
-              <option key={p} value={p}>
+              <Option key={p} value={p}>
                 {p}
-              </option>
+              </Option>
             ))}
-          </select>
+          </Select>
 
-          <select
+          <Select
             className={styles.selectBox}
             value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
+            onChange={(value) => setCategoryFilter(value)}
+            allowClear={false}
           >
-            <option value="all">Tất cả đơn vị</option>
-            <option value="Phòng - Trung tâm">Phòng - Trung tâm</option>
-            <option value="Khoa">Khoa</option>
-            <option value="Viện">Viện</option>
-            <option value="Văn phòng">Văn phòng</option>
-          </select>
+            <Option value="all">Tất cả đơn vị</Option>
+            <Option value="Phòng - Trung tâm">Phòng - Trung tâm</Option>
+            <Option value="Khoa">Khoa</Option>
+            <Option value="Viện">Viện</Option>
+            <Option value="Văn phòng">Văn phòng</Option>
+          </Select>
+
+          {/* Nút Clear filter */}
+          <Button
+            icon={<ClearOutlined />}
+            className={styles.clearFilterBtn}
+            onClick={() => {
+              setYearFilter('all');
+              setPhaseFilter('all');
+              setCategoryFilter('all');
+            }}
+          >
+            Xóa bộ lọc
+          </Button>
         </div>
       </Card>
 

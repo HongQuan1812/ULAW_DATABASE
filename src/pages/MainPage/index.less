@@ -13,6 +13,37 @@
   }
 }
 
+.selectBox {
+  flex: 1;
+  min-width: 25%;
+}
+
+.clearFilterBtn {
+  color: #1d39c4;
+  font-weight: 500;
+  background-color: #f6f9ff;
+  border: 1px solid #91caff;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #1d39c4;
+    background-color: #e6f4ff;
+    border-color: #69b1ff;
+  }
+
+  &:active {
+    color: #1d39c4;
+    background-color: #e6f4ff;
+    border-color: #69b1ff;
+  }
+
+  &:focus {
+    color: #10239e;
+    background-color: #d4eaff;
+    border-color: #4096ff;
+  }
+}
+
 /* Title */
 .title {
   margin-bottom: 16px;
@@ -37,15 +68,6 @@
 /* Plots Row */
 .plotsRow {
   margin-top: 20px;
-}
-
-/* Select box */
-.selectBox {
-  padding: 6px 10px;
-  font-size: 14px;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
 }
 
 /* Chart box */
