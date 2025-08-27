@@ -177,6 +177,7 @@ export interface BCPhongKHCNHTPTPayLoad {
   soLuongDahtqtVeNckhvdt: number;
   thongKeDoanRa: number;
   thongKeDoanVao: number;
+  soLuongCtKhcn: number;
   soLuongKyHopTacTctn: number;
   soLuongKyHopTacTcnn: number;
 }

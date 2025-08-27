@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCPhongKHCNHTPT } from '@/constants/payloadMapperPhongKHCNHTPT';
 
 const PhongKHCNHTPT: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -28,12 +29,12 @@ const PhongKHCNHTPT: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -81,7 +82,7 @@ const PhongKHCNHTPT: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng đề tài nghiên cứu khoa học các cấp do Trường chủ trì tổ chức thực hiện"
-                name="soLuongDeTaiNCKHCapTruong"
+                name="soLuongDtnckhccTruong"
                 rules={[
                   {
                     required: true,
@@ -97,7 +98,7 @@ const PhongKHCNHTPT: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng đề tài nghiên cứu khoa học các cấp do viên chức, người lao động của Trường thực hiện"
-                name="soLuongDeTaiNCKHCapVienChuc"
+                name="soLuongDtnckhccVcNld"
                 rules={[
                   {
                     required: true,
@@ -113,7 +114,7 @@ const PhongKHCNHTPT: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng chuyển giao kết quả nghiên cứu khoa học của Trường với các tổ chức, cá nhân ngoài Trường"
-                name="soLuongChuyenGiaoKetQua"
+                name="soLuongChuyenGiaoKqnckk"
                 rules={[
                   {
                     required: true,
@@ -129,7 +130,7 @@ const PhongKHCNHTPT: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng các dự án hợp tác quốc tế về nghiên cứu khoa học và đào tạo"
-                name="soLuongDuAnHopTacQT"
+                name="soLuongDahtqtVeNckhvdt"
                 rules={[
                   {
                     required: true,
@@ -145,7 +146,7 @@ const PhongKHCNHTPT: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số liệu tiếp nhận, đề xuất lập hội đồng xét thưởng các công bố quốc tế của viên chức, người lao động và người học của Trường"
-                name="deXuatLapHoiDong"
+                name="soLieuHdxtCbqt"
                 rules={[
                   {
                     required: true,
@@ -161,7 +162,7 @@ const PhongKHCNHTPT: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng các hội thảo, hội nghị khoa học từ cấp Trường trở lên và quản lý việc thực hiện các hội thảo, hội nghị khoa học trong Trường"
-                name="soLuongHoiThao"
+                name="soLuongHtHnkhcttl"
                 rules={[
                   {
                     required: true,
@@ -176,12 +177,12 @@ const PhongKHCNHTPT: React.FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng đoàn ra vào"
-                name="soLuongDoanRaVao"
+                label="Số lượng đoàn ra"
+                name="thongKeDoanRa"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng đoàn ra vào',
+                    message: 'Vui lòng nhập số lượng đoàn ra',
                   },
                   ...numberRule,
                 ]}
@@ -191,76 +192,28 @@ const PhongKHCNHTPT: React.FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng viên chức, người lao động của Trường ra nước ngoài dự hội thảo, hội nghị khoa học"
-                name="soLuongVienChucHoiThaoNuocNgoai"
+                label="Số lượng đoàn vào"
+                name="thongKeDoanVao"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng đoàn vào',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng NCKH toàn Trường"
+                name="soLuongCtKhcn"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng viên chức, người lao động của Trường ra nước ngoài dự hội thảo, hội nghị khoa học',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số lượng viên chức, người lao động của Trường đi đào tạo, học tập ngắn hạn ở nước ngoài"
-                name="soLuongVienChucDaoTaoNuocNgoai"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng viên chức, người lao động của Trường đi đào tạo, học tập ngắn hạn ở nước ngoài',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số lượng người học của Trường ra nước ngoài dự hội thảo, hội nghị khoa học"
-                name="soLuongNguoiHocHoiThaoNuocNgoai"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng người học của Trường ra nước ngoài dự hội thảo, hội nghị khoa học',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số lượng người học của Trường đi đào tạo, học tập ngắn hạn ở nước ngoài"
-                name="soLuongNguoiHocDaoTaoNuocNgoai"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng người học của Trường đi đào tạo, học tập ngắn hạn ở nước ngoài',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số lượng công trình KHCN toàn Trường"
-                name="soLuongCongTrinhKHCN"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng công trình KHCN toàn Trường',
+                      'Vui lòng nhập số lượng NCKH toàn Trường',
                   },
                   ...numberRule,
                 ]}
@@ -271,11 +224,12 @@ const PhongKHCNHTPT: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng ký hợp tác với các tổ chức trong nước"
-                name="soLuongHopTacTrongNuoc"
+                name="soLuongKyHopTacTctn"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng ký hợp tác với các tổ chức trong nước',
+                    message:
+                      'Vui lòng nhập số lượng ký hợp tác với các tổ chức trong nước',
                   },
                   ...numberRule,
                 ]}
@@ -286,11 +240,12 @@ const PhongKHCNHTPT: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng ký hợp tác với các tổ chức ngoài nước"
-                name="soLuongHopTacNgoaiNuoc"
+                name="soLuongKyHopTacTcnn"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng ký hợp tác với các tổ chức ngoài nước',
+                    message:
+                      'Vui lòng nhập số lượng ký hợp tác với các tổ chức ngoài nước',
                   },
                   ...numberRule,
                 ]}
@@ -325,7 +280,14 @@ const PhongKHCNHTPT: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+          hoVaTen: 'Nguyễn Văn A',
+          email: 'a@gmail.com',
+        };
+    
+        const payload = buildPayloadBCPhongKHCNHTPT(values, userInfo);
+        console.log('Payload gửi BE:', payload);
+    
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCPhongTCKT } from '@/constants/payloadMapperPhongTCKT';
 
 const PhongTCKT: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -28,12 +29,12 @@ const PhongTCKT: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -80,8 +81,8 @@ const PhongTCKT: React.FC = () => {
           <Row gutter={[16, 16]}>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số liệu tổng học phí của người học phải nộp"
-                name="tongHPPhaiNop"
+                label="Thống kê học phí của người học phải nộp"
+                name="thongKeThuHpKpn"
                 rules={[
                   {
                     required: true,
@@ -95,12 +96,12 @@ const PhongTCKT: React.FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số liệu tổng học phí của người học đã nộp"
-                name="tongHPDaNop"
+                label="Thống kê báo cáo tài chính năm theo quy định tài chính"
+                name="thongKeBctcNam"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số liệu tổng học phí của người học đã nộp',
+                    message: 'Vui lòng nhập thống kê báo cáo tài chính năm theo quy định tài chính',
                   },
                   ...numberRule,
                 ]}
@@ -110,58 +111,13 @@ const PhongTCKT: React.FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số liệu tổng các khoản khác của người học phải nộp"
-                name="tongKhoanKhacPhaiNop"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số liệu tổng các khoản khác của người học phải nộp',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số liệu tổng các khoản khác của người học đã nộp"
-                name="tongKhoanKhacDaNop"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số liệu tổng các khoản khác của người học đã nộp',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số liệu tổng các hợp đồng dịch vụ trong Trường"
-                name="tongHopDongDV"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số liệu tổng các hợp đồng dịch vụ trong Trường',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số liệu các báo cáo tài chính năm theo quy định tài chính"
-                name="baoCaoTaiChinhNam"
+                label="Thống kê báo cáo quyết toán năm theo quy định tài chính"
+                name="thongKeBcqtNam"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số liệu các báo cáo tài chính năm theo quy định tài chính',
+                      'Vui lòng nhập thống kê báo cáo quyết toán năm theo quy định tài chính',
                   },
                   ...numberRule,
                 ]}
@@ -171,27 +127,12 @@ const PhongTCKT: React.FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số liệu các báo cáo quyết toán theo quy định tài chính"
-                name="baoCaoQuyetToan"
+                label="Thống kê định mức kinh tế kỹ thuật"
+                name="thongKeDmktkt"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số liệu các báo cáo quyết toán theo quy định tài chính',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Số liệu thống kê định mức kinh tế kỹ thuật"
-                name="thongKeDinhMuc"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số liệu thống kê định mức kinh tế kỹ thuật',
+                    message: 'Vui lòng nhập thống kê định mức kinh tế kỹ thuật',
                   },
                   ...numberRule,
                 ]}
@@ -226,7 +167,14 @@ const PhongTCKT: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCPhongTCKT(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };
