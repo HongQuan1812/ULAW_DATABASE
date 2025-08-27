@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCVienDTQT } from '@/constants/payloadMapperVienDTQT';
 
 const VienDTQT: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -19,7 +20,7 @@ const VienDTQT: React.FC = () => {
 
   const numberRule = [
     {
-      pattern: /^[1-9][0-9]*$/,
+      pattern: /^[0-9][0-9]*$/,
       message: 'Chỉ được nhập số nguyên',
     },
   ];
@@ -28,12 +29,12 @@ const VienDTQT: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="idDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -81,7 +82,7 @@ const VienDTQT: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng sinh viên các lớp chất lượng cao trình độ đại học hình thức đào tạo chính quy"
-                name="soLuongSVCLC"
+                name="soLuongSvClcTddhHtcq"
                 rules={[
                   {
                     required: true,
@@ -97,7 +98,7 @@ const VienDTQT: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng tổ chức các chương trình học ngoại khóa cho sinh viên chất lượng cao"
-                name="soLuongCTrinhNK"
+                name="soLuongToChucCtnkclc"
                 rules={[
                   {
                     required: true,
@@ -113,7 +114,7 @@ const VienDTQT: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng tổ chức các chương trình trao đổi tín chỉ có thu phí cho sinh viên chất lượng cao"
-                name="soLuongCTrinhTC"
+                name="soLuongToChucCttdTcClc"
                 rules={[
                   {
                     required: true,
@@ -129,7 +130,7 @@ const VienDTQT: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng tổ chức các chương trình bồi dưỡng chứng chỉ quốc tế cho sinh viên chất lượng cao"
-                name="soLuongCTrinhBDCC"
+                name="soLuongToChucCtdtbdccqtClc"
                 rules={[
                   {
                     required: true,
@@ -145,7 +146,7 @@ const VienDTQT: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng tổ chức các chương trình thực tập cuối khóa cho sinh viên chất lượng cao"
-                name="soLuongCTrinhTTCK"
+                name="soLuongToChucCtttckClc"
                 rules={[
                   {
                     required: true,
@@ -161,7 +162,7 @@ const VienDTQT: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng hoạt động tư vấn du học sau đại học cho sinh viên chất lượng cao"
-                name="soLuongTuVanSDH"
+                name="soLuongHdttvdhSauDhClc"
                 rules={[
                   {
                     required: true,
@@ -201,7 +202,15 @@ const VienDTQT: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      id: 1,
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCVienDTQT(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

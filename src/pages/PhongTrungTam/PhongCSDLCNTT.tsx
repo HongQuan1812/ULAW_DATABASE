@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
-import { Button, Col, Form, Input, Row, Steps } from 'antd';
+import { Button, Col, Form, Input, Row, Steps, Tooltip } from 'antd';
 import { history, useLocation } from 'umi';
 import styles from './index.less';
-import { ArrowLeftOutlined, ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
+import {
+  ArrowLeftOutlined,
+  ArrowRightOutlined,
+  CheckOutlined,
+  MinusCircleOutlined,
+  PlusCircleOutlined,
+} from '@ant-design/icons';
 import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMessage/CustomMessage';
 import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCPhongCSDLCNTT } from '@/constants/payloadMapperPhongCSDLCNTT';
 
 const PhongCSDLCNTT: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -19,7 +26,7 @@ const PhongCSDLCNTT: React.FC = () => {
 
   const numberRule = [
     {
-      pattern: /^[1-9][0-9]*$/,
+      pattern: /^[0-9][0-9]*$/,
       message: 'Chỉ được nhập số nguyên',
     },
   ];
@@ -28,12 +35,12 @@ const PhongCSDLCNTT: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="idDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -82,7 +89,7 @@ const PhongCSDLCNTT: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng máy chủ vật lý tại trường"
-                name="mayChuVatLy"
+                name="soLuongMcvlTaiTruong"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng máy chủ vật lý tại trường' },
                   ...numberRule,
@@ -94,7 +101,7 @@ const PhongCSDLCNTT: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng máy chủ ảo tại trường"
-                name="mayChuAo"
+                name="soLuongMcaTaiTruong"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng máy chủ ảo tại trường' },
                   ...numberRule,
@@ -106,7 +113,7 @@ const PhongCSDLCNTT: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng máy chủ Cloud (Thuê)"
-                name="mayChuThue"
+                name="soLuongMccThue"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng máy chủ Cloud (Thuê)' },
                   ...numberRule,
@@ -118,7 +125,7 @@ const PhongCSDLCNTT: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng đường truyền Leased-line"
-                name="duongTruyenLeasedLine"
+                name="soLuongDtLeasedLine"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng đường truyền Leased-line' },
                   ...numberRule,
@@ -130,7 +137,7 @@ const PhongCSDLCNTT: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Dung lượng đường truyền internet trong nước (Mbps)"
-                name="duongTruyenInternetTN"
+                name="dungLuongDtInternetTrongNuoc"
                 rules={[
                   {
                     required: true,
@@ -145,7 +152,7 @@ const PhongCSDLCNTT: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Dung lượng đượng truyền internet quốc tế (Mbps)"
-                name="duongTruyenInternetQT"
+                name="dungLuongDtInternetQuocTe"
                 rules={[
                   {
                     required: true,
@@ -160,7 +167,7 @@ const PhongCSDLCNTT: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng Switch tầng"
-                name="soLuongSwitch"
+                name="soLuongSwitchTang"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng Switch tầng' },
                   ...numberRule,
@@ -172,7 +179,7 @@ const PhongCSDLCNTT: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng thiết bị Camera"
-                name="soLuongCamera"
+                name="soLuongThietBiCamera"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng thiết bị Camera' },
                   ...numberRule,
@@ -184,7 +191,7 @@ const PhongCSDLCNTT: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng tổng đài điện thoại thuộc phạm vi Trường"
-                name="soLuongTongDai"
+                name="soLuongTddtThuocPvt"
                 rules={[
                   {
                     required: true,
@@ -199,9 +206,21 @@ const PhongCSDLCNTT: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng thiết bị wifi"
-                name="soLuongWifi"
+                name="soLuongThietBiWifi"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng thiết bị wifi' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Tổng số lượng hạ tầng CNTT"
+                name="soLuongHtCntt"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập tổng số lượng hạ tầng CNTT' },
                   ...numberRule,
                 ]}
               >
@@ -249,13 +268,12 @@ const PhongCSDLCNTT: React.FC = () => {
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng, thông tin hệ thống cơ sở dữ liệu dùng chung của Trường"
-                name="soLuongThongTin"
+                label="Số lượng thẻ từ đã cấp phát cho sinh viên"
+                name="soLuongTtdcpChoSv"
                 rules={[
                   {
                     required: true,
-                    message:
-                      'Vui lòng nhập số lượng, thông tin hệ thống cơ sở dữ liệu dùng chung của Trường',
+                    message: 'Vui lòng nhập số lượng thẻ từ đã cấp phát cho sinh viên',
                   },
                   ...numberRule,
                 ]}
@@ -265,13 +283,12 @@ const PhongCSDLCNTT: React.FC = () => {
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng, thông tin danh sách Tường lửa (Firewall) và phần mềm diệt virus"
-                name="soLuongTuongLua"
+                label="Số lượng thẻ từ đã cấp phát cho người học"
+                name="soLuongTtdcpChoNguoiHoc"
                 rules={[
                   {
                     required: true,
-                    message:
-                      'Vui lòng nhập số lượng, thông tin danh sách Tường lửa (Firewall) và phần mềm diệt virus',
+                    message: 'Vui lòng nhập số lượng thẻ từ đã cấp phát cho người học',
                   },
                   ...numberRule,
                 ]}
@@ -281,13 +298,27 @@ const PhongCSDLCNTT: React.FC = () => {
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng thẻ từ đã cấp phát cho sinh viên, người học, người lao động"
-                name="soLuongTheTu"
+                label="Số lượng thẻ từ đã cấp phát cho người lao động"
+                name="soLuongTtdcpChoNld"
                 rules={[
                   {
                     required: true,
-                    message:
-                      'Vui lòng nhập số lượng thẻ từ đã cấp phát cho sinh viên, người học, người lao động',
+                    message: 'Vui lòng nhập số lượng thẻ từ đã cấp phát cho người lao động',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng thiết bị cửa từ"
+                name="soLuongThietBiCuaTu"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng thiết bị cửa từ',
                   },
                   ...numberRule,
                 ]}
@@ -296,6 +327,227 @@ const PhongCSDLCNTT: React.FC = () => {
               </Form.Item>
             </Col>
           </Row>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
+        </>
+      ),
+    },
+    {
+      title: 'Thông tin Hệ thống Cơ sở dữ liệu dùng chung',
+      content: (
+        <>
+          <Form.List name="htCsdlList" initialValue={[{}]}>
+            {(fields, { add, remove }) => (
+              <>
+                {fields.map(({ key, name, ...restField }) => (
+                  <Row gutter={[16, 16]} key={key} align="middle">
+                    <Col xs={24} md={11}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'tenHtCsdl']}
+                        label="Tên hệ thống CSDL dùng chung"
+                        rules={[
+                          { required: true, message: 'Vui lòng nhập tên hệ thống CSDL dùng chung' },
+                        ]}
+                      >
+                        <Input />
+                      </Form.Item>
+                    </Col>
+                    <Col xs={24} md={11}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'soLuongCsdl']}
+                        label="Số lượng"
+                        rules={[
+                          { required: true, message: 'Vui lòng nhập số lượng CSDL' },
+                          ...numberRule,
+                        ]}
+                      >
+                        <Input />
+                      </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={2} className={styles.dynamicListActions}>
+                      {fields.length > 1 ? (
+                        <Tooltip title="Xóa dòng này">
+                          <MinusCircleOutlined
+                            className={styles.removeIcon}
+                            onClick={() => remove(name)}
+                          />
+                        </Tooltip>
+                      ) : (
+                        <Tooltip title="Cần ít nhất 1 dòng">
+                          <MinusCircleOutlined className={styles.removeIconDisabled} />
+                        </Tooltip>
+                      )}
+                    </Col>
+                  </Row>
+                ))}
+
+                <Form.Item>
+                  <Button
+                    type="dashed"
+                    onClick={() => add()}
+                    block
+                    icon={<PlusCircleOutlined />}
+                    className={styles.addBtn}
+                  >
+                    Thêm hệ thống CSDL
+                  </Button>
+                </Form.Item>
+              </>
+            )}
+          </Form.List>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
+        </>
+      ),
+    },
+    {
+      title: 'Thông tin Tường lửa',
+      content: (
+        <>
+          <Form.List name="tuongLuaList" initialValue={[{}]}>
+            {(fields, { add, remove }) => (
+              <>
+                {fields.map(({ key, name, ...restField }) => (
+                  <Row gutter={[16, 16]} key={key} align="middle">
+                    <Col xs={24} md={11}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'tenTuongLua']}
+                        label="Tên tường lửa (Firewall)"
+                        rules={[{ required: true, message: 'Vui lòng nhập tên tường lửa' }]}
+                      >
+                        <Input />
+                      </Form.Item>
+                    </Col>
+                    <Col xs={24} md={11}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'soLuongTuongLua']}
+                        label="Số lượng"
+                        rules={[
+                          { required: true, message: 'Vui lòng nhập số lượng tường lửa' },
+                          ...numberRule,
+                        ]}
+                      >
+                        <Input />
+                      </Form.Item>
+                    </Col>
+                    <Col xs={24} md={2} className={styles.dynamicListActions}>
+                      {fields.length > 1 ? (
+                        <Tooltip title="Xóa dòng này">
+                          <MinusCircleOutlined
+                            className={styles.removeIcon}
+                            onClick={() => remove(name)}
+                          />
+                        </Tooltip>
+                      ) : (
+                        <Tooltip title="Cần ít nhất 1 dòng">
+                          <MinusCircleOutlined className={styles.removeIconDisabled} />
+                        </Tooltip>
+                      )}
+                    </Col>
+                  </Row>
+                ))}
+
+                <Form.Item>
+                  <Button
+                    type="dashed"
+                    onClick={() => add()}
+                    block
+                    icon={<PlusCircleOutlined />}
+                    className={styles.addBtn}
+                  >
+                    Thêm tường lửa
+                  </Button>
+                </Form.Item>
+              </>
+            )}
+          </Form.List>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+            </ul>
+          </div>
+        </>
+      ),
+    },
+    {
+      title: 'Thông tin Phần mềm diệt Virus',
+      content: (
+        <>
+          <Form.List name="pmdvList" initialValue={[{}]}>
+            {(fields, { add, remove }) => (
+              <>
+                {fields.map(({ key, name, ...restField }) => (
+                  <Row gutter={[16, 16]} key={key} align="middle">
+                    <Col xs={24} md={11}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'tenPmdv']}
+                        label="Tên phần mềm diệt Virus"
+                        rules={[
+                          { required: true, message: 'Vui lòng nhập tên phần mềm diệt Virus' },
+                        ]}
+                      >
+                        <Input />
+                      </Form.Item>
+                    </Col>
+                    <Col xs={24} md={11}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'soLuongPmdv']}
+                        label="Số lượng"
+                        rules={[
+                          { required: true, message: 'Vui lòng nhập số lượng phần mềm diệt Virus' },
+                          ...numberRule,
+                        ]}
+                      >
+                        <Input />
+                      </Form.Item>
+                    </Col>
+                    <Col xs={24} md={2} className={styles.dynamicListActions}>
+                      {fields.length > 1 ? (
+                        <Tooltip title="Xóa dòng này">
+                          <MinusCircleOutlined
+                            className={styles.removeIcon}
+                            onClick={() => remove(name)}
+                          />
+                        </Tooltip>
+                      ) : (
+                        <Tooltip title="Cần ít nhất 1 dòng">
+                          <MinusCircleOutlined className={styles.removeIconDisabled} />
+                        </Tooltip>
+                      )}
+                    </Col>
+                  </Row>
+                ))}
+
+                <Form.Item>
+                  <Button
+                    type="dashed"
+                    onClick={() => add()}
+                    block
+                    icon={<PlusCircleOutlined />}
+                    className={styles.addBtn}
+                  >
+                    Thêm phần mềm diệt Virus
+                  </Button>
+                </Form.Item>
+              </>
+            )}
+          </Form.List>
           <div className={styles.noteContainer}>
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
@@ -322,7 +574,14 @@ const PhongCSDLCNTT: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCPhongCSDLCNTT(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

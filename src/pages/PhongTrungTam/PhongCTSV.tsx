@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCPhongCTSV } from '@/constants/payloadMapperPhongCTSV';
 
 const PhongCTSV: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -19,7 +20,7 @@ const PhongCTSV: React.FC = () => {
 
   const numberRule = [
     {
-      pattern: /^[1-9][0-9]*$/,
+      pattern: /^[0-9][0-9]*$/,
       message: 'Chỉ được nhập số nguyên',
     },
   ];
@@ -28,12 +29,12 @@ const PhongCTSV: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -81,7 +82,7 @@ const PhongCTSV: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng các giấy tờ xác nhận, chứng nhận cho sinh viên trình độ đại học"
-                name="chungNhanSVDH"
+                name="soLuongGtxncnChoSvTdDh"
                 rules={[
                   {
                     required: true,
@@ -97,7 +98,7 @@ const PhongCTSV: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng các giấy tờ khác cho sinh viên trình độ đại học"
-                name="giayToKhacSVDH"
+                name="soLuongGtKhacChoSvTdDh"
                 rules={[
                   {
                     required: true,
@@ -113,7 +114,7 @@ const PhongCTSV: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng sinh viên được khen thưởng"
-                name="soLuongSVKhenThuong"
+                name="soLuongSvdkt"
                 rules={[
                   {
                     required: true,
@@ -128,7 +129,7 @@ const PhongCTSV: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng sinh viên bị kỷ luật"
-                name="soLuongSVKyLuat"
+                name="soLuongSvbkl"
                 rules={[
                   {
                     required: true,
@@ -143,7 +144,7 @@ const PhongCTSV: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng sinh viên được cấp học bổng"
-                name="soLuongSVHocBong"
+                name="soLuongSvdchb"
                 rules={[
                   {
                     required: true,
@@ -157,12 +158,42 @@ const PhongCTSV: React.FC = () => {
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng giải quyết chế độ, chính sách cho sinh viên"
-                name="giaiQuyetCheDo"
+                label="Số lượng sinh viên được miễn giảm học phí"
+                name="soLuongSvdmghp"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng giải quyết chế độ, chính sách cho sinh viên',
+                    message: 'Vui lòng nhập số lượng sinh viên được miễn giảm học phí',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng sinh viên được hỗ trợ chi phí học tập"
+                name="soLuongSvdhtcpht"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng sinh viên được hỗ trợ chi phí học tập',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng sinh viên được trợ cấp xã hội"
+                name="soLuongSvdtcxh"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng sinh viên được trợ cấp xã hội',
                   },
                   ...numberRule,
                 ]}
@@ -173,7 +204,7 @@ const PhongCTSV: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng đơn, thư của sinh viên"
-                name="donThuSV"
+                name="soLuongDonThuCuaSv"
                 rules={[
                   {
                     required: true,
@@ -188,7 +219,7 @@ const PhongCTSV: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Thống kê hàng năm về sinh viên theo quy định của pháp luật"
-                name="thongKeSV"
+                name="thongKeHangNamVeSvTheoQdcpl"
                 rules={[
                   {
                     required: true,
@@ -228,7 +259,14 @@ const PhongCTSV: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCPhongCTSV(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

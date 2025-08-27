@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCPhongDBCLKT } from '@/constants/payloadMapperPhongDBCLKT';
 
 const PhongDBCLKT: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -19,7 +20,7 @@ const PhongDBCLKT: React.FC = () => {
 
   const numberRule = [
     {
-      pattern: /^[1-9][0-9]*$/,
+      pattern: /^[0-9][0-9]*$/,
       message: 'Chỉ được nhập số nguyên',
     },
   ];
@@ -28,12 +29,12 @@ const PhongDBCLKT: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -81,7 +82,7 @@ const PhongDBCLKT: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng kế hoạch đảm bảo chất lượng của Trường được thực hiện"
-                name="keHoachDBCLThucHien"
+                name="soLuongKhdbcldth"
                 rules={[
                   {
                     required: true,
@@ -97,7 +98,7 @@ const PhongDBCLKT: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng kế hoạch đảm bảo chất lượng của Trường được rà soát, điều chỉnh"
-                name="keHoachDBCLRaSoat"
+                name="soLuongKhdbcldrsdc"
                 rules={[
                   {
                     required: true,
@@ -113,7 +114,7 @@ const PhongDBCLKT: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng kế hoạch đảm bảo chất lượng của Trường được tổng kết"
-                name="keHoachDBCLTongKet"
+                name="soLuongKhdbcldtk"
                 rules={[
                   {
                     required: true,
@@ -129,7 +130,7 @@ const PhongDBCLKT: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng kế hoạch khảo sát thuộc chức năng, nhiệm vụ của đơn vị"
-                name="keHoachKhaoSat"
+                name="soLuongKhksDv"
                 rules={[
                   {
                     required: true,
@@ -150,7 +151,7 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="keHoachCaiTien"
+                name="soLuongKhctCsgd"
                 rules={[
                   {
                     required: true,
@@ -170,7 +171,7 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="keHoachCaiTienCTDT"
+                name="soLuongKhctCtdt"
                 rules={[
                   {
                     required: true,
@@ -185,7 +186,7 @@ const PhongDBCLKT: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hệ thống văn bản về đảm bảo chất lượng của Trường được cập nhật"
-                name="vanBanDBCL"
+                name="soLuongHtvbDbcldcn"
                 rules={[
                   {
                     required: true,
@@ -201,7 +202,7 @@ const PhongDBCLKT: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hội thảo, tập huấn, trao đổi kinh nghiệm giảng dạy cho giảng viên mới"
-                name="hoiThaoGiangDay"
+                name="soLuongHtThGvm"
                 rules={[
                   {
                     required: true,
@@ -222,7 +223,7 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(2)</sup>
                   </>
                 }
-                name="soLuongHoiThao"
+                name="soLuongHtHnTdct"
                 rules={[
                   {
                     required: true,
@@ -242,7 +243,7 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(3)</sup>
                   </>
                 }
-                name="soLuongVanBanHopTacTrongNuoc"
+                name="soLuongVbhttn"
                 rules={[
                   {
                     required: true,
@@ -262,7 +263,7 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(3)</sup>
                   </>
                 }
-                name="soLuongVanBanHopTacNgoaiNuoc"
+                name="soLuongVbhtnn"
                 rules={[
                   {
                     required: true,
@@ -282,7 +283,7 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(4)</sup>
                   </>
                 }
-                name="soLuongDeThi"
+                name="soLuongDtkthpdis"
                 rules={[
                   {
                     required: true,
@@ -302,7 +303,7 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(4)</sup>
                   </>
                 }
-                name="soLuongCanBoCoiThi"
+                name="soLuongCbctKthp"
                 rules={[
                   {
                     required: true,
@@ -318,7 +319,7 @@ const PhongDBCLKT: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng cán bộ coi thi vi phạm quy chế"
-                name="soLuongCanBoViPham"
+                name="soLuongCbctvpqc"
                 rules={[
                   {
                     required: true,
@@ -333,7 +334,7 @@ const PhongDBCLKT: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng sinh viên vi phạm quy chế"
-                name="soLuongSVViPham"
+                name="soLuongSvvpqc"
                 rules={[
                   {
                     required: true,
@@ -353,7 +354,7 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(4)</sup>
                   </>
                 }
-                name="soLuongBaiThiDuocCham"
+                name="soLuongBtdc"
                 rules={[
                   {
                     required: true,
@@ -373,7 +374,7 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(4)</sup>
                   </>
                 }
-                name="soLuongBaiThiQuanLy"
+                name="soLuongBtdql"
                 rules={[
                   {
                     required: true,
@@ -388,7 +389,7 @@ const PhongDBCLKT: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng giảng viên chấm thi vi phạm quy chế"
-                name="soLuongGVChamThiViPham"
+                name="soLuongGvctvpqc"
                 rules={[
                   {
                     required: true,
@@ -408,7 +409,7 @@ const PhongDBCLKT: React.FC = () => {
                     <sup className={styles.sup}>(5)</sup>
                   </>
                 }
-                name="soLuongBuoiTapHuan"
+                name="soLuongThCtctKtph"
                 rules={[
                   {
                     required: true,
@@ -466,7 +467,14 @@ const PhongDBCLKT: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCPhongDBCLKT(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

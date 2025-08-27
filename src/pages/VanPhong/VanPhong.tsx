@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCVanPhong } from '@/constants/payloadMapperVanPhong';
 
 const VanPhong: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -19,7 +20,7 @@ const VanPhong: React.FC = () => {
 
   const numberRule = [
     {
-      pattern: /^[1-9][0-9]*$/,
+      pattern: /^[0-9][0-9]*$/,
       message: 'Chỉ được nhập số nguyên',
     },
   ];
@@ -28,12 +29,12 @@ const VanPhong: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -81,7 +82,7 @@ const VanPhong: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hồ sơ phát triển Đảng"
-                name="soLuongHSPhatTrienDang"
+                name="soLuongHsptd"
                 rules={[
                   {
                     required: true,
@@ -96,7 +97,7 @@ const VanPhong: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hồ sơ chuyển Đảng chính thức"
-                name="soLuongHSChuyenDangChinhThuc"
+                name="soLuonghscdct"
                 rules={[
                   {
                     required: true,
@@ -111,7 +112,7 @@ const VanPhong: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hồ sơ khen thưởng"
-                name="soLuongHSKhenThuong"
+                name="soLuongHskt"
                 rules={[
                   {
                     required: true,
@@ -125,8 +126,38 @@ const VanPhong: React.FC = () => {
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
+                label="Số lượng Đảng viên vi phạm kỷ luật"
+                name="soLuongHskl"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng Đảng viên vi phạm kỷ luật',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng Đảng viên chính thức"
+                name="soLuongDvct"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng Đảng viên chính thức',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
                 label="Số lượng Đảng viên dự bị"
-                name="soLuongDangVienDuBi"
+                name="soLuongDvdb"
                 rules={[
                   {
                     required: true,
@@ -141,11 +172,12 @@ const VanPhong: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng Đảng viên vi phạm kỷ luật"
-                name="soLuongDangVienViPham"
+                name="soLuongDvvpkl"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng Đảng viên vi phạm kỷ luật',
+                    message:
+                      'Vui lòng nhập số lượng Đảng viên vi phạm kỷ luật',
                   },
                   ...numberRule,
                 ]}
@@ -156,7 +188,7 @@ const VanPhong: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng văn thư được lưu trữ liên quan đến công tác Đảng"
-                name="soLuongVanThuD"
+                name="soLuongVtltCtd"
                 rules={[
                   {
                     required: true,
@@ -172,7 +204,7 @@ const VanPhong: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng văn thư được lưu trữ liên quan đến công tác Công đoàn"
-                name="soLuongVanThuCD"
+                name="soLuongVtltCtcd"
                 rules={[
                   {
                     required: true,
@@ -188,7 +220,7 @@ const VanPhong: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng văn thư khác (Nếu có)"
-                name="soLuongVanThuKhac"
+                name="soLuongVtltKhac"
                 rules={[
                   {
                     required: true,
@@ -227,7 +259,15 @@ const VanPhong: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      id: 1,
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCVanPhong(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

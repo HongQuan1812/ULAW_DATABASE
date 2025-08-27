@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCPhongDTSDH } from '@/constants/payloadMapperPhongDTSDH';
 
 const PhongDTSDH: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -19,7 +20,7 @@ const PhongDTSDH: React.FC = () => {
 
   const numberRule = [
     {
-      pattern: /^[1-9][0-9]*$/,
+      pattern: /^[0-9][0-9]*$/,
       message: 'Chỉ được nhập số nguyên',
     },
   ];
@@ -28,12 +29,12 @@ const PhongDTSDH: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -81,7 +82,7 @@ const PhongDTSDH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng mã ngành đào tạo"
-                name="soLuongMaNganhDT"
+                name="soLuongMndt"
                 rules={[
                   {
                     required: true,
@@ -96,7 +97,7 @@ const PhongDTSDH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng chương trình đào tạo"
-                name="soLuongCTrinhDT"
+                name="soLuongCtdt"
                 rules={[
                   {
                     required: true,
@@ -111,13 +112,12 @@ const PhongDTSDH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Trình độ đào tạo"
-                name="trinhDoDT"
+                name="trinhDoDaoTao"
                 rules={[
                   {
                     required: true,
                     message: 'Vui chọn trình độ đào tạo',
                   },
-                  ...numberRule,
                 ]}
               >
                 <Select placeholder="Chọn trình độ đào tạo">
@@ -130,7 +130,7 @@ const PhongDTSDH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng chỉ tiêu tuyển sinh"
-                name="soLuongChiTieuTS"
+                name="soLuongCtts"
                 rules={[
                   {
                     required: true,
@@ -145,7 +145,7 @@ const PhongDTSDH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng học viên sau đại học"
-                name="soLuongHVSDH"
+                name="soLuongHvsdh"
                 rules={[
                   {
                     required: true,
@@ -160,7 +160,7 @@ const PhongDTSDH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng học viên cao học tốt nghiệp của Trường"
-                name="soLuongCaoHocTotNghiep"
+                name="soLuongHvch"
                 rules={[
                   {
                     required: true,
@@ -175,7 +175,7 @@ const PhongDTSDH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng học viên nghiên cứu sinh tốt nghiệp của Trường"
-                name="soLuongNCSTotNghiep"
+                name="soLuongNcstn"
                 rules={[
                   {
                     required: true,
@@ -191,7 +191,7 @@ const PhongDTSDH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng học viên sau đại học chấm dứt học tại Trường"
-                name="soLuongHVSDHChamDutHoc"
+                name="soLuongHvsdhcdh"
                 rules={[
                   {
                     required: true,
@@ -206,7 +206,7 @@ const PhongDTSDH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số liệu đào tạo, quản lý các lớp bồi dưỡng cấp chứng chỉ sau đại học"
-                name="daoTaoQuanLyLopBoiDuongSDH"
+                name="soLuongLbdCcsdh"
                 rules={[
                   {
                     required: true,
@@ -246,7 +246,14 @@ const PhongDTSDH: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCPhongDTSDH(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

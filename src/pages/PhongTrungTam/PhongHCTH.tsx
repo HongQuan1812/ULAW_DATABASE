@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCPhongHCTH } from '@/constants/payloadMapperPhongHCTH';
 
 const PhongHCTH: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -19,7 +20,7 @@ const PhongHCTH: React.FC = () => {
 
   const numberRule = [
     {
-      pattern: /^[1-9][0-9]*$/,
+      pattern: /^[0-9][0-9]*$/,
       message: 'Chỉ được nhập số nguyên',
     },
   ];
@@ -28,12 +29,12 @@ const PhongHCTH: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -126,7 +127,7 @@ const PhongHCTH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng chứng thực - sao y các văn bản giấy tờ của Nhà trường"
-                name="soLuongChungThuc"
+                name="soLuongCtsyVbgtct"
                 rules={[
                   {
                     required: true,
@@ -141,12 +142,12 @@ const PhongHCTH: React.FC = () => {
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng cấp phát văn bằng - chứng chỉ của Trường"
-                name="soLuongCapPhatVanBang"
+                label="Số lượng cấp phát văn bằng của Trường"
+                name="soLuongCapPhatVb"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng cấp phát văn bằng - chứng chỉ của Trường',
+                    message: 'Vui lòng nhập số lượng cấp phát văn bằng của Trường',
                   },
                   ...numberRule,
                 ]}
@@ -156,13 +157,44 @@ const PhongHCTH: React.FC = () => {
             </Col>
             <Col xs={24} md={8}>
               <Form.Item
-                label="Số lượng các báo cáo về công tác hành chính, quản trị định kỳ - đột xuất"
-                name="soLuongBaoCao"
+                label="Số lượng cấp phát chứng chỉ của Trường"
+                name="soLuongCapPhatCc"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng cấp phát chứng chỉ của Trường',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng các báo cáo về công tác hành chính, quản trị định kỳ"
+                name="soLuongBcCthcqtdk"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng các báo cáo về công tác hành chính, quản trị định kỳ - đột xuất',
+                      'Vui lòng nhập số lượng các báo cáo về công tác hành chính, quản trị định kỳ',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={8}>
+              <Form.Item
+                label="Số lượng các báo cáo về công tác hành chính, quản trị đột xuất"
+                name="soLuongBcCthcqtdx"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng các báo cáo về công tác hành chính, quản trị đột xuất',
                   },
                   ...numberRule,
                 ]}
@@ -173,7 +205,7 @@ const PhongHCTH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng định mức sử dụng văn phòng phẩm"
-                name="soLuongDinhMucVPP"
+                name="soLuongDinhMucSuDungVpp"
                 rules={[
                   {
                     required: true,
@@ -188,7 +220,7 @@ const PhongHCTH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hồ sơ lưu trữ, tài liệu lưu trữ tại Trường"
-                name="soLuongHSLuuTruTaiTruong"
+                name="soLuongHsltTlltTaiTruong"
                 rules={[
                   {
                     required: true,
@@ -203,7 +235,7 @@ const PhongHCTH: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hồ sơ lưu trữ, tài liệu lưu trữ nộp kho lưu trữ"
-                name="soLuongHSLuuTru"
+                name="soLuongHsltTlltNopKlt"
                 rules={[
                   {
                     required: true,
@@ -243,7 +275,14 @@ const PhongHCTH: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCPhongHCTH(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

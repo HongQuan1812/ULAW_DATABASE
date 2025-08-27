@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Select, Row, Col, Typography, Empty } from 'antd';
-import { MajorData } from '@/services/enroll';
+import { MajorData } from '@/services/data_info';
 
 interface MajorPickerSmallProps {
   majors: MajorData[];

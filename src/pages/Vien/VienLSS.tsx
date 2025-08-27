@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCVienLSS } from '@/constants/payloadMapperVienLSS';
 
 const VienLSS: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -19,7 +20,7 @@ const VienLSS: React.FC = () => {
 
   const numberRule = [
     {
-      pattern: /^[1-9][0-9]*$/,
+      pattern: /^[0-9][0-9]*$/,
       message: 'Chỉ được nhập số nguyên',
     },
   ];
@@ -28,12 +29,12 @@ const VienLSS: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="idDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -81,7 +82,7 @@ const VienLSS: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hoạt động nghiên cứu khoa học và công nghệ trong lĩnh vực Luật học so sánh"
-                name="soLuongHoatDongLSS"
+                name="soLuongNckhLss"
                 rules={[
                   {
                     required: true,
@@ -97,7 +98,7 @@ const VienLSS: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hoạt động nghiên cứu khoa học và công nghệ trong lĩnh vực Pháp luật nước ngoài"
-                name="soLuongHoatDongPLNN"
+                name="soLuongNckhLnn"
                 rules={[
                   {
                     required: true,
@@ -113,7 +114,7 @@ const VienLSS: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hoạt động nghiên cứu khoa học và công nghệ trong các lĩnh vực khác (Nếu có)"
-                name="soLuongHoatDongKhac"
+                name="soLuongNckhKhac"
                 rules={numberRule}
               >
                 <Input />
@@ -146,7 +147,15 @@ const VienLSS: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      id: 1,
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCVienLSS(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

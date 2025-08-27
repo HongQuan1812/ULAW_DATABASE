@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCVienSHTTKNDMST } from '@/constants/payloadMapperVienSHTTKNDMST';
 
 const VienSHTTKNDMST: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -19,7 +20,7 @@ const VienSHTTKNDMST: React.FC = () => {
 
   const numberRule = [
     {
-      pattern: /^[1-9][0-9]*$/,
+      pattern: /^[0-9][0-9]*$/,
       message: 'Chỉ được nhập số nguyên',
     },
   ];
@@ -28,12 +29,12 @@ const VienSHTTKNDMST: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="idDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -86,7 +87,7 @@ const VienSHTTKNDMST: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="soLuongTuVan"
+                name="soLuongHdtvtkCtdtnh"
                 rules={[
                   {
                     required: true,
@@ -107,7 +108,7 @@ const VienSHTTKNDMST: React.FC = () => {
                     <sup className={styles.sup}>(2)</sup>
                   </>
                 }
-                name="soLuongKhoaDTNganHan"
+                name="soLuongKdtnh"
                 rules={[
                   {
                     required: true,
@@ -127,7 +128,7 @@ const VienSHTTKNDMST: React.FC = () => {
                     <sup className={styles.sup}>(2)</sup>
                   </>
                 }
-                name="soLuongKhoaDTTapHuan"
+                name="soLuongKth"
                 rules={[
                   {
                     required: true,
@@ -142,7 +143,7 @@ const VienSHTTKNDMST: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Tỷ lệ học viên tham gia khóa học tốt nghiệp"
-                name="tyLeTotNghiep"
+                name="tyLeHvtn"
                 rules={[
                   {
                     required: true,
@@ -189,7 +190,15 @@ const VienSHTTKNDMST: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      id: 1,
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCVienSHTTKNDMST(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
-import { Button, Col, Form, Input, Row, Steps } from 'antd';
+import { Button, Col, Form, Input, Row, Steps, Tooltip, Select } from 'antd';
 import { history, useLocation } from 'umi';
 import styles from './index.less';
-import { ArrowLeftOutlined, ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
+import {
+  ArrowLeftOutlined,
+  ArrowRightOutlined,
+  CheckOutlined,
+  MinusCircleOutlined,
+  PlusCircleOutlined,
+} from '@ant-design/icons';
 import { CustomMessageSuccess, CustomMessageError } from '@/components/CustomMessage/CustomMessage';
 import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCPhongCSVC } from '@/constants/payloadMapperPhongCSVC';
 
 const PhongCSVC: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -19,21 +26,23 @@ const PhongCSVC: React.FC = () => {
 
   const numberRule = [
     {
-      pattern: /^[1-9][0-9]*$/,
+      pattern: /^[0-9][0-9]*$/,
       message: 'Chỉ được nhập số nguyên',
     },
   ];
+
+  const { Option } = Select;
 
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -75,6 +84,7 @@ const PhongCSVC: React.FC = () => {
   // Step 2 - Các section nhỏ
   const sections = [
     {
+      title: 'Thông tin số lượng',
       content: (
         <>
           <Row gutter={[16, 16]}>
@@ -111,7 +121,7 @@ const PhongCSVC: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng hệ thống hạ tầng kỹ thuật"
-                name="soLuongHaTang"
+                name="soLuongHthtkt"
                 rules={[
                   {
                     required: true,
@@ -126,119 +136,11 @@ const PhongCSVC: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng cây xanh cảnh quan"
-                name="soLuongCayXanh"
+                name="soLuongCxcq"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số lượng cây xanh cảnh quan',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={8}>
-              <Form.Item
-                label="Số lượng máy móc, trang thiết bị điện, nước"
-                name="soLuongMayMoc"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng máy mọc, trang thiết bị điện, nước',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={8}>
-              <Form.Item
-                label={
-                  <>
-                    Số liệu đơn giá của công tác mua sắm trang thiết bị phục vụ nhu cầu của Trường
-                    <sup className={styles.sup}>(1)</sup>
-                  </>
-                }
-                name="donGiaTBHaTang"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số liệu đơn giá của công tác mua sắm trang thiết bị phục vụ nhu cầu của Trường',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={8}>
-              <Form.Item
-                label={
-                  <>
-                    Số liệu đơn giá của công tác mua sắm trang thiết bị phục vụ nhu cầu của Trường
-                    <sup className={styles.sup}>(2)</sup>
-                  </>
-                }
-                name="donGiaMayMoc"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số liệu đơn giá của công tác mua sắm trang thiết bị phục vụ nhu cầu của Trường',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={8}>
-              <Form.Item
-                label={
-                  <>
-                    Số liệu đơn giá các tài sản khác của Trường
-                    <sup className={styles.sup}>(3)</sup>
-                  </>
-                }
-                name="donGiaTaiSanKhac"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số liệu đơn giá các tài sản khác của Trường',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={8}>
-              <Form.Item
-                label="Số liệu đơn giá các tài sản khác của Trường ngoài các danh mục đã nêu"
-                name="donGiaTaiSanKhacNgoaiDanhMuc"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số liệu đơn giá các tài sản khác của Trường ngoài các danh mục đã nêu',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={8}>
-              <Form.Item
-                label="Số lượng danh mục các cơ sở vật chất khác"
-                name="soLuongCSVCKhac"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng danh mục các cơ sở vật chất khác',
                   },
                   ...numberRule,
                 ]}
@@ -251,14 +153,114 @@ const PhongCSVC: React.FC = () => {
             <p className={styles.note}>Ghi chú:</p>
             <ul className={styles.noteList}>
               <li>Vui lòng điền giá trị = 0 nếu không có</li>
-              <li>
-                <sup className={styles.sup}>(1)</sup> Hệ thống; Hạ tầng kỹ thuật
+            </ul>
+          </div>
+        </>
+      ),
+    },
+    {
+      title: 'Danh mục mua sắm trang thiết bị',
+      content: (
+        <>
+          <Form.List name="mmtbList" initialValue={[{}]}>
+            {(fields, { add, remove }) => (
+              <>
+                {fields.map(({ key, name, ...restField }) => (
+                  <Row gutter={[16, 16]} key={key} align="middle">
+                    <Col xs={24} md={8}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'tenMmtb']}
+                        label="Danh mục"
+                        rules={[{ required: true, message: 'Vui lòng nhập tên danh mục' }]}
+                      >
+                        <Input />
+                      </Form.Item>
+                    </Col>
+                    <Col xs={24} md={5}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'loaiMmtb']}
+                        label="Loại"
+                        rules={[{ required: true, message: 'Vui lòng chọn loại' }]}
+                      >
+                        <Select placeholder='Chọn loại'>
+                          <Option value="DIEN">Điện</Option>
+                          <Option value="NUOC">Nước</Option>
+                          <Option value="KHAC">Khác</Option>
+                        </Select>
+                      </Form.Item>
+                    </Col>
+                    <Col xs={24} md={5}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'soLuongMmtb']}
+                        label="Số lượng"
+                        rules={[
+                          { required: true, message: 'Vui lòng nhập số lượng' },
+                          ...numberRule,
+                        ]}
+                      >
+                        <Input />
+                      </Form.Item>
+                    </Col>
+                    <Col xs={24} md={5}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'tongChiPhi']}
+                        label="Tổng chi phí"
+                        rules={[
+                          { required: true, message: 'Vui lòng nhập tổng chi phí' },
+                          ...numberRule,
+                        ]}
+                      >
+                        <Input />
+                      </Form.Item>
+                    </Col>
+                    <Col xs={24} md={1} className={styles.dynamicListActions}>
+                      {fields.length > 1 ? (
+                        <Tooltip title="Xóa dòng này">
+                          <MinusCircleOutlined
+                            className={styles.removeIcon}
+                            onClick={() => remove(name)}
+                          />
+                        </Tooltip>
+                      ) : (
+                        <Tooltip title="Cần ít nhất 1 dòng">
+                          <MinusCircleOutlined className={styles.removeIconDisabled} />
+                        </Tooltip>
+                      )}
+                    </Col>
+                  </Row>
+                ))}
+
+                <Form.Item>
+                  <Button
+                    type="dashed"
+                    onClick={() => add()}
+                    block
+                    icon={<PlusCircleOutlined />}
+                    className={styles.addBtn}
+                  >
+                    Thêm danh mục
+                  </Button>
+                </Form.Item>
+              </>
+            )}
+          </Form.List>
+          <div className={styles.noteContainer}>
+            <p className={styles.note}>Ghi chú:</p>
+            <ul className={styles.noteList}>
+              <li>Vui lòng điền giá trị = 0 nếu không có</li>
+              <li>Danh mục bao gồm:</li>
+              <li style={{ marginLeft: 16 }}>
+                <i>Hệ thống; Hạ tầng kỹ thuật</i>
               </li>
-              <li>
-                <sup className={styles.sup}>(2)</sup> Máy móc; Trang thiết bị
+              <li style={{ marginLeft: 16 }}>
+                <i>Máy móc; Trang thiết bị</i>
               </li>
-              <li>
-                <sup className={styles.sup}>(3)</sup> Đất đai; Công trình; Cây xanh
+              <li style={{ marginLeft: 16 }}>
+                <i>Đất đai; Công trình; Cây xanh</i>
               </li>
             </ul>
           </div>
@@ -282,7 +284,14 @@ const PhongCSVC: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCPhongCSVC(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };
@@ -343,6 +352,7 @@ const PhongCSVC: React.FC = () => {
         <div style={{ display: current === 1 ? 'block' : 'none' }}>
           {sections.map((sec, idx) => (
             <div key={idx} style={{ display: idx === sectionIndex ? 'block' : 'none' }}>
+              <h3>{sec.title}</h3>
               {sec.content}
             </div>
           ))}

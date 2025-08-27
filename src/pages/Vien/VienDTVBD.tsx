@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCVienDTBD } from '@/constants/payloadMapperVienDTVBD';
 
 const VienDTVBD: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -19,7 +20,7 @@ const VienDTVBD: React.FC = () => {
 
   const numberRule = [
     {
-      pattern: /^[1-9][0-9]*$/,
+      pattern: /^[0-9][0-9]*$/,
       message: 'Chỉ được nhập số nguyên',
     },
   ];
@@ -28,12 +29,12 @@ const VienDTVBD: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="idDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -86,7 +87,7 @@ const VienDTVBD: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="soLuongKhoaNganHan"
+                name="soLuongKhnh"
                 rules={[
                   {
                     required: true,
@@ -106,7 +107,7 @@ const VienDTVBD: React.FC = () => {
                     <sup className={styles.sup}>(2)</sup>
                   </>
                 }
-                name="soLuongNhanSu"
+                name="soLuongNsddtbdHangNam"
                 rules={[
                   {
                     required: true,
@@ -121,7 +122,7 @@ const VienDTVBD: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng cơ quan, doanh nghiệp, tổ chức được đào tạo, bồi dưỡng, tập huấn, nâng cao kiến thức pháp luật, kỹ năng hành chính, kỹ năng chuyên môn nghiệp vụ"
-                name="soLuongCoQuanDuocDaoTao"
+                name="soLuongCqDnTcddtbd"
                 rules={[
                   {
                     required: true,
@@ -137,7 +138,7 @@ const VienDTVBD: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng cá nhân được đào tạo, bồi dưỡng, tập huấn, nâng cao kiến thức pháp luật, kỹ năng hành chính, kỹ năng chuyên môn nghiệp vụ"
-                name="soLuongCaNhanDuocDaoTao"
+                name="soLuongCaNhanddtbd"
                 rules={[
                   {
                     required: true,
@@ -153,7 +154,7 @@ const VienDTVBD: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng nhu cầu được đào tạo, bồi dưỡng ngoại ngữ"
-                name="soLuongNhuCauNN"
+                name="soLuongNhuCauddtbdNn"
                 rules={[
                   {
                     required: true,
@@ -168,7 +169,7 @@ const VienDTVBD: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng nhu cầu được đào tạo, bồi dưỡng ngoại ngữ pháp lý"
-                name="soLuongNhuCauNNPL"
+                name="soLuongNhuCauddtbdNnpl"
                 rules={[
                   {
                     required: true,
@@ -184,7 +185,7 @@ const VienDTVBD: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng nhu cầu được đào tạo, bồi dưỡng tin học"
-                name="soLuongNhuCauTH"
+                name="soLuongNhuCauddtbdTh"
                 rules={[
                   {
                     required: true,
@@ -204,7 +205,7 @@ const VienDTVBD: React.FC = () => {
                     <sup className={styles.sup}>(3)</sup>
                   </>
                 }
-                name="soLuongToChucThiNN"
+                name="soLuongCttcktnlNn"
                 rules={[
                   {
                     required: true,
@@ -225,7 +226,7 @@ const VienDTVBD: React.FC = () => {
                     <sup className={styles.sup}>(3)</sup>
                   </>
                 }
-                name="soLuongToChucThiTH"
+                name="soLuongCttcktnlTh"
                 rules={[
                   {
                     required: true,
@@ -276,7 +277,15 @@ const VienDTVBD: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      id: 1,
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCVienDTBD(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

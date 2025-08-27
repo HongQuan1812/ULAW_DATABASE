@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Col, Form, Input, Row, Steps, Checkbox, Upload } from 'antd';
+import { Button, Col, Form, Input, Row, Steps, Checkbox, Upload, Select } from 'antd';
 import { history, useLocation } from 'umi';
 import styles from './index.less';
 import {
@@ -13,6 +13,9 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectKhoaRole from '@/components/SelectKhoaRole';
+import { buildPayloadBCKhoa } from '@/constants/payloadMapperKhoa';
+
+const { Option } = Select;
 
 const Khoa: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -34,7 +37,7 @@ const Khoa: React.FC = () => {
 
   const numberRule = [
     {
-      pattern: /^[1-9][0-9]*$/,
+      pattern: /^[0-9][0-9]*$/,
       message: 'Chỉ được nhập số nguyên',
     },
   ];
@@ -43,12 +46,25 @@ const Khoa: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
-          <Input disabled />
+        <Form.Item
+          label="Đơn vị trực thuộc"
+          name="idDonVi"
+          rules={[{ required: true, message: 'Vui lòng chọn đơn vị' }]}
+        >
+          <Select placeholder="Khoa Dân sự">
+            <Option value={1}>Khoa Luật Dân sự</Option>
+            <Option value={2}>Khoa Luật Hình sự</Option>
+            <Option value={3}>Khoa Luật Thương mại</Option>
+            <Option value={4}>Khoa Luật Quốc tế</Option>
+            <Option value={5}>Khoa Luật Hành chính - Nhà nước</Option>
+            <Option value={6}>Khoa Quản trị</Option>
+            <Option value={7}>Khoa Ngoại ngữ pháp lý</Option>
+            <Option value={8}>Khoa Khoa học cơ bản</Option>
+          </Select>
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -97,7 +113,7 @@ const Khoa: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng giảng viên cơ hữu"
-                name="gVCoHuu"
+                name="soLuongGvch"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng giảng viên cơ hữu' },
                   ...numberRule,
@@ -109,7 +125,7 @@ const Khoa: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng giảng viên thỉnh giảng"
-                name="gVThinhGiang"
+                name="soLuongGvtg"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng giảng viên thỉnh giảng' },
                   ...numberRule,
@@ -121,7 +137,7 @@ const Khoa: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Số lượng người lao động"
-                name="nguoiLaoDong"
+                name="soLuongNld"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng người lao động' },
                   ...numberRule,
@@ -148,26 +164,36 @@ const Khoa: React.FC = () => {
             <Col xs={24} md={24}>
               <Form.Item
                 label="Danh mục ngành"
-                name="danhMucNganh"
+                name="idNganh"
                 rules={[{ required: true, message: 'Vui lòng chọn danh mục ngành' }]}
               >
                 <Checkbox.Group style={{ marginLeft: 12, marginTop: 5 }}>
                   <Row gutter={[0, 16]}>
                     <Col xs={24} sm={12}>
-                      <Checkbox value="Luat">Ngành Luật</Checkbox>
+                      <Checkbox value={7380101}>Luật</Checkbox>
                     </Col>
                     <Col xs={24} sm={12}>
-                      <Checkbox value="QTL">Ngành Quản trị - Luật</Checkbox>
+                      <Checkbox value={7340102}>Quản trị - Luật</Checkbox>
                     </Col>
                     <Col xs={24} sm={12}>
-                      <Checkbox value="QTKD">Ngành Quản trị kinh doanh</Checkbox>
+                      <Checkbox value={7340101}>Quản trị kinh doanh</Checkbox>
                     </Col>
                     <Col xs={24} sm={12}>
-                      <Checkbox value="LTMQT">Ngành Luật Thương mại Quốc tế</Checkbox>
+                      <Checkbox value={7380109}>Luật Thương mại Quốc tế</Checkbox>
                     </Col>
                     <Col xs={24} sm={12}>
-                      <Checkbox value="NNA">
-                        Ngành Ngôn ngữ Anh (chuyên ngành Anh văn pháp lý)
+                      <Checkbox value={7220201}>
+                        Ngôn ngữ Anh (chuyên ngành Anh văn pháp lý)
+                      </Checkbox>
+                    </Col>
+                    <Col xs={24} sm={12}>
+                      <Checkbox value={7340120}>
+                        Kinh doanh quốc tế
+                      </Checkbox>
+                    </Col>
+                    <Col xs={24} sm={12}>
+                      <Checkbox value={7340201}>
+                        Tài chính - Ngân hàng
                       </Checkbox>
                     </Col>
                   </Row>
@@ -177,7 +203,7 @@ const Khoa: React.FC = () => {
             <Col xs={24} md={8}>
               <Form.Item
                 label="Tổng số bộ môn của Khoa"
-                name="tongBoMon"
+                name="tongSoMhk"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số bộ môn của Khoa' },
                   ...numberRule,
@@ -193,7 +219,7 @@ const Khoa: React.FC = () => {
                     Cập nhật (upload) File danh mục môn học<sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="fileDanhMuc"
+                name="fileDmmh"
                 rules={[{ required: true, message: 'Vui lòng tải lên File danh mục môn học' }]}
               >
                 <Upload
@@ -242,7 +268,7 @@ const Khoa: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Tổng số chương trình cần cải tiến"
-                name="cTrinhCaiTien"
+                name="soCtdtCanCaiTien"
                 rules={[
                   {
                     required: true,
@@ -257,7 +283,7 @@ const Khoa: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Tổng số chương trình đào tạo xây dựng mới"
-                name="cTrinhXayDungMoi"
+                name="soCtdtXayDungMoi"
                 rules={[
                   {
                     required: true,
@@ -272,7 +298,7 @@ const Khoa: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Tổng số tài liệu, giáo trình cần chỉnh sửa"
-                name="taiLieuCanSua"
+                name="soTlgtCanChinhSua"
                 rules={[
                   {
                     required: true,
@@ -287,7 +313,7 @@ const Khoa: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Tổng số tài liệu, giáo trình biên soạn mới"
-                name="taiLieuSoanMoi"
+                name="soTlgtBienSoanMoi"
                 rules={[
                   {
                     required: true,
@@ -317,7 +343,7 @@ const Khoa: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng giảng viên cần đào tạo, bồi dưỡng, nâng cao trình độ chuyên môn"
-                name="gVCanDaoTao"
+                name="soGvCanDtbd"
                 rules={[
                   {
                     required: true,
@@ -333,7 +359,7 @@ const Khoa: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng giảng viên cần tuyển"
-                name="gVCanTuyen"
+                name="soGvCanTuyenMoi"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng giảng viên cần tuyển' },
                   ...numberRule,
@@ -369,7 +395,15 @@ const Khoa: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      id: 1,
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCKhoa(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

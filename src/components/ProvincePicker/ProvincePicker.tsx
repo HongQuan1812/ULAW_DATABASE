@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Select, Typography, Row, Col, Empty } from 'antd';
-import { ProvinceData } from '@/services/enroll';
+import { ProvinceData } from '@/services/data_info';
 
 interface ProvincePickerProps {
   title?: string;
