@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCPhongTCNS } from '@/constants/payloadMapperPhongTCNS';
 
 const PhongTCNS: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -28,12 +29,12 @@ const PhongTCNS: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -82,7 +83,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng ký hợp đồng mới"
-                name="soLuongHopDongMoi"
+                name="soLuongHdm"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng ký hợp đồng mới' },
                   ...numberRule,
@@ -94,7 +95,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng thanh lý hợp đồng"
-                name="soLuongThanhLyHopDong"
+                name="soLuongHdtl"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng thanh lý hợp đồng' },
                   ...numberRule,
@@ -106,7 +107,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng thỏa thuận cộng tác viên"
-                name="soLuongThoaThuanCTV"
+                name="soLuongTtCtv"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng thỏa thuận cộng tác viên' },
                   ...numberRule,
@@ -118,7 +119,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Tổng số viên chức"
-                name="vienChuc"
+                name="tongSoVc"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số viên chức' },
                   ...numberRule,
@@ -130,7 +131,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Tổng số viên chức nam"
-                name="vienChucNam"
+                name="tongSoVcNam"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số viên chức nam' },
                   ...numberRule,
@@ -142,7 +143,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Tổng số viên chức nữ"
-                name="vienChucNu"
+                name="tongSoVcNu"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số viên chức nữ' },
                   ...numberRule,
@@ -154,7 +155,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Tổng số cộng tác viên"
-                name="cTV"
+                name="tongSoCtv"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số cộng tác viên' },
                   ...numberRule,
@@ -166,7 +167,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Tổng số học hàm giáo sư"
-                name="giaoSu"
+                name="tongSoHhGs"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số học hàm giáo sư' },
                   ...numberRule,
@@ -178,7 +179,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Tổng số học hàm phó giáo sư"
-                name="phoGiaoSu"
+                name="tongSoHhPgs"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số học hàm phó giáo sư' },
                   ...numberRule,
@@ -190,7 +191,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Tổng số học vị tiến sĩ"
-                name="tienSi"
+                name="tongSoHvTs"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số học vị tiến sĩ' },
                   ...numberRule,
@@ -202,7 +203,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Tổng số học vị thạc sĩ"
-                name="thacSi"
+                name="tongSoHvThs"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số học vị thạc sĩ' },
                   ...numberRule,
@@ -214,7 +215,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Tổng số học vị đại học"
-                name="hocViDH"
+                name="tongSoHvDH"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số học vị đại học' },
                   ...numberRule,
@@ -226,7 +227,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Tổng số học vị dưới đại học"
-                name="hoViDuoiDH"
+                name="tongSoHvDdh"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số học vị dưới đại học' },
                   ...numberRule,
@@ -238,7 +239,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Tổng số giảng viên cơ hữu"
-                name="gVCoHuu"
+                name="tongSoGvch"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số giảng viên cơ hữu' },
                   ...numberRule,
@@ -250,7 +251,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Tổng số giảng viên thỉnh giảng"
-                name="gVThinhGiang"
+                name="tongSoGvtg"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số giảng viên thỉnh giảng' },
                   ...numberRule,
@@ -262,7 +263,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Tổng số tuổi bình quân"
-                name="tuoiBinhQuan"
+                name="tongSoTuoiBinhQuan"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số tuổi bình quân' },
                   ...numberRule,
@@ -274,7 +275,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Tổng số thu nhập bình quân"
-                name="thuNhapBinhQuan"
+                name="tongSoThuNhapBinhQuan"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số thu nhập bình quân' },
                   ...numberRule,
@@ -301,7 +302,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng quy hoạch"
-                name="quyHoach"
+                name="soLuongQh"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng quy hoạch' },
                   ...numberRule,
@@ -313,7 +314,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng quy hoạch bổ sung"
-                name="quyHoachBoSung"
+                name="soLuongQhbs"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng quy hoạch bổ sung' },
                   ...numberRule,
@@ -325,7 +326,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu bổ nhiệm"
-                name="boNhiem"
+                name="soLieuBn"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu bổ nhiệm' },
                   ...numberRule,
@@ -337,7 +338,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu bổ nhiệm lại"
-                name="boNhiemLai"
+                name="soLieuBnl"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu bổ nhiệm lại' },
                   ...numberRule,
@@ -349,7 +350,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu kéo dài thời gian giữ chức vụ"
-                name="keoDaiChucVu"
+                name="soLieuKdcv"
                 rules={[
                   {
                     required: true,
@@ -364,7 +365,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu thôi giữ chức vụ"
-                name="thoiChucVu"
+                name="soLieuTcv"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu thôi giữ chức vụ' },
                   ...numberRule,
@@ -376,7 +377,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu từ chức"
-                name="tuChuc"
+                name="soLieuTuChuc"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu từ chức' },
                   ...numberRule,
@@ -388,7 +389,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu miễn nhiệm"
-                name="mienNhiem"
+                name="soLieuMienNhiem"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu miễn nhiệm' },
                   ...numberRule,
@@ -400,7 +401,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu chuyển đổi công tác"
-                name="chuyenCongTac"
+                name="soLieuCdct"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu chuyển đổi công tác' },
                   ...numberRule,
@@ -412,7 +413,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu bổ nhiệm chức danh nghề nghiệp"
-                name="boNhiemChucDanh"
+                name="soLieuBnCdnn"
                 rules={[
                   {
                     required: true,
@@ -427,7 +428,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu chuyển hạng chức danh nghề nghiệp"
-                name="chuyenHangChucDanh"
+                name="soLieuChuyenHangCdnn"
                 rules={[
                   {
                     required: true,
@@ -442,7 +443,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu thăng hạng chức danh nghề nghiệp"
-                name="thangHangChucDanh"
+                name="soLieuThangHangCdnn"
                 rules={[
                   {
                     required: true,
@@ -472,7 +473,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu đào tạo về chuyên môn nghiệp vụ"
-                name="daoTaoChuyenMon"
+                name="soLieuDtcmnv"
                 rules={[
                   {
                     required: true,
@@ -487,7 +488,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu đào tạo nâng cao trình độ"
-                name="daoTaoNangCao"
+                name="soLieuDtnctd"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu đào tạo nâng cao trình độ' },
                   ...numberRule,
@@ -499,7 +500,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu đào tạo về lý luận chính trị"
-                name="daoTaoLyLuan"
+                name="soLieuDtllct"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu đào tạo về lý luận chính trị' },
                   ...numberRule,
@@ -511,7 +512,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu đào tạo ngoài nước"
-                name="daoTaoNgoaiNuoc"
+                name="soLieuDtnn"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu đào tạo ngoài nước' },
                   ...numberRule,
@@ -538,7 +539,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu nâng bậc lương thường xuyên"
-                name="nangBacThuongXuyen"
+                name="soLieuNbltx"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu nâng bậc lương thường xuyên' },
                   ...numberRule,
@@ -550,7 +551,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu nâng bậc lương trước hạn"
-                name="nangBacTruocHan"
+                name="soLieuNblth"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu nâng bậc lương trước hạn' },
                   ...numberRule,
@@ -562,7 +563,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu nâng bậc lương vượt khung"
-                name="nangBacVuotKhung"
+                name="soLieuNblvk"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu nâng bậc lương vượt khung' },
                   ...numberRule,
@@ -574,11 +575,26 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu kéo dài thời gian nâng bậc lương"
-                name="keoDaiNangBac"
+                name="soLieuNblkd"
                 rules={[
                   {
                     required: true,
                     message: 'Vui lòng nhập số liệu kéo dài thời gian nâng bậc lương',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số liệu nâng phụ cấp thâm niên nhà giáo"
+                name="soLieuNpctnng"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số liệu nâng phụ cấp thâm niên nhà giáo',
                   },
                   ...numberRule,
                 ]}
@@ -604,7 +620,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu nghỉ chế độ bảo hiểm, hưu trí"
-                name="nghiCheDo"
+                name="soLieuNcdbhht"
                 rules={[
                   {
                     required: true,
@@ -619,7 +635,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu thôi việc"
-                name="thoiViec"
+                name="soLieuThoiViec"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu thôi việc' },
                   ...numberRule,
@@ -631,7 +647,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu chuyển công tác"
-                name="chuyenCongTac2"
+                name="soLieuChuyenCongTac"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu chuyển công tác' },
                   ...numberRule,
@@ -643,7 +659,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu kê khai tài sản đối với viên chức"
-                name="keKhaiTaiSan"
+                name="soLieuKkts"
                 rules={[
                   {
                     required: true,
@@ -673,7 +689,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu chiến sĩ thi đua"
-                name="chienSiThiDua"
+                name="soLieuCstd"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu chiến sĩ thi đua' },
                   ...numberRule,
@@ -685,7 +701,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu lao động tiên tiến"
-                name="laoDongTienTien"
+                name="soLieuLdtt"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu lao động tiên tiến' },
                   ...numberRule,
@@ -697,7 +713,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu hoàn thành xuất sắc"
-                name="hoanThanhXuatSac"
+                name="soLieuHtxs"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu hoàn thành xuất sắc' },
                   ...numberRule,
@@ -709,7 +725,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu hoàn thành tốt"
-                name="hoanThanhTot"
+                name="soLieuHtt"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu hoàn thành tốt' },
                   ...numberRule,
@@ -718,10 +734,10 @@ const PhongTCNS: React.FC = () => {
                 <Input />
               </Form.Item>
             </Col>
-            <Col xs={24} md={8}>
+            <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu hoàn thành nhiệm vụ"
-                name="hoanThanhNhiemVu"
+                name="soLieuHtnv"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số liệu hoàn thành nhiệm vụ' },
                   ...numberRule,
@@ -730,10 +746,22 @@ const PhongTCNS: React.FC = () => {
                 <Input />
               </Form.Item>
             </Col>
-            <Col xs={24} md={8}>
+            <Col xs={24} md={6}>
+              <Form.Item
+                label="Số liệu không hoàn thành nhiệm vụ"
+                name="soLieuKhtnv"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập số liệu không hoàn thành nhiệm vụ' },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
               <Form.Item
                 label="Số liệu viên chức - người lao động bị kỷ luật"
-                name="kyLuat"
+                name="soLieuBkl"
                 rules={[
                   {
                     required: true,
@@ -745,10 +773,10 @@ const PhongTCNS: React.FC = () => {
                 <Input />
               </Form.Item>
             </Col>
-            <Col xs={24} md={8}>
+            <Col xs={24} md={6}>
               <Form.Item
-                label="Số liệu viên chức - người lao động khen thưởng khác (Nếu có)"
-                name="khenThuongKhac"
+                label="Số liệu viên chức - người lao động khen thưởng khác"
+                name="soLieuDkt"
                 rules={[
                   {
                     required: true,
@@ -779,7 +807,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng tập thể lao động tiên tiến"
-                name="soLuongTapTheTienTien"
+                name="soLuongTtLdtt"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng tập thể lao động tiên tiến' },
                   ...numberRule,
@@ -791,7 +819,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng tập thể hoàn thành xuất sắc"
-                name="soLuongTapTheXuatSac"
+                name="soLuongTtHtxs"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng tập thể hoàn thành xuất sắc' },
                   ...numberRule,
@@ -803,7 +831,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng tập thể hoàn thành tốt"
-                name="soLuongTapTheTot"
+                name="soLuongTtHtt"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng tập thể hoàn thành tốt' },
                   ...numberRule,
@@ -815,7 +843,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng tập thể hoàn thành nhiệm vụ"
-                name="soLuongTapTheNhiemVu"
+                name="soLuongTtHtnv"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số lượng tập thể hoàn thành nhiệm vụ' },
                   ...numberRule,
@@ -827,7 +855,7 @@ const PhongTCNS: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số lượng tập thể không hoàn thành nhiệm vụ"
-                name="soLuongTapTheKhongHoanThanh"
+                name="soLuongTtKhtnv"
                 rules={[
                   {
                     required: true,
@@ -841,12 +869,12 @@ const PhongTCNS: React.FC = () => {
             </Col>
             <Col xs={24} md={6}>
               <Form.Item
-                label="Số lượng tập thể khen thưởng khác (Nếu có)"
-                name="soLuongTapTheKhenThuongKhac"
+                label="Số lượng tập thể khen thưởng khác"
+                name="soLuongTtDkt"
                 rules={[
                   {
                     required: true,
-                    message: 'Vui lòng nhập số lượng tập thể khen thưởng khác (Nếu có)',
+                    message: 'Vui lòng nhập số lượng tập thể khen thưởng khác',
                   },
                   ...numberRule,
                 ]}
@@ -881,7 +909,14 @@ const PhongTCNS: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCPhongTCNS(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

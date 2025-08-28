@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCThuVien } from '@/constants/payloadMapperThuVien';
 
 const ThuVien: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -28,12 +29,12 @@ const ThuVien: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -87,7 +88,7 @@ const ThuVien: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="soLuongDeTaiNghienCuu"
+                name="soLuongDtnckhdnt"
                 rules={[
                   {
                     required: true,
@@ -104,105 +105,17 @@ const ThuVien: React.FC = () => {
               <Form.Item
                 label={
                   <>
-                    Số lượng đề tài dạng Giáo trình đã được nghiệm thu do thư viện quản lý và khai
-                    thác
-                    <sup className={styles.sup}>(2)</sup>
-                  </>
-                }
-                name="soLuongDeTaiGiaoTrinh"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng đề tài dạng Giáo trình đã được nghiệm thu do thư viện quản lý và khai thác',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label={
-                  <>
-                    Số lượng đề tài dạng Tập bài giảng đã được nghiệm thu do thư viện quản lý và
+                    Số lượng đề tài nghiên cứu khoa học đã được nghiệm thu do thư viện quản lý và
                     khai thác
                     <sup className={styles.sup}>(2)</sup>
                   </>
                 }
-                name="soLuongDeTaiTapBaiGiang"
+                name="soLuongDtnckhdntK"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng đề tài dạng Tập bài giảng đã được nghiệm thu do thư viện quản lý và khai thác',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label={
-                  <>
-                    Số lượng đề tài dạng Khóa luận đã được nghiệm thu do thư viện quản lý và khai
-                    thác
-                    <sup className={styles.sup}>(2)</sup>
-                  </>
-                }
-                name="soLuongDeTaiKhoaLuan"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng đề tài dạng Khóa luận đã được nghiệm thu do thư viện quản lý và khai thác',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label={
-                  <>
-                    Số lượng đề tài dạng Luận văn thạc sĩ luận đã được nghiệm thu do thư viện quản
-                    lý và khai thác
-                    <sup className={styles.sup}>(2)</sup>
-                  </>
-                }
-                name="soLuongDeTaiLuanVan"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng đề tài dạng Luận văn thạc sĩ luận đã được nghiệm thu do thư viện quản lý và khai thác',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label={
-                  <>
-                    Số lượng đề tài dạng Luận án tiến sĩ luận đã được nghiệm thu do thư viện quản lý
-                    và khai thác
-                    <sup className={styles.sup}>(2)</sup>
-                  </>
-                }
-                name="soLuongDeTaiLuanAn"
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Vui lòng nhập số lượng đề tài dạng Luận án tiến sĩ luận đã được nghiệm thu do thư viện quản lý và khai thác',
+                      'Vui lòng nhập số lượng đề tài nghiên cứu khoa học đã được nghiệm thu do thư viện quản lý và khai thác',
                   },
                   ...numberRule,
                 ]}
@@ -219,7 +132,7 @@ const ThuVien: React.FC = () => {
                     <sup className={styles.sup}>(3)</sup>
                   </Typography.Text>
                 }
-                name="soLuongNguoiDungTruyNhapTaiCho"
+                name="soLuongNdtntc"
                 rules={[
                   {
                     required: true,
@@ -241,7 +154,7 @@ const ThuVien: React.FC = () => {
                     <sup className={styles.sup}>(3)</sup>
                   </Typography.Text>
                 }
-                name="soLuongNguoiDungTruyNhapTuXa"
+                name="soLuongNgtntx"
                 rules={[
                   {
                     required: true,
@@ -293,7 +206,14 @@ const ThuVien: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCThuVien(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

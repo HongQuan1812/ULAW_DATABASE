@@ -331,6 +331,7 @@ export interface BCPhongDBCLKTPayLoad {
 export interface BCThuVienPayLoad {
   baoCao: BaoCaoBackEnd;
   soLuongDtnckhdnt: number;
+  soLuongDtnckhdntK: number;
   soLuongNdtntc: number;
   soLuongNgtntx: number;
 }

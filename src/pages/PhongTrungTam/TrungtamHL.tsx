@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCTrungtamHL } from '@/constants/payloadMapperTrungtamHL';
 
 const TrungtamHL: React.FC = () => {
   const [current, setCurrent] = useState(0);
@@ -28,12 +29,12 @@ const TrungtamHL: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -82,7 +83,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số tên giáo trình"
-                name="soTenGiaoTrinh"
+                name="soTenGt"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số tên giáo trình' },
                   ...numberRule,
@@ -94,7 +95,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số cuốn của giáo trình"
-                name="soCuonGiaoTrinh"
+                name="soCuongGt"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số cuốn của giáo trình' },
                   ...numberRule,
@@ -106,7 +107,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số tên của tập bài giảng"
-                name="soTenTapBaiGiang"
+                name="soTenTbg"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số tên của tập bài giảng' },
                   ...numberRule,
@@ -118,7 +119,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số cuốn của tập bài giảng"
-                name="soCuonTapBaiGiang"
+                name="soCuonTbg"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số cuốn của tập bài giảng' },
                   ...numberRule,
@@ -130,7 +131,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số tên của sách tình huống"
-                name="soTenSachTinhHuong"
+                name="soTenSth"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số tên của sách tình huống' },
                   ...numberRule,
@@ -142,7 +143,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số cuốn của sách tình huống"
-                name="soCuonSachTinhHuong"
+                name="soCuonSth"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số cuốn của sách tình huống' },
                   ...numberRule,
@@ -154,7 +155,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số tên của sách chuyên khảo"
-                name="soTenSachChuyenKhao"
+                name="soTenSck"
                 rules={[
                   { required: true, message: 'Vui lòng nhập tổng số tên của sách chuyên khảo' },
                   ...numberRule,
@@ -166,7 +167,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số cuốn của sách chuyên khảo"
-                name="soCuonSachChuyenKhao"
+                name="soCuonSck"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số cuốn của sách chuyên khảo' },
                   ...numberRule,
@@ -178,7 +179,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số tên của sách tham khảo"
-                name="soTenSachThamKhao"
+                name="soTenStk"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số tên của sách tham khảo' },
                   ...numberRule,
@@ -190,7 +191,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số cuốn của sách tham khảo"
-                name="soCuonSachThamKhao"
+                name="soCuonStk"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số cuốn của sách tham khảo' },
                   ...numberRule,
@@ -217,7 +218,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số tên sách ký gửi của giảng viên"
-                name="soTenSachKyGuiGiangVien"
+                name="soTenSkgGv"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số tên sách ký gửi của giảng viên' },
                   ...numberRule,
@@ -229,7 +230,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số cuốn sách ký gửi của giảng viên"
-                name="soCuonSachKyGuiGiangVien"
+                name="soCuonSkgGv"
                 rules={[
                   { required: true, message: 'Vui lòng nhập số cuốn sách ký gửi của giảng viên' },
                   ...numberRule,
@@ -241,7 +242,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số tên sách ký gửi của tổ chức khác"
-                name="soTenSachToChucKhac"
+                name="soTenSkgTcCnKhac"
                 rules={numberRule}
               >
                 <Input />
@@ -250,25 +251,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Số tên sách ký gửi của cá nhân khác"
-                name="soTenSachCaNhanKhac"
-                rules={numberRule}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={6}>
-              <Form.Item
-                label="Số cuốn sách ký gửi của tổ chức khác"
-                name="soCuonSachToChucKhac"
-                rules={numberRule}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={6}>
-              <Form.Item
-                label="Số cuốn sách ký gửi của cá nhân khác"
-                name="soCuonSachCaNhanKhac"
+                name="coCuonSkgTcCnKhac"
                 rules={numberRule}
               >
                 <Input />
@@ -292,7 +275,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Doanh thu từ sách của Trường"
-                name="doanhThuSachTruong"
+                name="doanhThuTuSach"
                 rules={[
                   {
                     required: true,
@@ -307,7 +290,7 @@ const TrungtamHL: React.FC = () => {
             <Col xs={24} md={6}>
               <Form.Item
                 label="Thù lao từ sách ký gửi"
-                name="thuLaoSachKyGui"
+                name="thuLaoTuSkg"
                 rules={[
                   { required: true, message: 'Vui lòng nhập thù lao từ sách ký gửi' },
                   ...numberRule,
@@ -343,7 +326,14 @@ const TrungtamHL: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCTrungtamHL(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

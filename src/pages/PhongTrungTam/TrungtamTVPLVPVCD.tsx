@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCTrungtamTVPLPVCD } from '@/constants/payloadMapperTrungtamTVPLVPVCD';
 
 const TrungtamTVPLVPVCD: React.FC = () => {
   const [current, setCurrent] = useState(0);
@@ -28,12 +29,12 @@ const TrungtamTVPLVPVCD: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -85,7 +86,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
                     Số lượng dịch vụ tư vấn pháp luật có thu phí đối với <b>cá nhân</b> có nhu cầu
                   </Typography.Text>
                 }
-                name="soLuongDichVuCaNhan"
+                name="soLuongDvtnCn"
                 rules={[
                   {
                     required: true,
@@ -105,7 +106,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
                     Số lượng dịch vụ tư vấn pháp luật có thu phí đối với <b>tổ chức</b> có nhu cầu
                   </Typography.Text>
                 }
-                name="soLuongDichVuToChuc"
+                name="soLuongDvtnTc"
                 rules={[
                   {
                     required: true,
@@ -121,7 +122,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng hỗ trợ pháp lý đối với các đối tượng được hưởng theo quy định của Pháp luật"
-                name="soLuongHoTroPhapLy"
+                name="soLuongHtpl"
                 rules={[
                   {
                     required: true,
@@ -142,7 +143,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="soLuongHDTuyenTruyen"
+                name="soLuongHdttpbpl"
                 rules={[
                   {
                     required: true,
@@ -162,7 +163,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
                     <sup className={styles.sup}>(2)</sup>
                   </Typography>
                 }
-                name="soLuongHDLienKetTrongNuoc"
+                name="soLuongLienKettn"
                 rules={[
                   {
                     required: true,
@@ -183,7 +184,7 @@ const TrungtamTVPLVPVCD: React.FC = () => {
                     <sup className={styles.sup}>(2)</sup>
                   </Typography>
                 }
-                name="soLuongHDLienKetNgoaiNuoc"
+                name="soLuongLienKetnn"
                 rules={[
                   {
                     required: true,
@@ -233,7 +234,14 @@ const TrungtamTVPLVPVCD: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCTrungtamTVPLPVCD(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

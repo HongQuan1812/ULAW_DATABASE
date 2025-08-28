@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCPhongTTQHDN } from '@/constants/payloadMappperPhongTTQHDN';
 
 const PhongTTQHDN: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -28,12 +29,12 @@ const PhongTTQHDN: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -81,7 +82,7 @@ const PhongTTQHDN: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng truyền thông thương hiệu ULAW"
-                name="soLuongTruyenThongThuongHieu"
+                name="soLuongTtthUlaw"
                 rules={[
                   {
                     required: true,
@@ -96,7 +97,7 @@ const PhongTTQHDN: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng hình ảnh thương hiệu"
-                name="soLuongHinhAnhThuongHieu"
+                name="soLuongHath"
                 rules={[
                   {
                     required: true,
@@ -111,7 +112,7 @@ const PhongTTQHDN: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng khủng hoảng truyền thông"
-                name="soLuongKhungHoangTruyenThong"
+                name="soLuongKhtt"
                 rules={[
                   {
                     required: true,
@@ -131,7 +132,7 @@ const PhongTTQHDN: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="soLuongKhaoSatViecLam"
+                name="soLuongKsttvl"
                 rules={[
                   {
                     required: true,
@@ -147,7 +148,7 @@ const PhongTTQHDN: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng chương trình thực tập, kiến tập theo nhu cầu của doanh nghiệp"
-                name="soLuongChuongTrinhThucTap"
+                name="soLuongCtttktDn"
                 rules={[
                   {
                     required: true,
@@ -162,23 +163,8 @@ const PhongTTQHDN: React.FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng hoạt động chăm sóc người học được thực hiện"
-                name="soLuongHoatDongChamSoc"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Vui lòng nhập số lượng hoạt động chăm sóc người học được thực hiện',
-                  },
-                  ...numberRule,
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
                 label="Số lượng Cựu sinh viên (Alumni ULAW)"
-                name="soLuongCuuSinhVien"
+                name="soLuongCsvUlaw"
                 rules={[
                   {
                     required: true,
@@ -222,7 +208,14 @@ const PhongTTQHDN: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCPhongTTQHDN(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCPhongTVTS } from '@/constants/payloadMapperPhongTVTS';
 
 const PhongTVTS: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -28,12 +29,12 @@ const PhongTVTS: React.FC = () => {
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
           <Input disabled />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
           <Input disabled />
         </Form.Item>
       </Col>
@@ -86,7 +87,7 @@ const PhongTVTS: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="soLuongChienLuocKeHoach"
+                name="soLuongKhTvtshn"
                 rules={[
                   {
                     required: true,
@@ -107,7 +108,7 @@ const PhongTVTS: React.FC = () => {
                     <sup className={styles.sup}>(1)</sup>
                   </>
                 }
-                name="soLuongCongTacToChuc"
+                name="soLuongCttcTvtshn"
                 rules={[
                   {
                     required: true,
@@ -128,7 +129,7 @@ const PhongTVTS: React.FC = () => {
                     <sup className={styles.sup}>(2)</sup>
                   </>
                 }
-                name="soLuongChienLuocKeHoachTruyenThong"
+                name="soLuongKhTt"
                 rules={[
                   {
                     required: true,
@@ -149,7 +150,7 @@ const PhongTVTS: React.FC = () => {
                     <sup className={styles.sup}>(2)</sup>
                   </>
                 }
-                name="soLuongCongTacToChucTruyenThong"
+                name="soLuongCttcTt"
                 rules={[
                   {
                     required: true,
@@ -165,7 +166,7 @@ const PhongTVTS: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng lượt tư vấn tuyển sinh qua các đợt"
-                name="soLuongLuotTuVanTuyenSinh"
+                name="soLuongLuotTvts"
                 rules={[
                   {
                     required: true,
@@ -180,7 +181,7 @@ const PhongTVTS: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng hoạt động chăm sóc người học được thực hiện"
-                name="soLuongHoatDongChamSoc"
+                name="soLuongHdcsnh"
                 rules={[
                   {
                     required: true,
@@ -227,7 +228,14 @@ const PhongTVTS: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const userInfo = {
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'a@gmail.com',
+    };
+
+    const payload = buildPayloadBCPhongTVTS(values, userInfo);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };
