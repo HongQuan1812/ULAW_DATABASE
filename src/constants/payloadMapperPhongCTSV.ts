@@ -6,19 +6,19 @@ import {
   NguoiBaoCaoBackEnd,
 } from '@/services/data_info';
 
-export const buildPayloadBCPhongCTSV = (formData: any, userInfo: any): BCPhongCTSVPayLoad => {
+export const buildPayloadBCPhongCTSV = (formData: any): BCPhongCTSVPayLoad => {
   const toChuc: ToChucBackEnd = {
     capToChuc: 'PhongTrungtam',
   };
 
   const donVi: DonViBackEnd = {
-    capDonVi: 'PhongCTSV',
+    capDonVi: formData.capDonVi || '',
     toChuc,
   };
 
   const nguoiBaoCao: NguoiBaoCaoBackEnd = {
-    hoVaTen: userInfo?.hoVaTen || '',
-    email: userInfo?.email || '',
+    hoVaTen: formData.hoVaTen || '',
+    email: formData.email || '',
     chucVu: formData.chucVu || '',
   };
 
@@ -41,5 +41,5 @@ export const buildPayloadBCPhongCTSV = (formData: any, userInfo: any): BCPhongCT
     soLuongSvdtcxh: Number(formData.soLuongSvdtcxh) || 0,
     soLuongDonThuCuaSv: Number(formData.soLuongDonThuCuaSv) || 0,
     thongKeHangNamVeSvTheoQdcpl: Number(formData.thongKeHangNamVeSvTheoQdcpl) || 0,
-  }
+  };
 };

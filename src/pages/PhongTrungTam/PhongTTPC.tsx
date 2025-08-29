@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Col, Form, Input, Row, Steps } from 'antd';
 import { history, useLocation } from 'umi';
 import styles from './index.less';
@@ -8,6 +8,7 @@ import { getLocationName } from '@/utils/getLocationName';
 import FormDateSelect from '@/components/FormDateSelect';
 import FormStageSelect from '@/components/FormStageSelect';
 import SelectVPRole from '@/components/SelectVPRole';
+import { buildPayloadBCPhongTTPC } from '@/constants/payloadMapperPhongTTPC';
 
 const PhongTTPC: React.FC = () => {
   const [current, setCurrent] = useState(0); // step lớn
@@ -24,22 +25,31 @@ const PhongTTPC: React.FC = () => {
     },
   ];
 
+  useEffect(() => {
+    const userInfo = {
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'nva@hcmulaw.edu.vn',
+      capDonVi: 'Phòng Thanh tra - Pháp chế',
+    };
+    form.setFieldsValue(userInfo);
+  }, []);
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="donVi">
-          <Input disabled />
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
+          <Input disabled style={{ color: 'rgba(0, 0, 0, 0.65)' }} />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
-        <Form.Item label="Họ và tên người nhập báo cáo" name="fullName">
-          <Input disabled />
+        <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
+          <Input disabled style={{ color: 'rgba(0, 0, 0, 0.65)' }} />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
         <Form.Item label="Email người nhập báo cáo" name="email">
-          <Input disabled />
+          <Input disabled style={{ color: 'rgba(0, 0, 0, 0.65)' }} />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
@@ -80,13 +90,13 @@ const PhongTTPC: React.FC = () => {
           <Row gutter={[16, 16]}>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng các chương trình, kế hoạch thanh tra, pháp chế định kỳ, đột xuất"
-                name="soLuongChuongTrinhThanhTra"
+                label="Số lượng các chương trình, kế hoạch thanh tra, pháp chế định kỳ"
+                name="soLuongCtkhTtpcDinhKy"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng các chương trình, kế hoạch thanh tra, pháp chế định kỳ, đột xuất',
+                      'Vui lòng nhập số lượng các chương trình, kế hoạch thanh tra, pháp chế định kỳ',
                   },
                   ...numberRule,
                 ]}
@@ -96,13 +106,13 @@ const PhongTTPC: React.FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng công tác tổ chức thực hiện các chương trình, kế hoạch thanh tra, pháp chế định kỳ, đột xuất"
-                name="soLuongToChucThanhTra"
+                label="Số lượng các chương trình, kế hoạch thanh tra, pháp chế đột xuất"
+                name="soLuongCtkhTtpcDotXuat"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng công tác tổ chức thực hiện các chương trình, kế hoạch thanh tra, pháp chế định kỳ, đột xuất',
+                      'Vui lòng nhập số lượng các chương trình, kế hoạch thanh tra, pháp chế đột xuất',
                   },
                   ...numberRule,
                 ]}
@@ -112,13 +122,60 @@ const PhongTTPC: React.FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                label="Số lượng công tác tiếp công dân, công tác giải quyết khiếu nại, tố cáo, thực hiện quy chế dân chủ"
-                name="soLuongCongTacQuyCheDanChu"
+                label="Số lượng công tác tổ chức thực hiện các chương trình, kế hoạch thanh tra, pháp chế định kỳ"
+                name="soLuongCttcCtkhTtpcDinhKy"
                 rules={[
                   {
                     required: true,
                     message:
-                      'Vui lòng nhập số lượng công tác tiếp công dân, công tác giải quyết khiếu nại, tố cáo, thực hiện quy chế dân chủ',
+                      'Vui lòng nhập số lượng công tác tổ chức thực hiện các chương trình, kế hoạch thanh tra, pháp chế định kỳ',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng công tác tổ chức thực hiện các chương trình, kế hoạch thanh tra, pháp chế đột xuất"
+                name="soLuongCttcCtkhTtpcDotXuat"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng công tác tổ chức thực hiện các chương trình, kế hoạch thanh tra, pháp chế đột xuất',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng công tác tiếp công dân của Trường"
+                name="soLuongCttcd"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng nhập số lượng công tác tiếp công dân của Trường',
+                  },
+                  ...numberRule,
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                label="Số lượng công tác giải quyết khiếu nại, tố cáo, thực hiện quy chế dân chủ"
+                name="soLuongCtgqkntc"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      'Vui lòng nhập số lượng công tác giải quyết khiếu nại, tố cáo, thực hiện quy chế dân chủ',
                   },
                   ...numberRule,
                 ]}
@@ -129,7 +186,7 @@ const PhongTTPC: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng công tác phòng chống tham nhũng của Trường"
-                name="soLuongCongTacChongThamNhung"
+                name="soLuongCtpctn"
                 rules={[
                   {
                     required: true,
@@ -144,7 +201,7 @@ const PhongTTPC: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng vụ xác minh tính pháp lý của văn bằng theo quy định về quy trình xác minh văn bằng, chứng chỉ"
-                name="soLuongXacMinhVanBang"
+                name="soLuongVxmVb"
                 rules={[
                   {
                     required: true,
@@ -160,7 +217,7 @@ const PhongTTPC: React.FC = () => {
             <Col xs={24} md={12}>
               <Form.Item
                 label="Số lượng vụ xác minh tính pháp lý của chứng chỉ theo quy định về quy trình xác minh văn bằng, chứng chỉ"
-                name="soLuongXacMinhChungChi"
+                name="soLuongVxmCc"
                 rules={[
                   {
                     required: true,
@@ -200,7 +257,9 @@ const PhongTTPC: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    console.log('Form data:', values);
+    const payload = buildPayloadBCPhongTTPC(values);
+    console.log('Payload gửi BE:', payload);
+
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
     history.push('/trangchu');
   };

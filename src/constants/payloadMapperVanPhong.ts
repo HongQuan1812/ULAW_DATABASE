@@ -6,19 +6,19 @@ import {
   NguoiBaoCaoBackEnd,
 } from '@/services/data_info';
 
-export const buildPayloadBCVanPhong = (formData: any, userInfo: any): BCVanPhongPayLoad => {
+export const buildPayloadBCVanPhong = (formData: any): BCVanPhongPayLoad => {
   const toChuc: ToChucBackEnd = {
     capToChuc: 'VanPhong',
   };
 
   const donVi: DonViBackEnd = {
-    capDonVi: 'VanPhong',
+    capDonVi: formData.capDonVi || '',
     toChuc,
   };
 
   const nguoiBaoCao: NguoiBaoCaoBackEnd = {
-    hoVaTen: userInfo?.hoVaTen || '',
-    email: userInfo?.email || '',
+    hoVaTen: formData.hoVaTen || '',
+    email: formData.email || '',
     chucVu: formData.chucVu || '',
   };
 

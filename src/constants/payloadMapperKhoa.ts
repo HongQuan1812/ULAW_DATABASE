@@ -7,7 +7,7 @@ import {
   DanhMucNganhBackEnd,
 } from '@/services/data_info';
 
-export const buildPayloadBCKhoa = (formData: any, userInfo: any): BCKhoaPayLoad => {
+export const buildPayloadBCKhoa = (formData: any): BCKhoaPayLoad => {
   const toChuc: ToChucBackEnd = {
     capToChuc: 'Khoa',
   };
@@ -30,8 +30,8 @@ export const buildPayloadBCKhoa = (formData: any, userInfo: any): BCKhoaPayLoad 
   };
 
   const nguoiBaoCao: NguoiBaoCaoBackEnd = {
-    hoVaTen: userInfo?.hoVaTen || '',
-    email: userInfo?.email || '',
+    hoVaTen: formData.hoVaTen || '',
+    email: formData.email || '',
     chucVu: formData.chucVu || '',
   };
 

@@ -182,7 +182,7 @@ export interface BCPhongKHCNHTPTPayLoad {
   soLuongKyHopTacTcnn: number;
 }
 
-export interface BCPhongTRPCPayLoad {
+export interface BCPhongTTPCPayLoad {
   baoCao: BaoCaoBackEnd;
   soLuongCtkhTtpcDinhKy: number;
   soLuongCtkhTtpcDotXuat: number;

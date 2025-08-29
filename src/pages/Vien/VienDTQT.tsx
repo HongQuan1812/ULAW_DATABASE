@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Col, Form, Input, Row, Steps } from 'antd';
 import { history, useLocation } from 'umi';
 import styles from './index.less';
@@ -25,22 +25,31 @@ const VienDTQT: React.FC = () => {
     },
   ];
 
+  useEffect(() => {
+    const userInfo = {
+      hoVaTen: 'Nguyễn Văn A',
+      email: 'nva@hcmulaw.edu.vn',
+      capDonVi: 'Viện Đào tạo quốc tế',
+    };
+    form.setFieldsValue(userInfo);
+  }, []);
+
   // Step 1 - Thông tin chung
   const step1Content = (
     <Row gutter={[16, 16]}>
       <Col xs={27} md={8}>
-        <Form.Item label="Đơn vị trực thuộc" name="idDonVi">
-          <Input disabled />
+        <Form.Item label="Đơn vị trực thuộc" name="capDonVi">
+          <Input disabled style={{ color: 'rgba(0, 0, 0, 0.65)' }} />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
         <Form.Item label="Họ và tên người nhập báo cáo" name="hoVaTen">
-          <Input disabled />
+          <Input disabled style={{ color: 'rgba(0, 0, 0, 0.65)' }} />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
         <Form.Item label="Email người nhập báo cáo" name="email">
-          <Input disabled />
+          <Input disabled style={{ color: 'rgba(0, 0, 0, 0.65)' }} />
         </Form.Item>
       </Col>
       <Col xs={27} md={8}>
@@ -202,13 +211,7 @@ const VienDTQT: React.FC = () => {
   );
 
   const onFinish = (values: any) => {
-    const userInfo = {
-      id: 1,
-      hoVaTen: 'Nguyễn Văn A',
-      email: 'a@gmail.com',
-    };
-
-    const payload = buildPayloadBCVienDTQT(values, userInfo);
+    const payload = buildPayloadBCVienDTQT(values);
     console.log('Payload gửi BE:', payload);
 
     CustomMessageSuccess({ content: 'Lưu dữ liệu thành công!' });
