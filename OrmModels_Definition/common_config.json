@@ -1,0 +1,46 @@
+{
+    "GdbcHangNam_Mapper": {
+        "1": {
+            "thoiDiemBatDau": "1/1",
+            "thoiDiemKetThuc": "30/6"
+        },
+        
+        "2": {
+            "thoiDiemBatDau": "1/7",
+            "thoiDiemKetThuc": "31/12"
+        }
+    },
+
+    "ChucVu_list" : [
+        "TruongKhoa", 
+        "PhoTruongKhoa",
+        "TroLyKhoa",
+        "TruongBoMon", 
+        "PhoTruongBoMon",
+        "TruongPhong", 
+        "PhoTruongPhong",
+        "GiangVien", 
+        "ChuyenVien",
+        "CongTacVien"
+    ],
+
+    "CapToChuc_ChucVu_Mapper":{
+        "khoa": [
+            "TruongKhoa", "PhoTruongKhoa", 
+            "TruongBoMon", "PhoTruongBoMon",
+            "TroLyKhoa", "GiangVien", "CongTacVien"
+        ],
+        "van phong": [
+            "TruongPhong", "PhoTruongPhong",
+            "ChuyenVien", "CongTacVien"
+        ],
+        "vien": [
+            "TruongPhong", "PhoTruongPhong",
+            "ChuyenVien", "CongTacVien"
+        ],
+        "phong-tt": [
+            "TruongPhong", "PhoTruongPhong",
+            "ChuyenVien", "CongTacVien"
+        ]
+    }
+}

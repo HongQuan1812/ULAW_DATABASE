@@ -1,0 +1,30 @@
+services:       # Define the services (containers) that will run
+  db_mysql:     # Name of the service (container will be named something like <project>_db-MySQL)
+    image: mysql:8.0  # Use the official MySQL 8.0 image from Docker Hub
+    
+    environment:      
+      # Instead of putting the password directly in plain text,
+      # we use *_FILE variables supported by the MySQL image.
+      # The container will read the password from the secret file mounted at /run/secrets/mysql_root_password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+      
+    ports:
+      - "3306:3306"  # Map port 3306 on your host machine to port 3306 inside the container
+                     # This allows external tools (like VS Code, MySQL Workbench) to connect to the database
+    
+    volumes:
+      - db_mysql_data:/var/lib/mysql  # Store MySQL data in a Docker volume, so data persists
+                                      # even if the container is deleted/restarted
+    
+    secrets:
+      - mysql_root_password     # Attach the defined secret into this service
+                                # (the secret will be mounted inside /run/secrets/)
+
+volumes:
+  db_mysql_data:  # Define the named volume "db_mysql_data"
+                  # Docker will create and manage this volume on your host system
+
+secrets:
+  mysql_root_password:
+    file: ./secrets/MySQL/mysql_root_password.txt  # Use forward slashes, not backslashes
+                                                   # Its contents will be available at /run/secrets/mysql_root_password inside the container
