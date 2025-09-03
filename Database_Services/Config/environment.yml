@@ -1,0 +1,20 @@
+name: UL_env
+dependencies:
+  - python=3.12
+  - sqlalchemy
+  - pymysql
+  - pydot
+  - python-dotenv
+  - openpyxl
+  - cryptography
+  - conda-forge::graphviz # force install from conda-forge
+  - pip
+  - pip:
+      - sqlalchemy_schemadisplay
+      - uvicorn[standard]
+      - fastapi
+      - fastapi-utils
+      - typing-inspect
+      - aiomysql
+      - pydantic[email]
+      - graphviz

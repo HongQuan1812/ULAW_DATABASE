@@ -1,0 +1,14 @@
+sqlalchemy
+pymysql
+pydot
+python-dotenv
+openpyxl
+cryptography
+sqlalchemy_schemadisplay
+uvicorn[standard]
+fastapi
+fastapi-utils
+typing-inspect
+aiomysql
+pydantic[email]
+graphviz

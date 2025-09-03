@@ -1,0 +1,17 @@
+# Ignore secrets folder completely
+Database_Services/Secrets
+
+# Ignore local env files
+Database_Services/Config/.env
+
+# Ignore Python cache files
+*.pyc
+__pycache__/
+
+# Ignore Git metadata
+.git/
+.gitignore
+
+# Ignore ERD diagrams
+Database_Services/Database/ERD_Visualization.py
+Database_Services/Database/Department_ERD
