@@ -62,9 +62,33 @@ services:       # Define the services (containers) that will run in this project
     stdin_open: true # Keep stdin open (so you can attach to container)
 
 
+  frontend_app:   # Your frontend service
+    build:
+      context: ..  # Build relative to Config/ (same as Database service)
+      dockerfile: Frontend_Services/docker_config/Dockerfile
+
+    env_file:
+      - ../Frontend_Services/.env   # Optional: load environment vars if your frontend needs them
+
+    ports:
+      - "5000:8000"   # Map host port 3000 → container port 3000 (React/Vue/Next dev server)
+
+    command: >        # Let docker-compose handle the startup command
+      bash -c "
+        npm start                 # Serve the frontend
+      "
+
+    restart: always   # Auto-restart if it crashes
+    tty: true
+    stdin_open: true
+
+
+
+
 volumes:            # Named volumes (data persistence)
   db_mysql_data:    # Define the "db_mysql_data" volume
                     # Docker manages this storage on your host system
+
 
 
 secrets:            # Define Docker secrets (sensitive info, not stored in plaintext inside image)
