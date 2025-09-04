@@ -14,5 +14,5 @@ GdbcEnum = create_giaidoan_enum(common_config_filename)
 ChucVuEnum = create_chucvu_enum(common_config_filename)
 DanhMucNganhEnum = create_danhmucnganh_enum(org_config_filename)
 
-# So schemas.py can just do:
-# from . import DonViEnum, GdbcEnum, ChucVuEnum
+# So *_Schemas.py can just do:
+# from Schemas_Definition import DonViEnum, GdbcEnum, ChucVuEnum
