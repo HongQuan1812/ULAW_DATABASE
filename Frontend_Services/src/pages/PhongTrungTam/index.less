@@ -1,0 +1,151 @@
+.container {
+  max-height: calc(100vh - 100px);
+  margin-top: 14px;
+  padding: 24px;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .ant-form-item-label > label {
+    color: #333;
+    font-weight: 500;
+  }
+
+  .ant-input,
+  .ant-select-selector {
+    border-radius: 6px;
+  }
+
+  .step3Container {
+    padding: 16px;
+    background: #fffbe6;
+    border: 1px solid #ffe58f;
+    border-radius: 6px;
+  }
+
+  .step3Content {
+    margin-bottom: 8px;
+    color: #ad6800;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .step3BackContent {
+    margin-bottom: 4px;
+    color: #614700;
+  }
+
+  .step3SubmitContent {
+    margin-bottom: 0;
+    color: #614700;
+  }
+
+  .noteContainer {
+    margin-top: 16px;
+    padding: 12px;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+    background: #f9f9f9;
+    border: 1px dashed #faad14;
+    border-radius: 8px;
+  }
+
+  .sup {
+    color: black;
+    font-weight: bold;
+  }
+
+  .note {
+    margin: 0;
+    color: #333;
+    font-weight: bold;
+  }
+
+  .noteList {
+    margin: 8px 0 0 20px;
+    padding: 0;
+  }
+
+  .btnBack,
+  .btnNext,
+  .btnSubmit {
+    min-width: 110px;
+    height: 38px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+
+  .btnBack {
+    color: #333;
+    background-color: #f5f5f5;
+    border: 1px solid #d9d9d9;
+    &:hover {
+      background-color: #e6e6e6;
+      border-color: #bfbfbf;
+    }
+  }
+
+  .btnNext {
+    color: #fff;
+    background-color: #1890ff;
+    border: 1px solid #1890ff;
+    &:hover {
+      background-color: #40a9ff;
+      border-color: #40a9ff;
+    }
+  }
+
+  .btnSubmit {
+    color: #fff;
+    background-color: #52c41a;
+    border: 1px solid #52c41a;
+    &:hover {
+      background-color: #73d13d;
+      border-color: #73d13d;
+    }
+  }
+}
+
+.stepCard {
+  margin-top: 14px;
+  padding: 16px;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  @media (max-width: 575px) {
+    padding-bottom: 0;
+  }
+}
+
+.stepHeader {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.dynamicListActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.removeIcon {
+  color: #ff4d4f;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.removeIconDisabled {
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 18px;
+  cursor: not-allowed;
+}
+
+.addBtn {
+  width: 100%;
+  border-style: dashed;
+}

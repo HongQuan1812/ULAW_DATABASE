@@ -1,0 +1,154 @@
+.segmentedContainer {
+  color: rgba(0, 0, 0, 1);
+  font-size: 15px;
+  background-color: #e6e6e6;
+  border-radius: 8px;
+  :global {
+    .ant-segmented-item-selected {
+      border-radius: 8px;
+    }
+    .ant-segmented-thumb {
+      border-radius: 8px;
+    }
+  }
+}
+
+.selectBox {
+  flex: 1;
+  min-width: 25%;
+}
+
+.clearFilterBtn {
+  color: #1d39c4;
+  font-weight: 500;
+  background-color: #f6f9ff;
+  border: 1px solid #91caff;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #1d39c4;
+    background-color: #e6f4ff;
+    border-color: #69b1ff;
+  }
+
+  &:active {
+    color: #1d39c4;
+    background-color: #e6f4ff;
+    border-color: #69b1ff;
+  }
+
+  &:focus {
+    color: #10239e;
+    background-color: #d4eaff;
+    border-color: #4096ff;
+  }
+}
+
+/* Title */
+.title {
+  margin-bottom: 16px;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+/* Stats Row */
+.statsRow {
+  margin-bottom: 24px;
+
+  h4 {
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  div {
+    font-size: 18px;
+  }
+}
+
+/* Plots Row */
+.plotsRow {
+  margin-top: 20px;
+}
+
+/* Chart box */
+.chartBox {
+  height: 200px; /* gọn hơn */
+}
+
+/* AntD Table */
+:global(.ant-table) {
+  overflow: hidden;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
+/* Header */
+:global(.ant-table-thead > tr > th) {
+  padding: 6px 10px;
+  color: #444;
+  font-weight: 500;
+  background: #fafafa;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+/* Body */
+:global(.ant-table-tbody > tr > td) {
+  padding: 6px 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Hover row */
+:global(.ant-table-tbody > tr:hover > td) {
+  background: #f9f9f9;
+}
+
+/* Card */
+:global(.ant-card) {
+  overflow: hidden;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* ---------- Column styles (nhẹ nhàng) ---------- */
+
+/* Đơn vị */
+:global(.ant-table .col-name) {
+  color: #333;
+  font-weight: 500;
+}
+
+/* Nhóm */
+:global(.ant-table .col-category) {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Tổng */
+:global(.ant-table .col-total) {
+  color: #333;
+  text-align: center;
+}
+
+/* Đã nhập */
+:global(.ant-table .col-done) {
+  color: #2f8545; /* xanh dịu */
+  text-align: center;
+}
+
+/* Chưa nhập */
+:global(.ant-table .col-pending) {
+  color: #a87b00; /* vàng nâu */
+  text-align: center;
+}
+
+/* Tỉ lệ */
+:global(.ant-table .col-ratio) {
+  color: #444;
+  font-weight: 500;
+  text-align: center;
+}
+
+:global(.ant-table td) {
+  padding: 6px 10px;
+}
