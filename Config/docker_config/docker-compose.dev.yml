@@ -1,0 +1,104 @@
+services:       # Define the services (containers) that will run in this project
+  db_mysql:     # Service name = "db_mysql". Container will be named <project>_db_mysql by default
+    image: mysql:8.0  # Use the official MySQL 8.0 image from Docker Hub
+    
+    environment:      # Set environment variables for the container
+      # MySQL requires a database and root password to be set.
+      MYSQL_DATABASE: BCSL  # Creates a default database named "BCSL"
+      
+      # Instead of storing the root password in plaintext,
+      # we point MySQL to read it from a Docker secret file
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+      
+    ports:
+      - "3306:3306"  # Map host port 3306 → container port 3306
+                     # Lets you connect with external tools (VSCode, MySQL Workbench, etc.)
+    
+    volumes:
+      - db_mysql_data:/var/lib/mysql  # Store MySQL data inside a Docker volume
+                                      # Ensures data persists even if the container restarts/deletes
+    
+    secrets:
+      - mysql_root_password     # Mount the secret "mysql_root_password" into /run/secrets/
+
+    healthcheck:                # A built-in way to check if MySQL is running correctly
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p$$MYSQL_ROOT_PASSWORD"]
+      interval: 5s   # Run the healthcheck every 5 seconds
+      timeout: 5s    # Wait max 5 seconds before declaring a failure
+      retries: 3     # If it fails 3 times, mark the container as unhealthy
+
+
+  bcsl_api:        # This is your FastAPI service
+    build:
+      context: ../..  # Build the Dockerfile from the main directory
+      dockerfile: Database_Services/Config/docker_config/Dockerfile  # Path to your custom Dockerfile
+
+    volumes:
+      - ../../Database_Services:/app  # bind mount for hot reload
+    
+    env_file:
+      - ../../Database_Services/Config/src_config/.env  # Load environment variables from this .env file
+    
+    depends_on:
+      db_mysql:
+        condition: service_healthy  # Wait until db_mysql passes its healthcheck before starting API
+    
+    ports:
+      - "9000:8000"  # Expose FastAPI on host port 9000 → container port 8000
+    
+    command: >       # Override the container’s default startup command
+      bash -c "
+        python -m Database.Database_Setup &&                # Run DB setup script
+        python -m Database.Database_Initialization &&       # Run DB initialization script
+        uvicorn main:app --host 0.0.0.0 --port 8000 --reload  # Start FastAPI server
+      "
+    
+    secrets:         # Mount secrets for DB connection
+      - source: db_username
+        target: /app/Secrets/db_username.txt  # Secret will be available at this path inside container
+      - source: db_password
+        target: /app/Secrets/db_password.txt
+    
+    restart: always  # Always restart if container crashes
+    
+    tty: true        # Keep an interactive terminal session open (useful for debugging/logs)
+    stdin_open: true # Keep stdin open (so you can attach to container)
+
+
+  frontend_app:   # Your frontend service
+    build:
+      context: ../..  # Build the Dockerfile from the main directory
+      dockerfile: Frontend_Services/docker_config/Dockerfile
+
+    volumes:
+      - ../../Frontend_Services:/app   # bind mount for hot reload
+      - node_modules_cache:/app/node_modules              # protect node_modules (your host machine doesn’t have a node_modules/ directory)
+
+    ports:
+      - "5000:8000"   # Map host port 5000 → container port 8000 (React/Vue/Next dev server)
+
+    command: >        # Let docker-compose handle the startup command
+      bash -c "
+        npm start                 # Serve the frontend
+      "
+
+    restart: always   # Auto-restart if it crashes
+    tty: true
+    stdin_open: true
+
+
+
+
+volumes:                                # Named volumes (data persistence)
+  db_mysql_data:                        # Define the "db_mysql_data", ... volume
+  node_modules_cache:                   # Docker manages this storage on your host system
+
+
+
+secrets:            # Define Docker secrets (sensitive info, not stored in plaintext inside image)
+  mysql_root_password:
+    file: ../../MySQL_Server/Secrets/mysql_root_password.txt  # Secret file for MySQL root password
+  db_username:
+    file: ../../Database_Services/Secrets/db_username.txt     # Secret file for API DB username
+  db_password:
+    file: ../../Database_Services/Secrets/db_password.txt     # Secret file for API DB password
