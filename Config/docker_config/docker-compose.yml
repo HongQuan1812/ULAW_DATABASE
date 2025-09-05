@@ -30,11 +30,11 @@ services:       # Define the services (containers) that will run in this project
 
   bcsl_api:        # This is your FastAPI service
     build:
-      context: ..  # Build the Dockerfile from the parent directory of this file
-      dockerfile: Database_Services/Config/Dockerfile  # Path to your custom Dockerfile
+      context: ../..  # Build the Dockerfile from the main directory
+      dockerfile: Database_Services/Config/docker_config/Dockerfile  # Path to your custom Dockerfile
     
     env_file:
-      - ../Database_Services/Config/.env  # Load environment variables from this .env file
+      - ../../Database_Services/Config/src_config/.env  # Load environment variables from this .env file
     
     depends_on:
       db_mysql:
@@ -64,14 +64,11 @@ services:       # Define the services (containers) that will run in this project
 
   frontend_app:   # Your frontend service
     build:
-      context: ..  # Build relative to Config/ (same as Database service)
+      context: ../..  # Build the Dockerfile from the main directory
       dockerfile: Frontend_Services/docker_config/Dockerfile
 
-    env_file:
-      - ../Frontend_Services/.env   # Optional: load environment vars if your frontend needs them
-
     ports:
-      - "5000:8000"   # Map host port 3000 → container port 3000 (React/Vue/Next dev server)
+      - "5000:8000"   # Map host port 5000 → container port 8000 (React/Vue/Next dev server)
 
     command: >        # Let docker-compose handle the startup command
       bash -c "
@@ -93,8 +90,8 @@ volumes:            # Named volumes (data persistence)
 
 secrets:            # Define Docker secrets (sensitive info, not stored in plaintext inside image)
   mysql_root_password:
-    file: ../MySQL_Server/Secrets/mysql_root_password.txt  # Secret file for MySQL root password
+    file: ../../MySQL_Server/Secrets/mysql_root_password.txt  # Secret file for MySQL root password
   db_username:
-    file: ../Database_Services/Secrets/db_username.txt     # Secret file for API DB username
+    file: ../../Database_Services/Secrets/db_username.txt     # Secret file for API DB username
   db_password:
-    file: ../Database_Services/Secrets/db_password.txt     # Secret file for API DB password
+    file: ../../Database_Services/Secrets/db_password.txt     # Secret file for API DB password

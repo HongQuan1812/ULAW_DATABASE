@@ -65,7 +65,7 @@ def load_env_file(filename: str = ".env"):
         base_dir = os.path.dirname(os.path.abspath(__file__))
         
         # path to .env under Docker_Config/Database_Services
-        dotenv_path = os.path.join(base_dir, "..", "Config", filename)
+        dotenv_path = os.path.join(base_dir, "..", "Config", "src_config", filename)
 
         print("=" * 40)
         print(f"Looking for environment file: {dotenv_path}")
@@ -94,7 +94,7 @@ def load_config_file(filename="organization_config.json"):
     """
     base_dir = os.path.dirname(os.path.abspath(__file__))
     
-    path = os.path.join(base_dir, "..", "Config", filename)
+    path = os.path.join(base_dir, "..", "Config", "src_config", filename)
 
     if not os.path.isfile(path):
         raise FileNotFoundError(f"❌ Config file not found: {path}")
