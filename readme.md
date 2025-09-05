@@ -25,7 +25,9 @@ This project provides a database service managed with Docker Compose.
     ```
 
     - `--build` ensures the image is rebuilt when there are changes in your code.
-    - If there are no code changes, you can omit `--build` for a faster startup
+    - If there are no code changes, you can omit `--build` for a faster startup.
+    - For development, replace `docker-compose.yml` with `docker-compose.dev.yml`.
+    - For production, replace `docker-compose.yml` with `docker-compose.prod.yml`.
 
 
 ## 🛑 Stopping the Server
@@ -35,4 +37,5 @@ This project provides a database service managed with Docker Compose.
     docker compose -f Config/docker_config/docker-compose.yml down
     ```
 
+    -  replace `docker-compose.yml` with the corresponding docker-compose file in running server section.
 
